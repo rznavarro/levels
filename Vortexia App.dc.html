@@ -98,9 +98,6 @@ a:hover{color:var(--ink)}
 
 <div style="flex:1;min-height:0;overflow-y:auto;background-image:radial-gradient(rgba(255,255,255,.055) 1.4px,transparent 1.4px);background-size:34px 34px">
 <div class="vx-map-canvas" style="position:relative;height:{{ canvasH }}px;margin-bottom:26px">
-<sc-for list="{{ links }}" as="l" hint-placeholder-count="5" key="links">
-<div style="position:absolute;left:{{ l.left }}px;top:{{ l.top }}px;width:{{ l.w }}px;height:{{ l.h }}px;border-radius:{{ l.radius }};border-top:10px solid rgba(255,255,255,.07);border-{{ l.side }}:10px solid rgba(255,255,255,.07)"></div>
-</sc-for>
 <sc-for list="{{ nodes }}" as="n" hint-placeholder-count="6">
 <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:112px;display:flex;flex-direction:column;align-items:center;gap:8px">
 <sc-if value="{{ n.isDone }}" hint-placeholder-val="{{ false }}">
