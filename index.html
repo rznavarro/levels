@@ -352,6 +352,7 @@ a:hover{color:var(--ink)}
 
 <sc-if value="{{ showOffer }}" hint-placeholder-val="{{ false }}">
 <div style="flex:1;display:flex;flex-direction:column;padding:30px 24px 26px;gap:16px;min-height:0;overflow-y:auto;animation:vx-in .35s ease both">
+<div style="align-self:flex-start;padding:4px 9px;border:1px dashed var(--acc);border-radius:6px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--acc);letter-spacing:.08em">HOY USASTE TUS 2 CAPÍTULOS GRATIS</div>
 <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--acc);text-transform:uppercase;letter-spacing:.1em">La oferta, en corto</div>
 <h2 style="margin:0;font-size:27px;line-height:1.12;font-weight:800;letter-spacing:-.025em">Tu web con Vortexia por {{ priceLabel }}</h2>
 <div style="display:flex;flex-direction:column;gap:9px">
@@ -719,7 +720,7 @@ class Component extends DCLogic {
       downloadChapterPdf: () => this.chapterPdf(s.ch),
       downloadFullPdf: () => this.fullPdf(),
       toMap: () => this.setState({ screen: 'map' }),
-      afterReward: () => this.setState({ screen: s.ch >= 19 ? 'final' : 'map' }),
+      afterReward: () => this.setState({ screen: s.ch >= 19 ? 'final' : (dailyLimitReached ? 'offer' : 'map') }),
       introTitle: (this.content[s.ch] && this.content[s.ch].intro || {}).title || '',
       introNote: (this.content[s.ch] && this.content[s.ch].intro || {}).note || '',
       mockSpinner: s.screen === 'intro',
