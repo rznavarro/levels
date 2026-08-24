@@ -323,6 +323,19 @@ pasa el mouse… nada cambia
 <div style="margin-top:7px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.06em;color:var(--bad)">tarda en abrir…</div>
 </div>
 </sc-if>
+<sc-if value="{{ showBrokenScroll }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:rgba(4,6,5,.75);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:8;padding:14px;gap:8px">
+<div style="width:100%;display:flex;gap:6px">
+<div style="flex:1;height:44px;border-radius:9px;background:rgba(255,255,255,.06)"></div>
+<div style="flex:1;height:44px;border-radius:9px;background:rgba(255,255,255,.06)"></div>
+</div>
+<div style="display:flex;align-items:center;gap:6px">
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--mute)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M18 13l-6 6-6-6"/></svg>
+<div style="width:70px;height:3px;border-radius:99px;background:rgba(255,255,255,.12)"></div>
+</div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.06em;color:var(--bad)">scroll manual… todo el camino de vuelta</div>
+</div>
+</sc-if>
 <div style="display:flex;align-items:center;gap:5px;padding:8px 10px;background:rgba(255,255,255,.04)">
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
@@ -426,6 +439,11 @@ pasa el mouse… nada cambia
 <sc-if value="{{ hasFloatingCta }}" hint-placeholder-val="{{ false }}">
 <div style="position:absolute;right:9px;bottom:9px;width:28px;height:28px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;box-shadow:0 5px 12px -3px rgba(0,0,0,.6);animation:vx-pop .35s ease both{{ ctaExtraAnim }};z-index:5">
 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--on-acc)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</div>
+</sc-if>
+<sc-if value="{{ hasBackToTop }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;left:9px;bottom:9px;width:24px;height:24px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;box-shadow:0 5px 12px -3px rgba(0,0,0,.6);animation:vx-pop .35s ease both;z-index:5">
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M6 11l6-6 6 6"/></svg>
 </div>
 </sc-if>
 <sc-if value="{{ showBrokenMicro }}" hint-placeholder-val="{{ false }}">
@@ -581,6 +599,11 @@ VISTA DESKTOP
 <sc-if value="{{ hasFloatingCta }}" hint-placeholder-val="{{ false }}">
 <div style="position:absolute;right:9px;bottom:9px;width:28px;height:28px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;box-shadow:0 5px 12px -3px rgba(0,0,0,.6);animation:vx-pop .35s ease both{{ ctaExtraAnim }};z-index:5">
 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--on-acc)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</div>
+</sc-if>
+<sc-if value="{{ hasBackToTop }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;left:9px;bottom:9px;width:24px;height:24px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;box-shadow:0 5px 12px -3px rgba(0,0,0,.6);animation:vx-pop .35s ease both;z-index:5">
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M6 11l6-6 6 6"/></svg>
 </div>
 </sc-if>
 </div>
@@ -744,6 +767,11 @@ VISTA DESKTOP
 <sc-if value="{{ hasFloatingCta }}" hint-placeholder-val="{{ false }}">
 <div style="position:absolute;right:7px;bottom:7px;width:22px;height:22px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px -3px rgba(0,0,0,.6);animation:vx-pop .35s ease both{{ ctaExtraAnim }};z-index:5">
 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--on-acc)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</div>
+</sc-if>
+<sc-if value="{{ hasBackToTop }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;left:7px;bottom:7px;width:19px;height:19px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px -3px rgba(0,0,0,.6);animation:vx-pop .35s ease both;z-index:5">
+<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M6 11l6-6 6 6"/></svg>
 </div>
 </sc-if>
 </div>
@@ -1377,12 +1405,42 @@ class Component extends DCLogic {
         { t: 'p', text: 'Dejarlo para el final y nunca llegar a hacerlo, porque "es un detalle chico". Precisamente por ser tan chico es fácil de posponer indefinidamente — pero también es de los más rápidos de resolver una vez que se prioriza.' },
         { t: 'note', text: 'Cuando una corredora compara webs de distintas agencias, estos detalles chicos son los que, sin que se den cuenta, les hacen sentir cuál se ve más profesional.' }
       ]
+    },
+    15: {
+      title: 'Volver arriba: el atajo que le devuelve el control al cliente',
+      sub: 'Por qué un catálogo largo necesita un camino de vuelta corto.',
+      els: [
+        { t: 'h2', text: 'Un problema que crece con tu catálogo' },
+        { t: 'p', text: 'Tu catálogo de propiedades puede crecer mucho — y eso es bueno. Pero mientras más crece, más largo es el camino de vuelta si el cliente quiere revisar otra propiedad que vio antes.' },
+        { t: 'quote', text: '"Obligar al usuario a scrollear todo el camino de vuelta para buscar otra es fricción innecesaria."' },
+        { t: 'p', text: 'Es un tipo de fricción silenciosa: nadie se queja explícitamente de tener que scrollear de vuelta, pero cansa, y ese cansancio acumulado hace que algunos simplemente abandonen antes de ver todo lo que tenías para mostrarles.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Control sin esfuerzo' },
+        { t: 'p', text: 'Un botón de volver arriba le devuelve el control al cliente sin esfuerzo. Con un solo toque, vuelve al principio del catálogo para elegir otra propiedad — en vez de scrollear manualmente todo el trayecto que ya recorrió.' },
+        { t: 'note', text: 'Es de los ajustes con mejor relación costo-beneficio de todo el curso: bajo costo de implementación, beneficio real y constante en cada visita larga.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Cuándo debe aparecer' },
+        { t: 'p', text: 'El botón debe aparecer solo después de cierto scroll, nunca visible desde el tope de la página. Si aparece desde el inicio, no tiene sentido — no hay a dónde "volver arriba" todavía — y solo ocupa espacio de forma innecesaria.' },
+        { t: 'li', text: 'Oculto mientras el usuario está cerca del inicio de la página.' },
+        { t: 'li', text: 'Aparece después de bajar una distancia razonable (por ejemplo, una pantalla completa).' },
+        { t: 'li', text: 'Discreto, sin competir con el resto de los botones importantes.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Checklist: revisa tu catálogo hoy' },
+        { t: 'chk', text: 'Baja hasta el final de tu listado de propiedades en el celular.' },
+        { t: 'chk', text: 'Verifica si aparece algún botón para volver arriba.' },
+        { t: 'chk', text: 'Si no existe, cuenta cuánto tiempo te toma scrollear manualmente de vuelta.' },
+        { t: 'chk', text: 'Confirma que, si existe, no aparezca desde el tope de la página.' },
+        { t: 'space' },
+        { t: 'h2', text: 'El error más común' },
+        { t: 'p', text: 'No pensar en el "camino de vuelta" al diseñar un catálogo largo, solo en el camino de bajada. Un catálogo bien pensado facilita moverse en ambas direcciones, no solo hacia abajo.' },
+        { t: 'note', text: 'Mientras más fácil sea moverse por tu catálogo, más propiedades ve un mismo cliente antes de decidir escribirte. Eso también es vender más, sin cambiar nada de tus propiedades.' }
+      ]
     }
   };
   COLS = [195, 288, 195, 102];
   ROW = 168; TOP0 = 34;
 
-  titles = ['Animación del hero','Velocidad de carga','Animaciones de scroll','Diseño responsive','Testimonios','Botones de RRSS','CTA repetido','Formularios de contacto','Validación de formularios','Estados vacíos','Microinteracciones','Estados hover','Navegación móvil','Favicon custom','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
+  titles = ['Animación del hero','Velocidad de carga','Animaciones de scroll','Diseño responsive','Testimonios','Botones de RRSS','CTA repetido','Formularios de contacto','Validación de formularios','Estados vacíos','Microinteracciones','Estados hover','Navegación móvil','Favicon custom','Volver arriba','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
 
   /* ── CONTENIDO POR CAPÍTULO ─────────────────────────────
      Cada capítulo es una unidad independiente: { cards: [...], questions: [{t,a,e}] }.
@@ -1705,6 +1763,29 @@ class Component extends DCLogic {
         { t: 'El favicon es un detalle que suma a la percepción general de cuidado de la web.', a: true, e: 'Su ausencia es una señal sutil pero real de que la web no fue terminada con cuidado.' }
       ],
       mock: { kicker: 'Pieza pulida · favicon', title: 'Ahora se distingue entre las demás', note: 'Tu pestaña ahora tiene un ícono propio, reconocible entre todas las demás abiertas.' }
+    },
+    15: {
+      intro: { title: 'Mira lo que cuesta volver arriba', note: 'Llegaste al fondo de la grilla de propiedades. Para volver, hay que scrollear todo el camino manualmente.' },
+      cards: [
+        'Tu catálogo de propiedades puede crecer mucho. Y mientras más crece, más largo es el camino de vuelta si el cliente quiere revisar otra.',
+        'Si tu web tiene una galería larga de propiedades, obligar al usuario a scrollear todo el camino de vuelta para buscar otra es fricción innecesaria.',
+        'Un botón de volver arriba le devuelve el control sin esfuerzo — reduce la fricción en páginas largas, especialmente en listados como el tuyo.',
+        'Es un detalle pequeño, de costo de implementación bajo, con beneficio de experiencia real — de esos ajustes que cuestan poco y se notan mucho.',
+        'Mientras más fácil sea moverse por tu catálogo, más propiedades ve un mismo cliente antes de decidir escribirte. Eso también es vender más, sin cambiar nada de tus propiedades.'
+      ],
+      questions: [
+        { t: 'El botón de volver arriba reduce la fricción en páginas largas.', a: true, e: 'Le devuelve el control sin esfuerzo — reduce la fricción en páginas largas.' },
+        { t: 'Este botón es más útil en páginas cortas que en listados largos de propiedades.', a: false, e: 'Es especialmente útil en listados largos, como el catálogo de propiedades.' },
+        { t: 'Le da al usuario sensación de control sobre su navegación.', a: true, e: 'Un botón de volver arriba le devuelve el control sin esfuerzo.' },
+        { t: 'Implementar este botón suele ser costoso y complejo.', a: false, e: 'Es un detalle pequeño, de costo de implementación bajo, con beneficio de experiencia real.' },
+        { t: 'Sin este botón, el usuario tiene que scrollear manualmente todo el camino de vuelta.', a: true, e: 'Obligar al usuario a scrollear todo el camino de vuelta es fricción innecesaria.' },
+        { t: 'Este botón es exclusivo de tiendas online, no aplica a webs inmobiliarias.', a: false, e: 'Es especialmente útil en listados largos como el catálogo de propiedades de una inmobiliaria.' },
+        { t: 'Es un detalle de bajo costo con beneficio real en experiencia de usuario.', a: true, e: 'De esos ajustes que cuestan poco y se notan mucho.' },
+        { t: 'El botón de volver arriba no tiene relación con cuánto scrollea el usuario.', a: false, e: 'Mientras más fácil sea moverse por el catálogo, más propiedades ve un mismo cliente.' },
+        { t: 'En listados largos de propiedades, este botón puede evitar que el usuario abandone por cansancio.', a: true, e: 'Reduce la fricción en páginas largas, evitando que el esfuerzo de volver arriba canse al usuario.' },
+        { t: 'Este botón debería aparecer siempre visible desde el inicio de la página.', a: false, e: 'Debe aparecer solo después de cierto scroll, no desde el inicio de la página — al tope no tiene sentido mostrarlo.' }
+      ],
+      mock: { kicker: 'Pieza agregada · volver arriba', title: 'Tu catálogo, más fácil de recorrer', note: 'Un botón lleva al cliente de vuelta al tope con un toque, sin scrollear todo el camino de regreso.' }
     }
   };
 
@@ -1803,6 +1884,8 @@ class Component extends DCLogic {
       showTabStrip: p.completed[14] !== undefined || s.ch === 14,
       hasFavicon: p.completed[14] !== undefined || (s.ch === 14 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
       noFavicon: !(p.completed[14] !== undefined || (s.ch === 14 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
+      hasBackToTop: p.completed[15] !== undefined || (s.ch === 15 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
+      showBrokenScroll: s.ch === 15 && s.screen === 'intro',
       showComingSoon: (!(p.completed[3] !== undefined || (s.ch === 3 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)))
         || (!(p.completed[5] !== undefined || (s.ch === 5 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)))
         || (!(p.completed[6] !== undefined || (s.ch === 6 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)))
