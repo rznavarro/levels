@@ -293,6 +293,15 @@ VISTA DESKTOP
 pasa el mouse… nada cambia
 </div>
 </sc-if>
+<sc-if value="{{ showBrokenNav }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:rgba(4,6,5,.75);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:8;padding:14px">
+<div style="width:100%;background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:8px;display:flex;flex-direction:column;gap:2px">
+<div style="font-size:6.5px;color:var(--ink);line-height:1.5">Inicio·Propiedades·Nosotros·Contacto·Blog</div>
+<div style="font-size:6.5px;color:var(--ink);line-height:1.5">WhatsApp·Testimonios·FAQ·Servicios</div>
+</div>
+<div style="margin-top:7px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.06em;color:var(--bad)">tarda en abrir…</div>
+</div>
+</sc-if>
 <div style="display:flex;align-items:center;gap:5px;padding:8px 10px;background:rgba(255,255,255,.04)">
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
@@ -370,6 +379,23 @@ pasa el mouse… nada cambia
 </div>
 <div style="font-size:7.5px;font-weight:700;color:var(--ink)">No encontramos esa propiedad</div>
 <div style="font-size:6.5px;color:var(--mute);line-height:1.3">Mira otras similares o contáctanos.</div>
+</div>
+</sc-if>
+<sc-if value="{{ hasMobileNav }}" hint-placeholder-val="{{ false }}">
+<div style="border-radius:9px;background:rgba(255,255,255,.04);padding:8px;display:flex;flex-direction:column;gap:6px;animation:vx-rise .55s ease both">
+<div style="display:flex;align-items:center;gap:5px">
+<div style="width:12px;height:8px;display:flex;flex-direction:column;justify-content:space-between">
+<div style="height:1.5px;background:var(--acc);border-radius:1px"></div>
+<div style="height:1.5px;background:var(--acc);border-radius:1px"></div>
+<div style="height:1.5px;background:var(--acc);border-radius:1px"></div>
+</div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:7px;font-weight:700;color:var(--ink);letter-spacing:.04em">MENÚ</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px">
+<div style="font-size:7.5px;color:var(--ink)">Inicio</div>
+<div style="font-size:7.5px;color:var(--ink)">Propiedades</div>
+<div style="font-size:7.5px;color:var(--ink)">Contacto</div>
+</div>
 </div>
 </sc-if>
 <sc-if value="{{ showComingSoon }}" hint-placeholder-val="{{ true }}">
@@ -487,6 +513,23 @@ VISTA DESKTOP
 </div>
 <div style="font-size:7.5px;font-weight:700;color:var(--ink)">No encontramos esa propiedad</div>
 <div style="font-size:6.5px;color:var(--mute);line-height:1.3">Mira otras similares o contáctanos.</div>
+</div>
+</sc-if>
+<sc-if value="{{ hasMobileNav }}" hint-placeholder-val="{{ false }}">
+<div style="border-radius:9px;background:rgba(255,255,255,.04);padding:8px;display:flex;flex-direction:column;gap:6px;animation:vx-rise .55s ease both">
+<div style="display:flex;align-items:center;gap:5px">
+<div style="width:12px;height:8px;display:flex;flex-direction:column;justify-content:space-between">
+<div style="height:1.5px;background:var(--acc);border-radius:1px"></div>
+<div style="height:1.5px;background:var(--acc);border-radius:1px"></div>
+<div style="height:1.5px;background:var(--acc);border-radius:1px"></div>
+</div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:7px;font-weight:700;color:var(--ink);letter-spacing:.04em">MENÚ</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px">
+<div style="font-size:7.5px;color:var(--ink)">Inicio</div>
+<div style="font-size:7.5px;color:var(--ink)">Propiedades</div>
+<div style="font-size:7.5px;color:var(--ink)">Contacto</div>
+</div>
 </div>
 </sc-if>
 <sc-if value="{{ showComingSoon }}" hint-placeholder-val="{{ true }}">
@@ -616,6 +659,19 @@ VISTA DESKTOP
 <span style="font-size:5.5px;color:var(--ink);font-family:'IBM Plex Mono',monospace">depto 5 dormitorios centro</span>
 </div>
 <div style="font-size:6.5px;font-weight:700;color:var(--ink)">No encontramos esa propiedad</div>
+</div>
+</sc-if>
+<sc-if value="{{ hasMobileNav }}" hint-placeholder-val="{{ false }}">
+<div style="border-radius:8px;background:rgba(255,255,255,.04);padding:6px;display:flex;flex-direction:column;gap:4px;animation:vx-rise .55s ease both">
+<div style="display:flex;align-items:center;gap:4px">
+<div style="width:10px;height:7px;display:flex;flex-direction:column;justify-content:space-between">
+<div style="height:1px;background:var(--acc);border-radius:1px"></div>
+<div style="height:1px;background:var(--acc);border-radius:1px"></div>
+<div style="height:1px;background:var(--acc);border-radius:1px"></div>
+</div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:6px;font-weight:700;color:var(--ink);letter-spacing:.04em">MENÚ</div>
+</div>
+<div style="font-size:6.5px;color:var(--ink)">Inicio · Propiedades · Contacto</div>
 </div>
 </sc-if>
 <sc-if value="{{ showComingSoon }}" hint-placeholder-val="{{ true }}">
@@ -1201,12 +1257,42 @@ class Component extends DCLogic {
         { t: 'p', text: 'Revisar la web solo en el celular y asumir que "así se ve en todos lados". Muchas corredoras revisan su propia web desde el computador antes de mandarla a un cliente — si ahí se siente muerta, esa primera impresión ya está dañada antes de que el cliente la vea.' },
         { t: 'note', text: 'Muchas corredoras revisan su propia web desde el computador antes de mandarla a un cliente. Que se sienta viva ahí también genera confianza, incluso antes de que un cliente la vea.' }
       ]
+    },
+    13: {
+      title: 'El menú móvil: la puerta que tiene que abrirse fácil',
+      sub: 'Por qué el elemento que menos se piensa es el que más se usa.',
+      els: [
+        { t: 'h2', text: 'Volvemos a donde vive tu cliente' },
+        { t: 'p', text: 'Ya pulimos cómo se siente la web en desktop. Volvamos a donde vive la mayoría de tus clientes: el celular. Empezamos por uno de los elementos que más se usa y menos se piensa: el menú de navegación.' },
+        { t: 'quote', text: '"Un menú de navegación confuso en el celular es como una casa en venta sin numeración clara — el cliente sabe que ahí hay algo, pero no puede encontrar la entrada."' },
+        { t: 'p', text: 'El menú es la forma en que el cliente se mueve por tu web cuando no está siguiendo un camino lineal. Si falla ahí, cada otra mejora que hiciste se vuelve más difícil de encontrar.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Menos espacio, más exigencia' },
+        { t: 'p', text: 'La navegación móvil tiene menos espacio disponible, así que cada elemento del menú tiene que ganarse su lugar. Un menú hamburguesa mal implementado — que tarda en abrir, con letras chicas, con opciones amontonadas — frustra más que uno simple y directo con menos opciones pero bien presentadas.' },
+        { t: 'note', text: 'No se trata de meter todo lo que existe en desktop dentro de un mismo menú achicado. Se trata de priorizar qué necesita encontrar el cliente primero.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Sin paciencia para adivinar' },
+        { t: 'p', text: 'El usuario móvil tiene menos paciencia que el de desktop — está caminando, distraído, con poco tiempo. El menú tiene que ser instantáneo de entender: abrir rápido, mostrar opciones claras, sin que el cliente tenga que entrecerrar los ojos para leer.' },
+        { t: 'li', text: 'Apertura instantánea, sin demora perceptible.' },
+        { t: 'li', text: 'Opciones con espacio suficiente entre ellas para tocar sin errores.' },
+        { t: 'li', text: 'Texto legible sin necesidad de hacer zoom.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Checklist: revisa tu menú hoy' },
+        { t: 'chk', text: 'Ábrelo en tu celular y cuenta cuánto tarda en aparecer.' },
+        { t: 'chk', text: 'Verifica que cada opción sea fácil de tocar sin equivocarte por accidente.' },
+        { t: 'chk', text: 'Revisa que el texto se lea sin hacer zoom.' },
+        { t: 'chk', text: 'Confirma que las opciones más importantes (propiedades, contacto) estén arriba, no escondidas.' },
+        { t: 'space' },
+        { t: 'h2', text: 'El error más común' },
+        { t: 'p', text: 'Copiar el menú de desktop tal cual, solo achicándolo, en vez de repensarlo para el espacio y el contexto de uso en mobile. El resultado es un menú técnicamente completo pero incómodo de usar en la práctica.' },
+        { t: 'note', text: 'Un cliente que encuentra rápido lo que busca en tu menú, llega más rápido a tus propiedades. Cada segundo que se ahorra buscando, es un segundo más mirando lo que realmente importa.' }
+      ]
     }
   };
   COLS = [195, 288, 195, 102];
   ROW = 168; TOP0 = 34;
 
-  titles = ['Animación del hero','Velocidad de carga','Animaciones de scroll','Diseño responsive','Testimonios','Botones de RRSS','CTA repetido','Formularios de contacto','Validación de formularios','Estados vacíos','Microinteracciones','Estados hover','WhatsApp y respuesta rápida','SEO local','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
+  titles = ['Animación del hero','Velocidad de carga','Animaciones de scroll','Diseño responsive','Testimonios','Botones de RRSS','CTA repetido','Formularios de contacto','Validación de formularios','Estados vacíos','Microinteracciones','Estados hover','Navegación móvil','SEO local','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
 
   /* ── CONTENIDO POR CAPÍTULO ─────────────────────────────
      Cada capítulo es una unidad independiente: { cards: [...], questions: [{t,a,e}] }.
@@ -1483,6 +1569,29 @@ class Component extends DCLogic {
         { t: 'El hover es exclusivo de botones, nunca se usa en imágenes o tarjetas.', a: false, e: 'Los botones y las tarjetas de propiedades también pueden reaccionar sutilmente al pasar el mouse.' }
       ],
       mock: { kicker: 'Pieza pulida · hover desktop', title: 'Ahora se siente viva en tu computador', note: 'Los botones y tarjetas ahora reaccionan al pasar el mouse — solo visible en desktop, no en mobile.' }
+    },
+    13: {
+      intro: { title: 'Mira lo que pasa al abrir el menú', note: 'Vuelta a mobile. Este es tu menú de navegación: tarda en abrir y las opciones están amontonadas.' },
+      cards: [
+        'Ya pulimos cómo se siente la web en desktop. Volvamos a donde vive la mayoría de tus clientes: el celular. Empezamos por el menú.',
+        'Un menú de navegación confuso en el celular es como una casa en venta sin numeración clara — el cliente sabe que ahí hay algo, pero no puede encontrar la entrada.',
+        'La navegación móvil tiene menos espacio disponible, así que cada elemento del menú tiene que ganarse su lugar. Un menú hamburguesa mal implementado (que tarda en abrir, con letras chicas) frustra más que uno simple y directo.',
+        'El usuario móvil tiene menos paciencia que el de desktop — está caminando, distraído, con poco tiempo. El menú tiene que ser instantáneo de entender.',
+        'Un cliente que encuentra rápido lo que busca en tu menú, llega más rápido a tus propiedades. Cada segundo que se ahorra buscando, es un segundo más mirando lo que realmente importa.'
+      ],
+      questions: [
+        { t: 'La navegación móvil tiene menos espacio disponible que en desktop.', a: true, e: 'La navegación móvil tiene menos espacio disponible, así que cada elemento tiene que ganarse su lugar.' },
+        { t: 'Un menú de navegación confuso puede hacer que el usuario no encuentre lo que busca.', a: true, e: 'El cliente sabe que ahí hay algo, pero no puede encontrar la entrada.' },
+        { t: 'El usuario móvil generalmente tiene más paciencia que el de desktop.', a: false, e: 'El usuario móvil tiene menos paciencia — está caminando, distraído, con poco tiempo.' },
+        { t: 'Un menú hamburguesa mal implementado puede generar frustración.', a: true, e: 'Un menú hamburguesa mal implementado (que tarda en abrir, con letras chicas) frustra más que uno simple.' },
+        { t: 'En mobile, cada elemento del menú debería "ganarse" su lugar por el espacio limitado.', a: true, e: 'La navegación móvil tiene menos espacio disponible, así que cada elemento tiene que ganarse su lugar.' },
+        { t: 'La navegación móvil no necesita ser tan clara como la de desktop.', a: false, e: 'El menú tiene que ser instantáneo de entender — igual o más claro que en desktop, dado el poco tiempo del usuario.' },
+        { t: 'Un usuario móvil suele estar más distraído o con menos tiempo que uno en desktop.', a: true, e: 'Está caminando, distraído, con poco tiempo.' },
+        { t: 'Copiar exactamente el menú de desktop a mobile siempre funciona bien.', a: false, e: 'La navegación móvil tiene menos espacio disponible, así que cada elemento tiene que ganarse su lugar — no es solo copiar y achicar.' },
+        { t: 'La claridad del menú afecta directamente si el usuario encuentra lo que busca.', a: true, e: 'Un cliente que encuentra rápido lo que busca en tu menú, llega más rápido a tus propiedades.' },
+        { t: 'La navegación móvil es un aspecto menor que no afecta la experiencia general.', a: false, e: 'Cada segundo que se ahorra buscando es un segundo más mirando lo que realmente importa — sí afecta la experiencia.' }
+      ],
+      mock: { kicker: 'Pieza pulida · menú móvil', title: 'Ahora se abre al instante', note: 'El menú de navegación ahora es instantáneo, con opciones claras y bien espaciadas.' }
     }
   };
 
@@ -1576,11 +1685,14 @@ class Component extends DCLogic {
       hoverBright: (p.completed[12] !== undefined || (s.ch === 12 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)) ? 'filter:brightness(1.15);transform:scale(1.03)' : '',
       showDesktopBadge: s.ch === 12,
       showBrokenHover: s.ch === 12 && s.screen === 'intro',
+      hasMobileNav: p.completed[13] !== undefined || (s.ch === 13 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
+      showBrokenNav: s.ch === 13 && s.screen === 'intro',
       showComingSoon: (!(p.completed[3] !== undefined || (s.ch === 3 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)))
         || (!(p.completed[5] !== undefined || (s.ch === 5 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)))
         || (!(p.completed[6] !== undefined || (s.ch === 6 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)))
         || (!(p.completed[8] !== undefined || (s.ch === 8 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)))
-        || (!(p.completed[10] !== undefined || (s.ch === 10 && ['mockup','trivia','summary'].indexOf(s.screen) > -1))),
+        || (!(p.completed[10] !== undefined || (s.ch === 10 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)))
+        || (!(p.completed[13] !== undefined || (s.ch === 13 && ['mockup','trivia','summary'].indexOf(s.screen) > -1))),
       showMidCourseNote: s.ch === 10 && s.screen === 'summary',
       showBrokenMobile: s.ch === 4 && s.screen === 'intro',
       showNormalMockup: !(s.ch === 4 && s.screen === 'intro'),
