@@ -227,6 +227,27 @@ a:hover{color:var(--ink)}
 VISTA DESKTOP
 </div>
 </sc-if>
+<sc-if value="{{ showTabStrip }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;gap:2px;padding:6px 8px 0">
+<div style="flex:1;max-width:64px;height:20px;border-radius:6px 6px 0 0;background:rgba(255,255,255,.04);display:flex;align-items:center;gap:4px;padding:0 6px">
+<div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);flex:none"></div>
+<div style="height:5px;flex:1;border-radius:2px;background:rgba(255,255,255,.1)"></div>
+</div>
+<div style="flex:1;max-width:64px;height:22px;border-radius:6px 6px 0 0;background:rgba(255,255,255,.07);display:flex;align-items:center;gap:4px;padding:0 6px;border-bottom:2px solid var(--acc)">
+<sc-if value="{{ hasFavicon }}" hint-placeholder-val="{{ false }}">
+<div style="width:8px;height:8px;border-radius:2px;background:var(--acc);transform:rotate(24deg);flex:none"></div>
+</sc-if>
+<sc-if value="{{ noFavicon }}" hint-placeholder-val="{{ true }}">
+<div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);flex:none"></div>
+</sc-if>
+<div style="height:5px;flex:1;border-radius:2px;background:rgba(255,255,255,.18)"></div>
+</div>
+<div style="flex:1;max-width:64px;height:20px;border-radius:6px 6px 0 0;background:rgba(255,255,255,.04);display:flex;align-items:center;gap:4px;padding:0 6px">
+<div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);flex:none"></div>
+<div style="height:5px;flex:1;border-radius:2px;background:rgba(255,255,255,.1)"></div>
+</div>
+</div>
+</sc-if>
 <sc-if value="{{ showBrokenMobile }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;flex-direction:column;align-items:center;padding:8px 0 4px">
 <div style="width:120px;border:3px solid rgba(255,255,255,.18);border-radius:20px;padding:8px 7px;background:#0A0E0D;position:relative">
@@ -434,6 +455,27 @@ pasa el mouse… nada cambia
 VISTA DESKTOP
 </div>
 </sc-if>
+<sc-if value="{{ showTabStrip }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;gap:2px;padding:6px 8px 0">
+<div style="flex:1;max-width:64px;height:20px;border-radius:6px 6px 0 0;background:rgba(255,255,255,.04);display:flex;align-items:center;gap:4px;padding:0 6px">
+<div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);flex:none"></div>
+<div style="height:5px;flex:1;border-radius:2px;background:rgba(255,255,255,.1)"></div>
+</div>
+<div style="flex:1;max-width:64px;height:22px;border-radius:6px 6px 0 0;background:rgba(255,255,255,.07);display:flex;align-items:center;gap:4px;padding:0 6px;border-bottom:2px solid var(--acc)">
+<sc-if value="{{ hasFavicon }}" hint-placeholder-val="{{ false }}">
+<div style="width:8px;height:8px;border-radius:2px;background:var(--acc);transform:rotate(24deg);flex:none"></div>
+</sc-if>
+<sc-if value="{{ noFavicon }}" hint-placeholder-val="{{ true }}">
+<div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);flex:none"></div>
+</sc-if>
+<div style="height:5px;flex:1;border-radius:2px;background:rgba(255,255,255,.18)"></div>
+</div>
+<div style="flex:1;max-width:64px;height:20px;border-radius:6px 6px 0 0;background:rgba(255,255,255,.04);display:flex;align-items:center;gap:4px;padding:0 6px">
+<div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);flex:none"></div>
+<div style="height:5px;flex:1;border-radius:2px;background:rgba(255,255,255,.1)"></div>
+</div>
+</div>
+</sc-if>
 <div style="{{ phoneFrameStyle }}">
 <div style="flex:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0A0E0D;position:relative">
 <div style="display:flex;align-items:center;gap:5px;padding:8px 10px;background:rgba(255,255,255,.04)">
@@ -579,6 +621,27 @@ VISTA DESKTOP
 <div style="align-self:flex-start;display:flex;align-items:center;gap:5px;padding:3px 9px;border:1px dashed var(--acc);border-radius:6px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--acc);letter-spacing:.06em">
 <svg width="9" height="9" viewBox="0 0 24 24" fill="var(--acc)"><path d="M2 2l7.5 18.5 2.4-7.6 7.6-2.4z"/></svg>
 VISTA DESKTOP
+</div>
+</sc-if>
+<sc-if value="{{ showTabStrip }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;gap:2px;padding:6px 8px 0">
+<div style="flex:1;max-width:64px;height:20px;border-radius:6px 6px 0 0;background:rgba(255,255,255,.04);display:flex;align-items:center;gap:4px;padding:0 6px">
+<div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);flex:none"></div>
+<div style="height:5px;flex:1;border-radius:2px;background:rgba(255,255,255,.1)"></div>
+</div>
+<div style="flex:1;max-width:64px;height:22px;border-radius:6px 6px 0 0;background:rgba(255,255,255,.07);display:flex;align-items:center;gap:4px;padding:0 6px;border-bottom:2px solid var(--acc)">
+<sc-if value="{{ hasFavicon }}" hint-placeholder-val="{{ false }}">
+<div style="width:8px;height:8px;border-radius:2px;background:var(--acc);transform:rotate(24deg);flex:none"></div>
+</sc-if>
+<sc-if value="{{ noFavicon }}" hint-placeholder-val="{{ true }}">
+<div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);flex:none"></div>
+</sc-if>
+<div style="height:5px;flex:1;border-radius:2px;background:rgba(255,255,255,.18)"></div>
+</div>
+<div style="flex:1;max-width:64px;height:20px;border-radius:6px 6px 0 0;background:rgba(255,255,255,.04);display:flex;align-items:center;gap:4px;padding:0 6px">
+<div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);flex:none"></div>
+<div style="height:5px;flex:1;border-radius:2px;background:rgba(255,255,255,.1)"></div>
+</div>
 </div>
 </sc-if>
 <div style="{{ phoneFrameStyle }}">
@@ -1287,12 +1350,39 @@ class Component extends DCLogic {
         { t: 'p', text: 'Copiar el menú de desktop tal cual, solo achicándolo, en vez de repensarlo para el espacio y el contexto de uso en mobile. El resultado es un menú técnicamente completo pero incómodo de usar en la práctica.' },
         { t: 'note', text: 'Un cliente que encuentra rápido lo que busca en tu menú, llega más rápido a tus propiedades. Cada segundo que se ahorra buscando, es un segundo más mirando lo que realmente importa.' }
       ]
+    },
+    14: {
+      title: 'El favicon: el detalle más chico que sí se nota',
+      sub: 'Por qué el ícono de tu pestaña también dice algo sobre tu marca.',
+      els: [
+        { t: 'h2', text: 'El detalle más pequeño del curso' },
+        { t: 'p', text: 'Ya pulimos el menú. Ahora vamos al detalle más chico de todo el curso — literalmente el más pequeño en tamaño, pero presente en cada pestaña abierta mientras alguien navega tu web.' },
+        { t: 'quote', text: '"El favicon es chiquito, pero es lo primero que ve un usuario cuando tiene 10 pestañas abiertas buscando dónde estaba tu web."' },
+        { t: 'p', text: 'Es un momento que se repite constantemente: el cliente abrió tu web, siguió navegando en otras pestañas, y en algún momento necesita volver. Ese pequeño ícono es lo que lo guía de vuelta — o lo que hace que la busque más de lo necesario.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Marca, aunque sea diminuta' },
+        { t: 'p', text: 'Un ícono genérico (o ninguno) hace que tu marca se pierda entre las demás pestañas. Es un detalle de marca que refuerza reconocimiento, aunque sea diminuto — la misma lógica de un logo, aplicada a la escala más pequeña posible.' },
+        { t: 'note', text: 'Su ausencia — el ícono genérico del navegador — es una señal sutil pero real de que la web no fue terminada con cuidado.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Un detalle que se compara sin querer' },
+        { t: 'p', text: 'Cuando una corredora compara webs de distintas agencias, estos detalles chicos son los que, sin que se den cuenta, les hacen sentir cuál se ve más profesional. Nadie hace una lista consciente de "favicon: sí/no" — pero la sensación de cuidado (o descuido) queda igual.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Checklist: revisa tu favicon hoy' },
+        { t: 'chk', text: 'Abre tu web y mira el ícono en la pestaña del navegador.' },
+        { t: 'chk', text: 'Confirma que sea reconocible como tu marca, no el ícono genérico por defecto.' },
+        { t: 'chk', text: 'Verifica que se vea bien en fondo claro y oscuro, según el navegador.' },
+        { t: 'chk', text: 'Revisa que también aparezca al agregar la web a la pantalla de inicio del celular.' },
+        { t: 'space' },
+        { t: 'h2', text: 'El error más común' },
+        { t: 'p', text: 'Dejarlo para el final y nunca llegar a hacerlo, porque "es un detalle chico". Precisamente por ser tan chico es fácil de posponer indefinidamente — pero también es de los más rápidos de resolver una vez que se prioriza.' },
+        { t: 'note', text: 'Cuando una corredora compara webs de distintas agencias, estos detalles chicos son los que, sin que se den cuenta, les hacen sentir cuál se ve más profesional.' }
+      ]
     }
   };
   COLS = [195, 288, 195, 102];
   ROW = 168; TOP0 = 34;
 
-  titles = ['Animación del hero','Velocidad de carga','Animaciones de scroll','Diseño responsive','Testimonios','Botones de RRSS','CTA repetido','Formularios de contacto','Validación de formularios','Estados vacíos','Microinteracciones','Estados hover','Navegación móvil','SEO local','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
+  titles = ['Animación del hero','Velocidad de carga','Animaciones de scroll','Diseño responsive','Testimonios','Botones de RRSS','CTA repetido','Formularios de contacto','Validación de formularios','Estados vacíos','Microinteracciones','Estados hover','Navegación móvil','Favicon custom','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
 
   /* ── CONTENIDO POR CAPÍTULO ─────────────────────────────
      Cada capítulo es una unidad independiente: { cards: [...], questions: [{t,a,e}] }.
@@ -1592,6 +1682,29 @@ class Component extends DCLogic {
         { t: 'La navegación móvil es un aspecto menor que no afecta la experiencia general.', a: false, e: 'Cada segundo que se ahorra buscando es un segundo más mirando lo que realmente importa — sí afecta la experiencia.' }
       ],
       mock: { kicker: 'Pieza pulida · menú móvil', title: 'Ahora se abre al instante', note: 'El menú de navegación ahora es instantáneo, con opciones claras y bien espaciadas.' }
+    },
+    14: {
+      intro: { title: 'Mira tu pestaña entre las demás', note: 'Esta es tu web con 10 pestañas abiertas al lado. La tuya tiene el ícono genérico del navegador.' },
+      cards: [
+        'Ya pulimos el menú. Ahora vamos al detalle más chico de todo el curso — literalmente el más pequeño en tamaño, pero presente en cada pestaña abierta.',
+        'El favicon es chiquito, pero es lo primero que ve un usuario cuando tiene 10 pestañas abiertas buscando dónde estaba tu web.',
+        'Un ícono genérico (o ninguno) hace que tu marca se pierda entre las demás pestañas. Es un detalle de marca que refuerza reconocimiento, aunque sea diminuto.',
+        'Su ausencia (el ícono genérico del navegador) es una señal sutil pero real de que la web no fue terminada con cuidado — de esos detalles que, sin darse cuenta, el cliente sí percibe.',
+        'Cuando una corredora compara webs de distintas agencias, estos detalles chicos son los que, sin que se den cuenta, les hacen sentir cuál se ve más profesional.'
+      ],
+      questions: [
+        { t: 'El favicon ayuda a que el usuario reconozca tu pestaña entre varias abiertas.', a: true, e: 'Es lo primero que ve un usuario cuando tiene 10 pestañas abiertas buscando dónde estaba tu web.' },
+        { t: 'Un favicon genérico o ausente puede dar la sensación de que la web no está terminada.', a: true, e: 'Es una señal sutil pero real de que la web no fue terminada con cuidado.' },
+        { t: 'El favicon es tan grande que su diseño no importa mucho.', a: false, e: 'Es chiquito, pero es lo primero que ve un usuario entre varias pestañas — sí importa.' },
+        { t: 'El favicon refuerza el reconocimiento de marca, aunque sea pequeño.', a: true, e: 'Es un detalle de marca que refuerza reconocimiento, aunque sea diminuto.' },
+        { t: 'La mayoría de los usuarios nunca tiene más de una pestaña abierta, así que el favicon no importa.', a: false, e: 'Es lo primero que ve un usuario cuando tiene varias pestañas abiertas buscando dónde estaba tu web.' },
+        { t: 'Un favicon custom es un detalle irrelevante para la percepción de calidad.', a: false, e: 'Estos detalles chicos son los que, sin que se den cuenta, les hacen sentir cuál web se ve más profesional.' },
+        { t: 'El favicon es de los primeros elementos visuales que un usuario ve al abrir varias pestañas.', a: true, e: 'Es lo primero que ve un usuario cuando tiene 10 pestañas abiertas.' },
+        { t: 'Configurar un favicon toma un esfuerzo desproporcionado respecto a su beneficio.', a: false, e: 'Es un detalle chico de implementar que refuerza reconocimiento de marca — el esfuerzo es mínimo frente al beneficio.' },
+        { t: 'El ícono por defecto del navegador transmite lo mismo que uno personalizado.', a: false, e: 'Un ícono genérico hace que tu marca se pierda entre las demás pestañas.' },
+        { t: 'El favicon es un detalle que suma a la percepción general de cuidado de la web.', a: true, e: 'Su ausencia es una señal sutil pero real de que la web no fue terminada con cuidado.' }
+      ],
+      mock: { kicker: 'Pieza pulida · favicon', title: 'Ahora se distingue entre las demás', note: 'Tu pestaña ahora tiene un ícono propio, reconocible entre todas las demás abiertas.' }
     }
   };
 
@@ -1687,6 +1800,9 @@ class Component extends DCLogic {
       showBrokenHover: s.ch === 12 && s.screen === 'intro',
       hasMobileNav: p.completed[13] !== undefined || (s.ch === 13 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
       showBrokenNav: s.ch === 13 && s.screen === 'intro',
+      showTabStrip: p.completed[14] !== undefined || s.ch === 14,
+      hasFavicon: p.completed[14] !== undefined || (s.ch === 14 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
+      noFavicon: !(p.completed[14] !== undefined || (s.ch === 14 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
       showComingSoon: (!(p.completed[3] !== undefined || (s.ch === 3 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)))
         || (!(p.completed[5] !== undefined || (s.ch === 5 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)))
         || (!(p.completed[6] !== undefined || (s.ch === 6 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)))
