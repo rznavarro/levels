@@ -117,6 +117,29 @@ a:hover{color:var(--ink)}
 </sc-if>
 <button onClick="{{ reset }}" style="width:100%;padding:10px;border:none;background:none;color:var(--mute);font-family:'IBM Plex Mono',monospace;font-size:10.5px;cursor:pointer">reiniciar progreso</button>
 </div>
+
+<sc-if value="{{ showSheet }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeSheet }}" style="position:fixed;inset:0;z-index:500;background:rgba(4,6,5,.65);display:flex;align-items:flex-end;justify-content:center;animation:vx-in .18s ease both">
+<div onClick="{{ stopClick }}" style="width:100%;max-width:520px;background:var(--card);border:1px solid var(--line);border-bottom:none;border-top-left-radius:26px;border-top-right-radius:26px;padding:24px 24px 28px;display:flex;flex-direction:column;gap:16px;box-shadow:0 -20px 50px -20px rgba(0,0,0,.75);animation:vx-pop .22s ease both">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)">Capítulo</span>
+<button onClick="{{ closeSheet }}" aria-label="Cerrar" style="border:none;background:none;color:var(--mute);font-size:16px;line-height:1;cursor:pointer;padding:4px">✕</button>
+</div>
+<h3 style="margin:0;font-size:22px;line-height:1.2;font-weight:800;letter-spacing:-.02em">{{ sheetTitle }}</h3>
+<div style="display:flex;flex-direction:column;gap:7px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mute)">
+<span>CAPÍTULO {{ sheetNum }}/19</span>
+<sc-if value="{{ sheetDone }}" hint-placeholder-val="{{ false }}"><span style="color:var(--ok)">{{ sheetScore }}/10</span></sc-if>
+</div>
+<div style="height:7px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden">
+<div style="height:100%;background:var(--acc);border-radius:99px;width:{{ sheetPct }}%"></div>
+</div>
+</div>
+<button onClick="{{ confirmSheet }}" style="width:100%;padding:17px;border:none;border-radius:16px;background:var(--acc);color:var(--on-acc);font-family:inherit;font-size:16px;font-weight:700;cursor:pointer;transition:transform .15s ease,opacity .15s ease" style-hover="opacity:.88" style-active="transform:scale(.985)">{{ sheetCta }}</button>
+</div>
+</div>
+</sc-if>
+
 </div>
 </div>
 </sc-if>
@@ -652,7 +675,7 @@ class Component extends DCLogic {
     }
   };
 
-  state = { screen: 'welcome', ch: 1, card: 0, q: 0, picked: null, correct: 0, streak: 0, best: 0, progress: { completed: {}, unlocked: 1, best: 0 } };
+  state = { screen: 'welcome', ch: 1, card: 0, q: 0, picked: null, correct: 0, streak: 0, best: 0, sheetCh: null, progress: { completed: {}, unlocked: 1, best: 0 } };
 
   componentDidMount() {
     if (this.props.accent) document.documentElement.style.setProperty('--acc', this.props.accent);
@@ -734,9 +757,24 @@ class Component extends DCLogic {
         return {
           num, title, isDone, isNext, isAvailable: !isDone && !isNext,
           score: p.completed[num], left: cx - 56, top: this.TOP0 + i * this.ROW,
-          go: () => this.setState({ screen: (this.content[num] || {}).intro ? 'intro' : 'lesson', ch: num, card: 0, q: 0, picked: null, correct: 0, streak: 0, best: 0 })
+          go: () => this.setState({ sheetCh: num })
         };
       }),
+
+      showSheet: s.sheetCh !== null,
+      sheetNum: s.sheetCh,
+      sheetTitle: s.sheetCh ? this.titles[s.sheetCh - 1] : '',
+      sheetDone: s.sheetCh ? p.completed[s.sheetCh] !== undefined : false,
+      sheetScore: s.sheetCh ? p.completed[s.sheetCh] : undefined,
+      sheetPct: s.sheetCh && p.completed[s.sheetCh] !== undefined ? Math.round((p.completed[s.sheetCh] / 10) * 100) : 0,
+      sheetCta: s.sheetCh && p.completed[s.sheetCh] !== undefined ? 'Repasar capítulo' : 'Empezar a aprender',
+      closeSheet: () => this.setState({ sheetCh: null }),
+      stopClick: (e) => e && e.stopPropagation && e.stopPropagation(),
+      confirmSheet: () => {
+        const num = s.sheetCh;
+        if (!num) return;
+        this.setState({ sheetCh: null, screen: (this.content[num] || {}).intro ? 'intro' : 'lesson', ch: num, card: 0, q: 0, picked: null, correct: 0, streak: 0, best: 0 });
+      },
 
       links: this.titles.slice(0, -1).map((_, i) => {
         const x1 = this.COLS[i % this.COLS.length], x2 = this.COLS[(i + 1) % this.COLS.length];
