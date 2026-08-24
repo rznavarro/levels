@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--acc:#00D18F;--on-acc:#07120E;--ink:#EAF1EE;--paper:#0C110F;--card:#151B19;--mute:#7C8A85;--line:rgba(255,255,255,.10);--ok:#00D18F;--bad:#FF7361}
+*{box-sizing:border-box}
+body{margin:0;background:#070A09;font-family:'Inter Tight','Helvetica Neue',Helvetica,system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+a{color:var(--acc);text-decoration:none}
+a:hover{color:var(--ink)}
+@keyframes vx-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes vx-pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+*{scrollbar-width:none;-ms-overflow-style:none}
+*::-webkit-scrollbar{width:0;height:0}
+@keyframes vx-ken{0%{transform:scale(1) translateY(0)}100%{transform:scale(1.12) translateY(-6px)}}
+@keyframes vx-spin{to{transform:rotate(360deg)}}
+@keyframes vx-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes vx-pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,209,143,.35)}50%{box-shadow:0 0 0 10px rgba(0,209,143,0)}}
+</style>
+</helmet>
+<div style="min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:28px 16px">
+<div style="position:relative;width:390px;max-width:100%;height:844px;max-height:calc(100dvh - 56px);background:var(--paper);border-radius:40px;box-shadow:0 0 0 1px rgba(255,255,255,.07),0 0 0 10px #191F1D,0 34px 70px -24px rgba(0,0,0,.6);overflow:hidden;display:flex;flex-direction:column">
+
+<sc-if value="{{ showChrome }}" hint-placeholder-val="{{ false }}">
+<button onClick="{{ goOffer }}" style="flex:none;display:flex;align-items:center;gap:8px;width:100%;padding:9px 18px;border:none;border-bottom:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-align:left;cursor:pointer;transition:background .15s ease" style-hover="background:rgba(255,255,255,.06)">
+<span style="width:6px;height:6px;border-radius:50%;background:var(--acc);flex:none"></span>
+<span style="flex:1">{{ slotsLine }}</span>
+<span style="color:var(--mute)">ver →</span>
+</button>
+</sc-if>
+
+<sc-if value="{{ showWelcome }}" hint-placeholder-val="{{ true }}">
+<div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:64px 28px 36px;animation:vx-in .45s ease both">
+<div style="display:flex;flex-direction:column;gap:26px">
+<div style="display:flex;align-items:center;gap:10px">
+<div style="width:26px;height:26px;background:var(--acc);border-radius:8px;transform:rotate(24deg)"></div>
+<span style="font-weight:800;letter-spacing:.16em;font-size:13px;text-transform:uppercase">Vortexia</span>
+</div>
+<h1 style="margin:0;font-size:38px;line-height:1.05;font-weight:800;letter-spacing:-.02em;text-wrap:pretty">Qué hace que una web inmobiliaria funcione de verdad</h1>
+<p style="margin:0;font-size:16px;line-height:1.55;color:var(--mute);max-width:30ch">19 capítulos cortos. Cada uno te muestra el poder de un elemento clave de tu web, y termina con una trivia de 10 preguntas.</p>
+<div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:16px">
+<div style="width:38px;height:38px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex:none">JN</div>
+<div style="font-size:13.5px;line-height:1.45">Te acompaño yo, <strong>Joaquín</strong>. Sin tecnicismos.</div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<button onClick="{{ start }}" style="width:100%;padding:17px;border:none;border-radius:16px;background:var(--acc);color:var(--on-acc);font-family:inherit;font-size:16px;font-weight:700;cursor:pointer;transition:transform .15s ease,opacity .15s ease" style-hover="opacity:.88" style-active="transform:scale(.985)">Empezar</button>
+<div style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--mute)">unos 2 minutos por capítulo</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ showMap }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;min-height:0;background:var(--paper)">
+
+<div style="padding:20px 18px 14px;display:flex;gap:9px;flex:none">
+<div style="flex:1;display:flex;align-items:center;gap:7px;padding:9px 12px;background:var(--card);border:1px solid var(--line);border-radius:14px">
+<div style="width:16px;height:16px;border-radius:5px;background:var(--acc);transform:rotate(24deg);flex:none"></div>
+<span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500">{{ points }}</span>
+</div>
+<div style="flex:1;display:flex;align-items:center;gap:7px;padding:9px 12px;background:var(--card);border:1px solid var(--line);border-radius:14px">
+<div style="width:16px;height:16px;border-radius:50%;border:2px solid var(--acc);flex:none"></div>
+<span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500">{{ doneCount }}/19</span>
+</div>
+<div style="flex:1;display:flex;align-items:center;gap:7px;padding:9px 12px;background:var(--card);border:1px solid var(--line);border-radius:14px">
+<div style="width:5px;height:16px;border-radius:99px;background:var(--acc);flex:none"></div>
+<span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500">{{ bestStreak }}</span>
+</div>
+</div>
+
+<div style="padding:0 18px 14px;flex:none">
+<div style="padding:16px 18px;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:0 14px 30px -22px rgba(0,0,0,.8)">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:7px">Web que vende · Vortexia</div>
+<div style="font-size:17px;font-weight:800;letter-spacing:-.015em;line-height:1.25;margin-bottom:14px">{{ currentLabel }}</div>
+<div style="height:7px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden">
+<div style="height:100%;background:var(--acc);border-radius:99px;transition:width .5s ease;width:{{ pct }}%"></div>
+</div>
+</div>
+</div>
+
+<div style="flex:1;min-height:0;overflow-y:auto;background-image:radial-gradient(rgba(255,255,255,.055) 1.4px,transparent 1.4px);background-size:34px 34px">
+<div style="position:relative;height:{{ canvasH }}px;margin:0 0 26px">
+<sc-for list="{{ links }}" as="l" hint-placeholder-count="5" key="links">
+<div style="position:absolute;left:{{ l.left }}px;top:{{ l.top }}px;width:{{ l.w }}px;height:{{ l.h }}px;border-radius:{{ l.radius }};border-top:10px solid rgba(255,255,255,.07);border-{{ l.side }}:10px solid rgba(255,255,255,.07)"></div>
+</sc-for>
+<sc-for list="{{ nodes }}" as="n" hint-placeholder-count="6">
+<div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:112px;display:flex;flex-direction:column;align-items:center;gap:8px">
+<sc-if value="{{ n.isDone }}" hint-placeholder-val="{{ false }}">
+<button onClick="{{ n.go }}" style="width:74px;height:74px;border:none;border-radius:24px;background:var(--acc);color:var(--on-acc);box-shadow:0 7px 0 0 rgba(0,120,82,.9);font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .14s ease,box-shadow .14s ease" style-hover="transform:translateY(-2px);box-shadow:0 9px 0 0 rgba(0,120,82,.9)" style-active="transform:translateY(5px);box-shadow:0 2px 0 0 rgba(0,120,82,.9)">{{ n.num }}</button>
+<div style="font-size:11.5px;font-weight:700;line-height:1.25;text-align:center;color:var(--ink)">{{ n.title }}</div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--ok)">{{ n.score }}/10</div>
+</sc-if>
+<sc-if value="{{ n.isOpen }}" hint-placeholder-val="{{ true }}">
+<div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:8px">
+<div style="position:absolute;top:-24px;padding:3px 9px;border-radius:99px;background:var(--acc);color:var(--on-acc);font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.1em;white-space:nowrap">EMPIEZA AQUÍ</div>
+<button onClick="{{ n.go }}" style="width:84px;height:84px;border:none;border-radius:27px;background:var(--acc);color:var(--on-acc);box-shadow:0 8px 0 0 rgba(0,120,82,.95),0 0 0 6px rgba(0,209,143,.12);font-family:'IBM Plex Mono',monospace;font-size:23px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;animation:vx-pulse 2.6s ease-in-out infinite;transition:transform .14s ease,box-shadow .14s ease" style-hover="transform:translateY(-2px)" style-active="transform:translateY(6px);box-shadow:0 2px 0 0 rgba(0,120,82,.95)">{{ n.num }}</button>
+<div style="font-size:12.5px;font-weight:800;line-height:1.25;text-align:center">{{ n.title }}</div>
+</div>
+</sc-if>
+<sc-if value="{{ n.isLocked }}" hint-placeholder-val="{{ false }}">
+<div style="width:74px;height:74px;border-radius:24px;background:rgba(255,255,255,.05);box-shadow:0 7px 0 0 rgba(255,255,255,.035);color:rgba(255,255,255,.28);font-family:'IBM Plex Mono',monospace;font-size:19px;display:flex;align-items:center;justify-content:center">{{ n.num }}</div>
+<div style="font-size:11.5px;font-weight:600;line-height:1.25;text-align:center;color:var(--mute)">{{ n.title }}</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+<div style="padding:0 18px 30px;display:flex;flex-direction:column;gap:10px">
+<sc-if value="{{ allDone }}" hint-placeholder-val="{{ false }}">
+<button onClick="{{ goFinal }}" style="width:100%;padding:16px;border:none;border-radius:16px;background:var(--acc);color:var(--on-acc);font-family:inherit;font-size:15px;font-weight:700;cursor:pointer">Ver el cierre de Joaquín</button>
+</sc-if>
+<button onClick="{{ reset }}" style="width:100%;padding:10px;border:none;background:none;color:var(--mute);font-family:'IBM Plex Mono',monospace;font-size:10.5px;cursor:pointer">reiniciar progreso</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ showLesson }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;min-height:0">
+<div style="padding:20px 22px 14px;display:flex;align-items:center;gap:12px">
+<button onClick="{{ backToMap }}" style="border:none;background:none;padding:0;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mute);cursor:pointer">← mapa</button>
+<div style="flex:1;display:flex;gap:5px;justify-content:flex-end">
+<sc-for list="{{ dots }}" as="d" hint-placeholder-count="5">
+<sc-if value="{{ d.on }}" hint-placeholder-val="{{ true }}"><div style="width:22px;height:4px;border-radius:99px;background:var(--acc);transition:background .3s ease"></div></sc-if>
+<sc-if value="{{ d.off }}" hint-placeholder-val="{{ false }}"><div style="width:22px;height:4px;border-radius:99px;background:rgba(255,255,255,.13)"></div></sc-if>
+</sc-for>
+</div>
+</div>
+<div onClick="{{ nextCard }}" style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:18px;padding:0 24px 20px;cursor:pointer;min-height:0;overflow-y:auto">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--mute);text-transform:uppercase;letter-spacing:.1em">Capítulo {{ chNum }} · {{ chTitle }}</div>
+<sc-if value="{{ isPlaceholder }}" hint-placeholder-val="{{ true }}">
+<div style="align-self:flex-start;padding:4px 9px;border:1px dashed var(--acc);border-radius:6px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--acc);letter-spacing:.08em">CONTENIDO PLACEHOLDER</div>
+</sc-if>
+<div key="{{ cardKey }}" style="background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 24px;box-shadow:0 18px 40px -22px rgba(0,0,0,.7);animation:vx-pop .32s ease both">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+<div style="width:32px;height:32px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11.5px;flex:none">JN</div>
+<span style="font-size:12px;font-weight:700">Joaquín</span>
+</div>
+<p style="margin:0;font-size:19px;line-height:1.45;font-weight:600;letter-spacing:-.01em;text-wrap:pretty">{{ cardText }}</p>
+</div>
+<div style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--mute)">toca para continuar · {{ cardNum }}/{{ cardTotal }}</div>
+</div>
+<div style="padding:0 22px 26px">
+<button onClick="{{ nextCard }}" style="width:100%;padding:16px;border:none;border-radius:16px;background:var(--acc);color:var(--on-acc);font-family:inherit;font-size:15.5px;font-weight:700;cursor:pointer;transition:opacity .15s ease" style-hover="opacity:.88">{{ lessonCta }}</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ showTrivia }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;min-height:0">
+<div style="padding:20px 22px 14px;display:flex;align-items:center;justify-content:space-between">
+<span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--mute)">pregunta {{ qNum }}/10</span>
+<div style="display:flex;align-items:center;gap:7px;padding:5px 10px;background:var(--card);border:1px solid var(--line);border-radius:99px">
+<div style="width:7px;height:7px;border-radius:50%;background:var(--acc)"></div>
+<span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500">racha {{ streak }}</span>
+</div>
+</div>
+<div style="height:4px;background:rgba(255,255,255,.08);margin:0 22px;border-radius:99px;overflow:hidden">
+<div style="height:100%;background:var(--acc);transition:width .4s ease;width:{{ qPct }}%"></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:22px 24px;gap:22px;min-height:0;overflow-y:auto">
+<sc-if value="{{ isPlaceholder }}" hint-placeholder-val="{{ true }}">
+<div style="align-self:flex-start;padding:4px 9px;border:1px dashed var(--acc);border-radius:6px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--acc);letter-spacing:.08em">PREGUNTA PLACEHOLDER</div>
+</sc-if>
+<p key="{{ qKey }}" style="margin:0;font-size:23px;line-height:1.35;font-weight:700;letter-spacing:-.015em;text-wrap:pretty;animation:vx-pop .3s ease both">{{ qText }}</p>
+<sc-if value="{{ notAnswered }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:11px">
+<button onClick="{{ answerTrue }}" style="width:100%;padding:18px;border:1.5px solid var(--line);border-radius:16px;background:var(--card);font-family:inherit;font-size:16px;font-weight:700;color:var(--ink);cursor:pointer;transition:border-color .15s ease,transform .15s ease" style-hover="border-color:var(--acc)" style-active="transform:scale(.99)">Verdadero</button>
+<button onClick="{{ answerFalse }}" style="width:100%;padding:18px;border:1.5px solid var(--line);border-radius:16px;background:var(--card);font-family:inherit;font-size:16px;font-weight:700;color:var(--ink);cursor:pointer;transition:border-color .15s ease,transform .15s ease" style-hover="border-color:var(--acc)" style-active="transform:scale(.99)">Falso</button>
+</div>
+</sc-if>
+<sc-if value="{{ answered }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:14px;animation:vx-in .3s ease both">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;color:{{ verdictColor }}">{{ verdict }}</div>
+<div style="display:flex;gap:11px;padding:16px;background:var(--card);border:1px solid var(--line);border-radius:18px">
+<div style="width:30px;height:30px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex:none">JN</div>
+<p style="margin:0;font-size:14px;line-height:1.5">{{ explain }}</p>
+</div>
+</div>
+</sc-if>
+</div>
+<sc-if value="{{ answered }}" hint-placeholder-val="{{ false }}">
+<div style="padding:0 22px 26px">
+<button onClick="{{ nextQ }}" style="width:100%;padding:16px;border:none;border-radius:16px;background:var(--acc);color:var(--on-acc);font-family:inherit;font-size:15.5px;font-weight:700;cursor:pointer">{{ triviaCta }}</button>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ showIntro }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;padding:34px 24px 26px;gap:18px;min-height:0;overflow-y:auto;animation:vx-in .4s ease both">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--mute);text-transform:uppercase;letter-spacing:.1em">Capítulo {{ chNum }} · antes de empezar</div>
+<h2 style="margin:0;font-size:25px;line-height:1.15;font-weight:800;letter-spacing:-.02em">{{ introTitle }}</h2>
+<div style="flex:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0A0E0D">
+<div style="display:flex;align-items:center;gap:5px;padding:8px 10px;background:rgba(255,255,255,.04)">
+<div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
+<div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
+<div style="flex:1;height:12px;border-radius:99px;background:rgba(255,255,255,.06)"></div>
+</div>
+<sc-if value="{{ heroOn }}" hint-placeholder-val="{{ true }}">
+<div style="position:relative;height:148px;overflow:hidden">
+<div style="position:absolute;inset:0;background:linear-gradient(150deg,#123A2E,#0E1F1B 55%,#1A2B26);animation:vx-ken 9s ease-in-out infinite alternate"></div>
+<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(7,10,9,.85),transparent 70%)"></div>
+<div style="position:absolute;left:14px;right:14px;bottom:12px;display:flex;flex-direction:column;gap:6px">
+<div style="height:8px;width:70%;border-radius:99px;background:rgba(255,255,255,.85);animation:vx-rise .7s ease .1s both"></div>
+<div style="height:6px;width:45%;border-radius:99px;background:rgba(255,255,255,.4);animation:vx-rise .7s ease .28s both"></div>
+<div style="height:16px;width:74px;border-radius:99px;background:var(--acc);animation:vx-rise .7s ease .46s both"></div>
+</div>
+<sc-if value="{{ mockSpinner }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:rgba(7,10,9,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
+<div style="width:26px;height:26px;border-radius:50%;border:3px solid rgba(255,255,255,.12);border-top-color:var(--acc);animation:vx-spin .9s linear infinite"></div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--mute)">cargando…</div>
+</div>
+</sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ heroOff }}" hint-placeholder-val="{{ false }}">
+<div style="height:148px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--mute)">hero sin trabajar</div>
+</sc-if>
+<div style="display:flex;flex-direction:column;gap:7px;padding:12px">
+<div style="height:62px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25)">próximo capítulo</div>
+<div style="height:62px;border:1px dashed rgba(255,255,255,.12);border-radius:9px"></div>
+</div>
+</div>
+<div style="display:flex;gap:11px;padding:15px;background:var(--card);border:1px solid var(--line);border-radius:18px">
+<div style="width:30px;height:30px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex:none">JN</div>
+<p style="margin:0;font-size:13.5px;line-height:1.5">{{ introNote }}</p>
+</div>
+<button onClick="{{ toLesson }}" style="margin-top:auto;width:100%;padding:16px;border:none;border-radius:16px;background:var(--acc);color:var(--on-acc);font-family:inherit;font-size:15.5px;font-weight:700;cursor:pointer">Empezar la lección</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ showMockup }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;padding:34px 24px 26px;gap:18px;min-height:0;overflow-y:auto;animation:vx-in .4s ease both">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--acc);text-transform:uppercase;letter-spacing:.1em">{{ mockKicker }}</div>
+<h2 style="margin:0;font-size:25px;line-height:1.15;font-weight:800;letter-spacing:-.02em">{{ mockTitle }}</h2>
+<div style="flex:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0A0E0D">
+<div style="display:flex;align-items:center;gap:5px;padding:8px 10px;background:rgba(255,255,255,.04)">
+<div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
+<div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
+<div style="flex:1;height:12px;border-radius:99px;background:rgba(255,255,255,.06)"></div>
+</div>
+<sc-if value="{{ heroOn }}" hint-placeholder-val="{{ true }}">
+<div style="position:relative;height:148px;overflow:hidden">
+<div style="position:absolute;inset:0;background:linear-gradient(150deg,#123A2E,#0E1F1B 55%,#1A2B26);animation:vx-ken 9s ease-in-out infinite alternate"></div>
+<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(7,10,9,.85),transparent 70%)"></div>
+<div style="position:absolute;left:14px;right:14px;bottom:12px;display:flex;flex-direction:column;gap:6px">
+<div style="height:8px;width:70%;border-radius:99px;background:rgba(255,255,255,.85);animation:vx-rise .7s ease .1s both"></div>
+<div style="height:6px;width:45%;border-radius:99px;background:rgba(255,255,255,.4);animation:vx-rise .7s ease .28s both"></div>
+<div style="height:16px;width:74px;border-radius:99px;background:var(--acc);animation:vx-rise .7s ease .46s both"></div>
+</div>
+<sc-if value="{{ mockSpinner }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:rgba(7,10,9,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
+<div style="width:26px;height:26px;border-radius:50%;border:3px solid rgba(255,255,255,.12);border-top-color:var(--acc);animation:vx-spin .9s linear infinite"></div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--mute)">cargando…</div>
+</div>
+</sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ heroOff }}" hint-placeholder-val="{{ false }}">
+<div style="height:148px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--mute)">hero sin trabajar</div>
+</sc-if>
+<div style="display:flex;flex-direction:column;gap:7px;padding:12px">
+<div style="height:62px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25)">próximo capítulo</div>
+<div style="height:62px;border:1px dashed rgba(255,255,255,.12);border-radius:9px"></div>
+</div>
+</div>
+<div style="display:flex;gap:11px;padding:15px;background:var(--card);border:1px solid var(--line);border-radius:18px">
+<div style="width:30px;height:30px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex:none">JN</div>
+<p style="margin:0;font-size:13.5px;line-height:1.5">{{ mockNote }}</p>
+</div>
+<button onClick="{{ toTrivia }}" style="margin-top:auto;width:100%;padding:16px;border:none;border-radius:16px;background:var(--acc);color:var(--on-acc);font-family:inherit;font-size:15.5px;font-weight:700;cursor:pointer">Ir a la trivia</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ showSummary }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:40px 24px 26px;gap:18px;min-height:0;overflow-y:auto;animation:vx-in .4s ease both">
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--mute);text-transform:uppercase;letter-spacing:.1em">Capítulo {{ chNum }} completado</div>
+<div style="display:flex;align-items:baseline;gap:8px">
+<span style="font-size:64px;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--acc)">{{ score }}</span>
+<span style="font-size:26px;font-weight:700;color:var(--mute)">/10</span>
+</div>
+<div style="display:flex;gap:10px">
+<div style="flex:1;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:16px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mute);margin-bottom:5px">MEJOR RACHA</div>
+<div style="font-size:20px;font-weight:800">{{ best }}</div>
+</div>
+<div style="flex:1;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:16px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mute);margin-bottom:5px">PROGRESO</div>
+<div style="font-size:20px;font-weight:800">{{ doneCount }}/19</div>
+</div>
+</div>
+<div style="flex:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0A0E0D">
+<div style="display:flex;align-items:center;gap:5px;padding:8px 10px;background:rgba(255,255,255,.04)">
+<div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
+<div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
+<div style="flex:1;height:12px;border-radius:99px;background:rgba(255,255,255,.06)"></div>
+</div>
+<sc-if value="{{ heroOn }}" hint-placeholder-val="{{ true }}">
+<div style="position:relative;height:108px;overflow:hidden">
+<div style="position:absolute;inset:0;background:linear-gradient(150deg,#123A2E,#0E1F1B 55%,#1A2B26);animation:vx-ken 9s ease-in-out infinite alternate"></div>
+<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(7,10,9,.85),transparent 70%)"></div>
+<div style="position:absolute;left:14px;right:14px;bottom:12px;display:flex;flex-direction:column;gap:6px">
+<div style="height:8px;width:70%;border-radius:99px;background:rgba(255,255,255,.85);animation:vx-rise .7s ease .1s both"></div>
+<div style="height:6px;width:45%;border-radius:99px;background:rgba(255,255,255,.4);animation:vx-rise .7s ease .28s both"></div>
+<div style="height:16px;width:74px;border-radius:99px;background:var(--acc);animation:vx-rise .7s ease .46s both"></div>
+</div>
+<sc-if value="{{ mockSpinner }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:rgba(7,10,9,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
+<div style="width:26px;height:26px;border-radius:50%;border:3px solid rgba(255,255,255,.12);border-top-color:var(--acc);animation:vx-spin .9s linear infinite"></div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--mute)">cargando…</div>
+</div>
+</sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ heroOff }}" hint-placeholder-val="{{ false }}">
+<div style="height:108px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--mute)">hero sin trabajar</div>
+</sc-if>
+<div style="display:flex;flex-direction:column;gap:7px;padding:12px">
+<div style="height:45px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25)">próximo capítulo</div>
+<div style="height:45px;border:1px dashed rgba(255,255,255,.12);border-radius:9px"></div>
+</div>
+</div>
+<div style="display:flex;gap:11px;padding:16px;background:var(--card);border:1px solid var(--line);border-radius:18px">
+<div style="width:32px;height:32px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11.5px;flex:none">JN</div>
+<p style="margin:0;font-size:14px;line-height:1.5">{{ summaryNote }}</p>
+</div>
+</div>
+<button onClick="{{ backToMap }}" style="width:100%;padding:17px;border:none;border-radius:16px;background:var(--acc);color:var(--on-acc);font-family:inherit;font-size:16px;font-weight:700;cursor:pointer">{{ summaryCta }}</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ showReward }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:20px;padding:32px 26px;animation:vx-in .4s ease both">
+<div style="width:64px;height:64px;border-radius:20px;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;box-shadow:0 7px 0 0 rgba(0,120,82,.9)">PDF</div>
+<h2 style="margin:0;font-size:26px;line-height:1.15;font-weight:800;letter-spacing:-.02em">{{ rewardTitle }}</h2>
+<p style="margin:0;font-size:14.5px;line-height:1.55;color:var(--mute)">{{ rewardNote }}</p>
+<div style="display:flex;flex-direction:column;gap:10px">
+<button onClick="{{ downloadChapterPdf }}" style="width:100%;padding:16px;border:none;border-radius:16px;background:var(--acc);color:var(--on-acc);font-family:inherit;font-size:15.5px;font-weight:700;cursor:pointer">Descargar PDF</button>
+<button onClick="{{ afterReward }}" style="width:100%;padding:14px;border:1.5px solid var(--line);border-radius:16px;background:transparent;color:var(--ink);font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer">Seguir al mapa</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ showOffer }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;padding:30px 24px 26px;gap:16px;min-height:0;overflow-y:auto;animation:vx-in .35s ease both">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--acc);text-transform:uppercase;letter-spacing:.1em">La oferta, en corto</div>
+<h2 style="margin:0;font-size:27px;line-height:1.12;font-weight:800;letter-spacing:-.025em">Tu web con Vortexia por {{ priceLabel }}</h2>
+<div style="display:flex;flex-direction:column;gap:9px">
+<div style="display:flex;align-items:baseline;gap:10px;padding:15px 16px;background:var(--card);border:1px solid var(--line);border-radius:16px">
+<span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mute);flex:1">Cupos a este precio</span>
+<span style="font-size:16px;font-weight:800">{{ slots }}</span>
+</div>
+<div style="display:flex;align-items:baseline;gap:10px;padding:15px 16px;background:var(--card);border:1px solid var(--line);border-radius:16px">
+<span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mute);flex:1">Entrega</span>
+<span style="font-size:16px;font-weight:800">3 días</span>
+</div>
+</div>
+<div style="display:flex;gap:11px;padding:15px;background:var(--card);border:1px solid var(--line);border-radius:18px">
+<div style="width:30px;height:30px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex:none">JN</div>
+<p style="margin:0;font-size:13.5px;line-height:1.5">Si no quieres esperar a terminar los 19 capítulos, escríbeme y lo vemos directo. Sin compromiso.</p>
+</div>
+<a href="{{ waHref }}" target="_blank" rel="noopener" style="margin-top:auto;display:block;width:100%;padding:16px;border-radius:16px;background:var(--acc);color:var(--on-acc);font-size:15.5px;font-weight:700;text-align:center;text-decoration:none">Escribir por WhatsApp</a>
+<button onClick="{{ closeOffer }}" style="width:100%;padding:12px;border:none;background:none;color:var(--mute);font-family:'IBM Plex Mono',monospace;font-size:10.5px;cursor:pointer">volver</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ showFinal }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;padding:34px 24px 26px;gap:16px;min-height:0;overflow-y:auto;animation:vx-in .4s ease both">
+<div style="display:flex;align-items:center;gap:12px">
+<div style="width:52px;height:52px;border-radius:17px;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;box-shadow:0 7px 0 0 rgba(0,120,82,.9);flex:none">19/19</div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Logro desbloqueado</div>
+<div style="font-size:15px;font-weight:800">Curso completo</div>
+</div>
+</div>
+<h2 style="margin:0;font-size:29px;line-height:1.1;font-weight:800;letter-spacing:-.025em">Ya sabes qué hace que una web venda</h2>
+<p style="margin:0;font-size:14.5px;line-height:1.55;color:var(--mute)">Recorriste los 19 elementos: el hero, la velocidad, el contacto, la confianza. Tu maqueta está completa.</p>
+<div style="display:flex;gap:11px;padding:16px;background:var(--card);border:1px solid var(--line);border-radius:18px">
+<div style="width:34px;height:34px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex:none">JN</div>
+<p style="margin:0;font-size:13.5px;line-height:1.55">Soy Joaquín, y esto que recorriste es exactamente lo que construyo. Si quieres tu web así, la hago yo. Sin presión: si aprendiste algo y lo aplicas por tu cuenta, también me sirve.</p>
+</div>
+<div style="padding:18px;background:var(--card);border:1px solid var(--acc);border-radius:20px;display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">La oferta</div>
+<div style="font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.2">Desarrollo web con Vortexia por {{ priceLabel }}</div>
+<div style="display:flex;flex-direction:column;gap:7px">
+<div style="display:flex;gap:9px;font-size:13.5px;line-height:1.4"><span style="color:var(--acc)">·</span><span>{{ slotsLine }}</span></div>
+<div style="display:flex;gap:9px;font-size:13.5px;line-height:1.4"><span style="color:var(--acc)">·</span><span>Entrega en 3 días</span></div>
+<div style="display:flex;gap:9px;font-size:13.5px;line-height:1.4"><span style="color:var(--acc)">·</span><span>Todo lo del curso, aplicado a tus propiedades</span></div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;margin-top:auto">
+<a href="{{ waHrefFinal }}" target="_blank" rel="noopener" style="display:block;width:100%;padding:17px;border-radius:16px;background:var(--acc);color:var(--on-acc);font-size:16px;font-weight:700;text-align:center;text-decoration:none">Quiero mi web · WhatsApp</a>
+<button onClick="{{ downloadFullPdf }}" style="width:100%;padding:15px;border:1.5px solid var(--line);border-radius:16px;background:transparent;color:var(--ink);font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer">Descargar el PDF de los 19 capítulos</button>
+<button onClick="{{ toMap }}" style="width:100%;padding:10px;border:none;background:none;color:var(--mute);font-family:'IBM Plex Mono',monospace;font-size:10.5px;cursor:pointer">volver al mapa</button>
+</div>
+</div>
+</sc-if>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:430,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#00C2C7&quot;,&quot;options&quot;:[&quot;#00D18F&quot;,&quot;#37E0A0&quot;,&quot;#00C2C7&quot;,&quot;#8AF04A&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;},&quot;showPlaceholderBadges&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;},&quot;sound&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;}}">
+class Component extends DCLogic {
+  KEY = 'vortexia_progress_v1';
+
+  /* ÚNICA fuente de verdad de la oferta. Actualizar SOLO aquí. */
+  OFFER = {
+    slotsTotal: 5,
+    slotsTaken: 1,
+    price: 50000,
+    priceLabel: '$50.000 CLP',
+    deliveryDays: 3,
+    whatsapp: '56939054197'
+  };
+  /* Contenido de los PDFs. Cada doc rinde 4-5 páginas A4. */
+  pdfDocs = {
+    1: {
+      title: 'El hero de tu web inmobiliaria',
+      sub: 'Qué es, por qué decide la primera impresión y cómo revisar el tuyo hoy.',
+      els: [
+        { t: 'h2', text: 'Qué es el hero' },
+        { t: 'p', text: 'El hero es la primera pantalla que ve alguien al entrar a tu web: la imagen o video principal, el titular, y el primer botón. Es el área que recibe más atención de toda tu web, y ocurre antes de que el visitante lea una sola palabra del resto.' },
+        { t: 'quote', text: '"Si es estático y genérico, el cliente decide en segundos que esto es una web más."' },
+        { t: 'p', text: 'Esa decisión no es consciente ni argumentada. Es una lectura rápida de calidad: si lo primero que ve se parece a cualquier otra web de corretaje, asume que el servicio también será cualquiera.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Por qué el movimiento funciona' },
+        { t: 'p', text: 'El movimiento capta atención de forma natural. Es instinto humano seguir lo que se mueve, y en una pantalla ese instinto trabaja a tu favor: retiene la mirada unos segundos más, y esos segundos son los que necesitas para que el visitante entienda qué ofreces.' },
+        { t: 'p', text: 'La condición es el propósito. El movimiento tiene que mostrar algo: la propiedad, la marca, el mensaje. Animar por animar produce el efecto contrario, porque el visitante siente que la web le está pidiendo atención sin darle nada.' },
+        { t: 'note', text: 'Regla simple: si puedes explicar en una frase qué muestra la animación, sirve. Si no puedes, sácala.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Señales de que tu hero está frenando ventas' },
+        { t: 'li', text: 'Una foto de stock que podría estar en la web de cualquier corredora del país.' },
+        { t: 'li', text: 'Un titular que habla de la empresa y no de lo que el cliente busca.' },
+        { t: 'li', text: 'Ningún botón visible sin hacer scroll.' },
+        { t: 'li', text: 'La propiedad más atractiva de tu cartera aparece recién más abajo.' },
+        { t: 'li', text: 'Todo aparece de golpe, plano, sin jerarquía: no sabes dónde mirar primero.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Cómo se ve cuando está bien hecho' },
+        { t: 'p', text: 'Una imagen real de una propiedad tuya, con movimiento sutil que la recorre. El titular entra un instante después, y el botón al final, de modo que el ojo llega en orden: propiedad, promesa, acción. Nada parpadea, nada rebota, nada compite.' },
+        { t: 'p', text: 'La sensación que buscas no es "qué animación tan lograda", sino "esta corredora se ve seria". El movimiento es el vehículo, la percepción de calidad es el resultado.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Checklist: revisa tu hero hoy' },
+        { t: 'chk', text: 'Abre tu web en el celular y cuenta cuántos segundos pasan hasta entender qué ofreces.' },
+        { t: 'chk', text: 'Verifica que la imagen principal sea una propiedad real de tu cartera, no stock.' },
+        { t: 'chk', text: 'Reescribe el titular en una frase, desde lo que busca el cliente.' },
+        { t: 'chk', text: 'Deja un solo botón principal visible sin scroll.' },
+        { t: 'chk', text: 'Agrega movimiento con propósito: que recorra la propiedad o revele el mensaje.' },
+        { t: 'chk', text: 'Comprueba que la animación no se repita en loop agresivo ni distraiga del botón.' },
+        { t: 'chk', text: 'Muéstralo a alguien que no conoce tu negocio y pregúntale qué entendió.' },
+        { t: 'space' },
+        { t: 'h2', text: 'El error más común' },
+        { t: 'p', text: 'Tratar el hero como decoración y no como la parte del sitio donde más vale la pena invertir. Recibe más atención que cualquier otra sección, así que cada mejora ahí rinde más que la misma mejora en cualquier otro lugar de la web.' },
+        { t: 'note', text: 'Cada pieza como esta no es un capricho estético: es parte de armar un lugar donde tus propiedades realmente se vean, de forma atractiva y sencilla, para que consigas más ventas.' }
+      ]
+    },
+    2: {
+      title: 'Velocidad de carga para tu web inmobiliaria',
+      sub: 'La condición para que todo el resto de tu web llegue a verse.',
+      els: [
+        { t: 'h2', text: 'Por qué la velocidad va primero' },
+        { t: 'p', text: 'Puedes tener el mejor hero, las mejores fotos y los mejores testimonios. Si la web tarda en cargar, el cliente nunca llega a verlos. Cada segundo extra de carga es una oportunidad más de que se vaya antes de interactuar con nada.' },
+        { t: 'quote', text: '"La velocidad no es un punto más de una lista de 19. Es la condición para que el resto tenga oportunidad de ser visto."' },
+        { t: 'p', text: 'Por eso este es el segundo capítulo y no el último. No es una optimización de cierre: es el piso sobre el que se apoya todo lo demás.' },
+        { t: 'space' },
+        { t: 'h2', text: 'De dónde viene la lentitud' },
+        { t: 'p', text: 'Casi siempre de cosas simples. La primera son las imágenes mal comprimidas: fotos de propiedades subidas tal como salieron de la cámara, pesando varios megas cada una, en una galería de veinte. La segunda es código cargado de más al inicio: plugins, librerías y scripts que se descargan antes de que la página muestre algo.' },
+        { t: 'p', text: 'Ninguna de las dos es un problema de fondo. Son decisiones de armado, y se corrigen bien si se hacen con cuidado.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Checklist: imágenes' },
+        { t: 'chk', text: 'Ninguna foto de propiedad supera unos cientos de kilobytes.' },
+        { t: 'chk', text: 'Las fotos están en formato moderno (WebP o AVIF), no solo JPG pesado.' },
+        { t: 'chk', text: 'Las imágenes tienen el tamaño que realmente se muestra, no el original de la cámara.' },
+        { t: 'chk', text: 'Las galerías cargan las fotos a medida que el usuario baja, no todas de una vez.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Checklist: código' },
+        { t: 'chk', text: 'Al inicio solo se carga lo necesario para mostrar la primera pantalla.' },
+        { t: 'chk', text: 'No hay plugins instalados que ya no se usen.' },
+        { t: 'chk', text: 'Las fuentes tipográficas están limitadas a las que de verdad usas.' },
+        { t: 'chk', text: 'Los scripts de terceros (mapas, chats, analítica) cargan después del contenido.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Cómo medirlo sin ser técnico' },
+        { t: 'p', text: 'Abre tu web con datos móviles, no con wifi, y cuenta en voz alta. Si terminas de contar tres antes de ver la primera imagen, tu cliente ya tuvo tiempo de dudar. Repite la prueba en la ficha de una propiedad con muchas fotos, que suele ser la página más pesada del sitio.' },
+        { t: 'note', text: 'Prueba honesta: pídele el link a alguien de tu familia y mira su cara mientras carga. Esa cara es la de tu cliente.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Qué ganas al corregirlo' },
+        { t: 'li', text: 'Tu hero se ve completo antes de que el visitante decida irse.' },
+        { t: 'li', text: 'Las fichas de propiedad se recorren sin espera, así que se ven más propiedades por visita.' },
+        { t: 'li', text: 'El formulario de contacto se abre al instante, en el momento exacto en que hay interés.' },
+        { t: 'p', text: 'Mejorar la carga es uno de los cambios de mayor impacto posible en una web, porque no mejora una sección: habilita todas.' },
+        { t: 'note', text: 'De nada sirve un lugar hermoso para mostrar tus propiedades si nadie llega a verlo. Por eso cada web que construimos parte optimizada desde el primer día, no como un ajuste de último momento.' }
+      ]
+    }
+  };
+  COLS = [195, 288, 195, 102];
+  ROW = 168; TOP0 = 34;
+
+  titles = ['Animación del hero','Velocidad de carga','Llamado a la acción','Fotografía de propiedades','Testimonios','Animaciones y transiciones','Mobile primero','Formularios de contacto','Buscador de propiedades','Fichas de propiedad','Confianza y credenciales','Copywriting','WhatsApp y respuesta rápida','SEO local','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
+
+  /* ── CONTENIDO POR CAPÍTULO ─────────────────────────────
+     Cada capítulo es una unidad independiente: { cards: [...], questions: [{t,a,e}] }.
+     Para agregar el capítulo N, añade content[N] = {...}. Nada más cambia. */
+  content = {
+    1: {
+      piece: 'hero',
+      cards: [
+        'Bienvenido. Vamos a recorrer, uno por uno, todo lo que hace que una corredora de propiedades consiga más ventas con su web. Empezamos por lo primero que ve cualquier cliente: el hero.',
+        'El hero es el área que recibe más atención de toda tu web — es lo primero que ve alguien al entrar, antes de leer una sola palabra.',
+        'Si es estático y genérico, el cliente decide en segundos que esto es "una web más". Si tiene movimiento con propósito, decide que vale la pena quedarse a mirar.',
+        'El movimiento capta atención de forma natural — es instinto humano seguir lo que se mueve. Pero tiene que tener propósito: mostrar la propiedad, la marca, el mensaje. No es "moverse porque sí".',
+        'Cada pieza como esta no es un capricho estético — es parte de armar un lugar donde tus propiedades realmente se vean, de forma atractiva y sencilla, para que consigas más ventas. Esto es lo primero que arreglamos cuando trabajamos juntos.'
+      ],
+      questions: [
+        { t: 'El hero es el área que recibe mayor atención al entrar a la web.', a: true, e: 'Es lo primero que ve alguien al entrar, antes de leer una sola palabra.' },
+        { t: 'Un hero estático siempre genera más confianza que uno animado.', a: false, e: 'Un hero estático y genérico hace que el cliente decida en segundos que esto es "una web más".' },
+        { t: 'El movimiento capta atención de forma natural para el ojo humano.', a: true, e: 'Es instinto humano seguir lo que se mueve.' },
+        { t: 'La animación del hero debería existir sin importar si tiene un propósito claro.', a: false, e: 'Tiene que tener propósito: mostrar la propiedad, la marca, el mensaje. No es "moverse porque sí".' },
+        { t: 'Un hero genérico puede hacer que el usuario decida rápido que "es una web más".', a: true, e: 'Esa decisión se toma en segundos, antes de leer el contenido.' },
+        { t: 'El hero es de las áreas donde más vale la pena invertir en buen diseño.', a: true, e: 'Recibe más atención que cualquier otra parte de tu web.' },
+        { t: 'Toda animación en el hero, sin importar el propósito, mejora la percepción de la web.', a: false, e: 'Solo el movimiento con propósito suma: mostrar la propiedad, la marca, el mensaje.' },
+        { t: 'Un hero con movimiento con propósito puede aumentar el tiempo que el usuario se queda mirando.', a: true, e: 'Con movimiento con propósito, el cliente decide que vale la pena quedarse a mirar.' },
+        { t: 'El hero es una sección poco relevante comparada con el resto de la web.', a: false, e: 'Al contrario: es el área que recibe más atención de toda tu web.' },
+        { t: 'La primera impresión de una web se forma mayormente en la sección hero.', a: true, e: 'Es lo primero que ve el cliente, y ahí decide en segundos si se queda.' }
+      ],
+      mock: { kicker: 'Pieza agregada · hero animado', title: 'Tu web ideal, primera pieza', note: 'Este es el hero con movimiento con propósito. Lo de abajo se va llenando con cada capítulo que completes.' }
+    },
+    2: {
+      intro: { title: 'Mira lo que pasa con tu hero', note: 'Esto es tu web cargando lento. El hero que armamos está ahí, pero tu cliente todavía no lo ve.' },
+      cards: [
+        'Viste lo que un buen hero puede hacer. Ahora te muestro algo importante: si tu web tarda en cargar, tu cliente nunca llega a verlo.',
+        'Cada segundo extra de carga es una oportunidad más de que el usuario se vaya antes de interactuar con nada — antes de ver tu hero, tus propiedades, tu forma de contacto.',
+        'La velocidad no es un punto más de una lista de 19. Es la condición para que el resto de los puntos siquiera tengan oportunidad de ser vistos.',
+        'Suele venir de cosas simples: imágenes mal comprimidas, código cargado de más al inicio. Nada que no se pueda arreglar bien, si se hace con cuidado.',
+        'De nada sirve un lugar hermoso para mostrar tus propiedades si nadie llega a verlo. Por eso cada web que construimos parte optimizada desde el primer día, no como un ajuste de último momento.'
+      ],
+      questions: [
+        { t: 'Si la web es lenta, el resto de las buenas prácticas pierden su oportunidad de ser vistas.', a: true, e: 'La velocidad es la condición para que el resto de los puntos siquiera se lleguen a ver.' },
+        { t: 'La velocidad es solo un punto más de la lista, con el mismo peso que los demás.', a: false, e: 'No es un punto más: es la condición para que los demás tengan oportunidad.' },
+        { t: 'Cada segundo extra de carga es una oportunidad de que el usuario abandone.', a: true, e: 'Se va antes de interactuar con nada: hero, propiedades, contacto.' },
+        { t: 'Las imágenes mal comprimidas suelen ser una causa común de lentitud.', a: true, e: 'Suele venir de cosas simples como esa, o código cargado de más al inicio.' },
+        { t: 'La velocidad de carga no tiene relación con si el usuario llega a ver el resto del diseño.', a: false, e: 'Si tarda en cargar, el cliente nunca llega a ver lo que armaste.' },
+        { t: 'Optimizar velocidad puede incluir evitar cargar contenido innecesario al inicio.', a: true, e: 'El código cargado de más al inicio es una de las causas típicas.' },
+        { t: 'Una web puede tener animaciones y testimonios perfectos, pero si es lenta, el usuario nunca los ve.', a: true, e: 'De nada sirve un lugar hermoso para mostrar tus propiedades si nadie llega a verlo.' },
+        { t: 'El código limpio no tiene relación con la velocidad de carga de una web.', a: false, e: 'El código cargado de más al inicio es justamente una causa común de lentitud.' },
+        { t: 'La velocidad es la base sobre la que se sostiene el resto de la experiencia.', a: true, e: 'Es la condición para que todo lo demás llegue a verse.' },
+        { t: 'Mejorar la velocidad de carga es uno de los cambios con mayor impacto posible en una web.', a: true, e: 'Sin ella, ninguna otra mejora alcanza al cliente.' }
+      ],
+      mock: { kicker: 'Pieza optimizada · carga instantánea', title: 'Ahora tu hero se ve de inmediato', note: 'Misma maqueta, sin espera. El spinner ya no está: el cliente entra y ve tu propiedad al instante.' }
+    }
+  };
+
+  state = { screen: 'welcome', ch: 1, card: 0, q: 0, picked: null, correct: 0, streak: 0, best: 0, progress: { completed: {}, unlocked: 1, best: 0 } };
+
+  componentDidMount() {
+    if (this.props.accent) document.documentElement.style.setProperty('--acc', this.props.accent);
+    try {
+      const raw = localStorage.getItem(this.KEY);
+      if (raw) {
+        const p = JSON.parse(raw);
+        if (p && p.completed) this.setState({ progress: p, screen: 'map' });
+      }
+    } catch (e) {}
+  }
+  componentDidUpdate(prev) {
+    if (prev.accent !== this.props.accent && this.props.accent) document.documentElement.style.setProperty('--acc', this.props.accent);
+  }
+  save(p) {
+    try { localStorage.setItem(this.KEY, JSON.stringify(p)); } catch (e) {}
+    this.setState({ progress: p });
+  }
+  chapter(n) {
+    const c = this.content[n] || {};
+    const cards = c.cards || ['[PLACEHOLDER] Contenido del capítulo ' + n + ' pendiente. Se inserta en su propio metaprompt.'];
+    const questions = c.questions || Array.from({ length: 10 }, (_, i) => ({
+      t: '[PLACEHOLDER] Afirmación ' + (i + 1) + ' del capítulo ' + n + '.',
+      a: i % 2 === 0,
+      e: '[PLACEHOLDER] Explicación breve de por qué esto es ' + (i % 2 === 0 ? 'verdadero' : 'falso') + '.'
+    }));
+    return { cards, questions, placeholder: c.questions ? !!c.placeholder : true };
+  }
+
+  renderVals() {
+    const s = this.state, p = s.progress, done = Object.keys(p.completed).length;
+    const ch = this.chapter(s.ch), qs = ch.questions, cur = qs[s.q];
+    const answered = s.picked !== null;
+    const right = answered && s.picked === cur.a;
+    const lastCard = s.card >= ch.cards.length - 1;
+    const lastQ = s.q >= qs.length - 1;
+    const nextUnlocked = Math.min(19, s.ch + 1);
+
+    return {
+      showWelcome: s.screen === 'welcome', showMap: s.screen === 'map', showLesson: s.screen === 'lesson',
+      showTrivia: s.screen === 'trivia', showSummary: s.screen === 'summary', showFinal: s.screen === 'final',
+      showMockup: s.screen === 'mockup', showIntro: s.screen === 'intro',
+      showReward: s.screen === 'reward', showOffer: s.screen === 'offer',
+      showChrome: s.screen !== 'welcome' && s.screen !== 'offer',
+      slots: this.OFFER.slotsTotal - this.OFFER.slotsTaken,
+      slotsLine: (this.OFFER.slotsTotal - this.OFFER.slotsTaken) + ' cupos disponibles a ' + this.OFFER.priceLabel,
+      priceLabel: this.OFFER.priceLabel,
+      waHref: 'https://wa.me/' + this.OFFER.whatsapp + '?text=' + encodeURIComponent('Hola Joaquín, vengo del curso y quiero mi web'),
+      waHrefFinal: 'https://wa.me/' + this.OFFER.whatsapp + '?text=' + encodeURIComponent('Hola Joaquín, terminé el curso completo y quiero mi web'),
+      goOffer: () => this.setState({ prev: s.screen, screen: 'offer' }),
+      closeOffer: () => this.setState({ screen: s.prev || 'map' }),
+      rewardTitle: 'Te ganaste el PDF de ' + this.titles[s.ch - 1],
+      rewardNote: 'Es tuyo, gratis y sin dejar ningún dato: una guía de varias páginas con checklists para revisar tu web hoy.',
+      downloadChapterPdf: () => this.chapterPdf(s.ch),
+      downloadFullPdf: () => this.fullPdf(),
+      toMap: () => this.setState({ screen: 'map' }),
+      afterReward: () => this.setState({ screen: s.ch >= 19 ? 'final' : 'map' }),
+      introTitle: (this.content[s.ch] && this.content[s.ch].intro || {}).title || '',
+      introNote: (this.content[s.ch] && this.content[s.ch].intro || {}).note || '',
+      mockSpinner: s.screen === 'intro',
+      mockKicker: ((this.content[s.ch] || {}).mock || {}).kicker || 'Pieza agregada',
+      mockTitle: ((this.content[s.ch] || {}).mock || {}).title || 'Tu web ideal',
+      mockNote: ((this.content[s.ch] || {}).mock || {}).note || 'Cada capítulo que completes suma una pieza a esta maqueta.',
+      toLesson: () => this.setState({ screen: 'lesson' }),
+      heroOn: p.completed[1] !== undefined || (s.ch === 1 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
+      heroOff: !(p.completed[1] !== undefined || (s.ch === 1 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
+      toTrivia: () => this.setState({ screen: 'trivia' }),
+      doneCount: done + (s.screen === 'summary' && p.completed[s.ch] === undefined ? 1 : 0), pct: Math.round((done / 19) * 100), allDone: done >= 19,
+      isPlaceholder: (this.props.showPlaceholderBadges ?? true) && ch.placeholder,
+
+      points: Object.keys(p.completed).reduce((a, k) => a + p.completed[k], 0),
+      bestStreak: p.best || 0,
+      currentLabel: p.unlocked + '. ' + this.titles[p.unlocked - 1],
+      canvasH: this.TOP0 + this.titles.length * this.ROW,
+
+      nodes: this.titles.map((title, i) => {
+        const num = i + 1, isDone = p.completed[num] !== undefined;
+        const cx = this.COLS[i % this.COLS.length];
+        return {
+          num, title, isDone, isOpen: !isDone && num <= p.unlocked, isLocked: num > p.unlocked,
+          score: p.completed[num], left: cx - 56, top: this.TOP0 + i * this.ROW,
+          go: () => num <= p.unlocked && this.setState({ screen: (this.content[num] || {}).intro ? 'intro' : 'lesson', ch: num, card: 0, q: 0, picked: null, correct: 0, streak: 0, best: 0 })
+        };
+      }),
+
+      links: this.titles.slice(0, -1).map((_, i) => {
+        const x1 = this.COLS[i % this.COLS.length], x2 = this.COLS[(i + 1) % this.COLS.length];
+        const y1 = this.TOP0 + i * this.ROW + 126, y2 = this.TOP0 + (i + 1) * this.ROW + 14;
+        const right = x2 > x1;
+        return {
+          left: Math.min(x1, x2), top: y1, w: Math.abs(x2 - x1), h: y2 - y1,
+          side: right ? 'right' : 'left', radius: right ? '0 16px 0 0' : '16px 0 0 0'
+        };
+      }),
+
+      chNum: s.ch, chTitle: this.titles[s.ch - 1],
+      cardText: ch.cards[s.card], cardNum: s.card + 1, cardTotal: ch.cards.length, cardKey: s.ch + '-' + s.card,
+      dots: ch.cards.map((_, i) => ({ on: i <= s.card, off: i > s.card })),
+      lessonCta: lastCard ? 'Ver tu web' : 'Siguiente',
+      nextCard: () => lastCard ? this.setState({ screen: 'mockup' }) : this.setState({ card: s.card + 1 }),
+
+      qNum: s.q + 1, qPct: Math.round(((s.q + (answered ? 1 : 0)) / qs.length) * 100), qText: cur.t, qKey: s.ch + '-q' + s.q,
+      streak: s.streak, answered, notAnswered: !answered,
+      verdict: right ? 'CORRECTO' : 'INCORRECTO', verdictColor: right ? 'var(--ok)' : 'var(--bad)',
+      explain: cur.e, triviaCta: lastQ ? 'Ver resultado' : 'Siguiente pregunta',
+      answerTrue: () => this.answer(true), answerFalse: () => this.answer(false),
+      nextQ: () => lastQ ? this.setState({ screen: 'summary' }) : this.setState({ q: s.q + 1, picked: null }),
+
+      score: s.correct, best: s.best,
+      summaryNote: s.correct >= 8 ? 'Muy bien. Esto ya lo tienes claro, vamos al siguiente.' : 'Buen intento. Puedes repetir el capítulo cuando quieras.',
+      summaryCta: 'Continuar',
+
+      start: () => this.setState({ screen: 'map' }),
+      goFinal: () => this.setState({ screen: 'final' }),
+      backToMap: () => {
+        if (s.screen === 'summary') {
+          const completed = Object.assign({}, p.completed);
+          completed[s.ch] = Math.max(p.completed[s.ch] ?? 0, s.correct);
+          this.save({ completed, unlocked: Math.max(p.unlocked, nextUnlocked), best: Math.max(p.best || 0, s.best) });
+          this.setState({ screen: 'reward' });
+        } else this.setState({ screen: 'map' });
+      },
+      reset: () => { this.save({ completed: {}, unlocked: 1, best: 0 }); this.setState({ screen: 'welcome' }); }
+    };
+  }
+
+  esc(s) {
+    let o = '';
+    for (const ch of String(s)) {
+      const c = ch.codePointAt(0);
+      if (ch === '(' || ch === ')' || ch === '\\') o += '\\' + ch;
+      else if (c < 128) o += ch;
+      else if (c < 256) o += '\\' + c.toString(8).padStart(3, '0');
+      else o += '?';
+    }
+    return o;
+  }
+  wrap(text, max) {
+    const out = [];
+    let line = '';
+    String(text).split(/\s+/).forEach(w => {
+      if ((line + ' ' + w).trim().length > max) { out.push(line.trim()); line = w; }
+      else line += ' ' + w;
+    });
+    if (line.trim()) out.push(line.trim());
+    return out;
+  }
+  /* Documento paginado A4. els: {t,text} con t = h1|h2|p|li|chk|note|quote|rule|space */
+  buildDoc(cover, els) {
+    const W = 595, H = 842, M = 56, RIGHT = W - M, TOP = H - 96, BOTTOM = 86;
+    const ACC = '0 0.72 0.53';
+    const pages = [];
+    let ops = '', y = 0;
+
+    const txt = (font, size, x, yy, str, gray) => 'BT ' + (gray || '0 0 0') + ' rg /' + font + ' ' + size + ' Tf ' + x + ' ' + yy.toFixed(1) + ' Td (' + this.esc(str) + ') Tj ET\n';
+    const rect = (x, yy, w, h, col) => col + ' rg ' + x + ' ' + yy.toFixed(1) + ' ' + w + ' ' + h + ' re f\n';
+
+    // portada
+    ops += rect(0, H - 26, W, 26, ACC);
+    ops += txt('F2', 9, M, H - 58, 'VORTEXIA', '0.45 0.45 0.45');
+    ops += txt('F1', 9, M + 78, H - 58, 'Web que vende', '0.55 0.55 0.55');
+    let cy = H - 250;
+    ops += txt('F2', 11, M, cy + 74, cover.kicker.toUpperCase(), '0 0.55 0.4');
+    this.wrap(cover.title, 26).forEach((l, i) => { ops += txt('F2', 30, M, cy + 30 - i * 36, l); });
+    this.wrap(cover.sub, 66).forEach((l, i) => { ops += txt('F1', 12, M, cy - 88 - i * 18, l, '0.35 0.35 0.35'); });
+    ops += rect(M, cy - 140, 64, 4, ACC);
+    ops += txt('F1', 10, M, cy - 176, 'Guía práctica escrita por Joaquín · Vortexia', '0.45 0.45 0.45');
+    ops += txt('F1', 9, M, 60, 'vortexia.cl · WhatsApp +56 9 3905 4197', '0.6 0.6 0.6');
+    pages.push(ops);
+    ops = ''; y = TOP;
+
+    const newPage = () => { pages.push(ops); ops = ''; y = TOP; };
+    const need = h => { if (y - h < BOTTOM) newPage(); };
+
+    els.forEach(el => {
+      const t = el.t;
+      if (t === 'space') { y -= 12; return; }
+      if (t === 'rule') { need(20); ops += rect(M, y - 4, RIGHT - M, 0.8, '0.85 0.85 0.85'); y -= 22; return; }
+      if (t === 'h2') {
+        need(46);
+        ops += rect(M, y - 6, 22, 3, ACC);
+        this.wrap(el.text, 42).forEach((l, i) => { ops += txt('F2', 15, M, y - 28 - i * 20, l); y -= i ? 20 : 0; });
+        y -= 46; return;
+      }
+      if (t === 'note') {
+        const lines = this.wrap(el.text, 74);
+        need(30 + lines.length * 15);
+        ops += rect(M, y - (lines.length * 15 + 16), 3, lines.length * 15 + 20, ACC);
+        ops += txt('F2', 9, M + 14, y, 'JOAQUÍN', '0 0.55 0.4');
+        lines.forEach((l, i) => { ops += txt('F1', 10.5, M + 14, y - 17 - i * 15, l, '0.2 0.2 0.2'); });
+        y -= lines.length * 15 + 32; return;
+      }
+      if (t === 'quote') {
+        const lines = this.wrap(el.text, 62);
+        need(20 + lines.length * 19);
+        lines.forEach((l, i) => { ops += txt('F2', 13, M + 12, y - i * 19, l, '0.12 0.12 0.12'); });
+        y -= lines.length * 19 + 18; return;
+      }
+      if (t === 'line') { need(30); ops += rect(M, y - 8, RIGHT - M, 0.6, '0.82 0.82 0.82'); y -= 34; return; }
+      if (t === 'li' || t === 'chk') {
+        const lines = this.wrap(el.text, 78);
+        need(18 + lines.length * 15);
+        if (t === 'chk') { ops += '0.55 0.55 0.55 RG 0.8 w ' + M + ' ' + (y - 8.5).toFixed(1) + ' 9 9 re S\n'; }
+        else { ops += rect(M + 2, y - 4, 4, 4, '0 0.6 0.44'); }
+        lines.forEach((l, i) => { ops += txt('F1', 10.5, M + 18, y - i * 15, l, '0.15 0.15 0.15'); });
+        y -= lines.length * 15 + 8; return;
+      }
+      const lines = this.wrap(el.text, 84);
+      need(18 + lines.length * 15.5);
+      lines.forEach((l, i) => { ops += txt('F1', 10.5, M, y - i * 15.5, l, '0.13 0.13 0.13'); });
+      y -= lines.length * 15.5 + 12;
+    });
+    pages.push(ops);
+
+    // pie de página en las páginas de contenido
+    const streams = pages.map((p, i) => {
+      if (i === 0) return p;
+      return p + rect(M, 66, RIGHT - M, 0.6, '0.88 0.88 0.88')
+        + txt('F1', 8.5, M, 52, 'Vortexia · Web que vende', '0.55 0.55 0.55')
+        + txt('F1', 8.5, RIGHT - 40, 52, String(i + 1) + ' / ' + pages.length, '0.55 0.55 0.55');
+    });
+
+    const nPages = streams.length;
+    const objs = [];
+    const kids = [];
+    for (let i = 0; i < nPages; i++) kids.push((4 + i * 2) + ' 0 R');
+    objs.push('<< /Type /Catalog /Pages 2 0 R >>');
+    objs.push('<< /Type /Pages /Kids [' + kids.join(' ') + '] /Count ' + nPages + ' >>');
+    objs.push('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>');
+    streams.forEach(st => {
+      objs.push('<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ' + W + ' ' + H + '] /Resources << /Font << /F1 3 0 R /F2 ' + (4 + nPages * 2) + ' 0 R >> >> /Contents ' + (objs.length + 2) + ' 0 R >>');
+      objs.push('<< /Length ' + st.length + ' >>\nstream\n' + st + 'endstream');
+    });
+    objs.push('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>');
+
+    let pdf = '%PDF-1.4\n';
+    const offs = [];
+    objs.forEach((o, i) => { offs.push(pdf.length); pdf += (i + 1) + ' 0 obj\n' + o + '\nendobj\n'; });
+    const xref = pdf.length;
+    pdf += 'xref\n0 ' + (objs.length + 1) + '\n0000000000 65535 f \n';
+    offs.forEach(o => { pdf += String(o).padStart(10, '0') + ' 00000 n \n'; });
+    pdf += 'trailer\n<< /Size ' + (objs.length + 1) + ' /Root 1 0 R >>\nstartxref\n' + xref + '\n%%EOF';
+    return new Blob([pdf], { type: 'application/pdf' });
+  }
+  download(blob, name) {
+    const u = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = u; a.download = name; a.click();
+    setTimeout(() => URL.revokeObjectURL(u), 4000);
+  }
+  offerEls() {
+    const o = this.OFFER;
+    return [
+      { t: 'rule' },
+      { t: 'h2', text: 'Si prefieres que lo haga yo' },
+      { t: 'p', text: 'Construyo webs para corredoras de propiedades aplicando exactamente lo que acabas de leer. Precio del tramo actual: ' + o.priceLabel + '. Entrega en ' + o.deliveryDays + ' días. Quedan ' + (o.slotsTotal - o.slotsTaken) + ' cupos a ese precio.' },
+      { t: 'p', text: 'Escríbeme por WhatsApp al +56 9 3905 4197 y lo vemos directo, sin compromiso.' }
+    ];
+  }
+  fallbackEls(n, ch, t) {
+    return [
+      { t: 'h2', text: 'Lo que vimos en el capítulo' },
+      ...ch.cards.map(c => ({ t: 'p', text: c })),
+      { t: 'space' },
+      { t: 'h2', text: 'Por qué este elemento importa' },
+      { t: 'p', text: 'Cada uno de los 19 elementos del curso cumple una función concreta en el camino que hace tu cliente: entrar, entender, confiar y escribirte. ' + t + ' es una de las piezas de ese camino, y cuando falla, el visitante no se queja: simplemente cierra la pestaña y sigue con otra corredora.' },
+      { t: 'p', text: 'Por eso la revisión no se hace de memoria. Se hace mirando tu web como la mira alguien que llega por primera vez, desde el celular, sin conocerte y sin paciencia.' },
+      { t: 'space' },
+      { t: 'h2', text: 'Cómo revisar este punto en tu web' },
+      { t: 'chk', text: 'Abre tu web en el celular, con datos móviles, como un cliente nuevo.' },
+      { t: 'chk', text: 'Ubica dónde aparece ' + t.toLowerCase() + ' en el recorrido de la página.' },
+      { t: 'chk', text: 'Anota qué entiende un visitante en los primeros cinco segundos de esa parte.' },
+      { t: 'chk', text: 'Compáralo con dos webs de corretaje que te gusten y una que no.' },
+      { t: 'chk', text: 'Marca lo que sobra: todo lo que no ayuda a ver propiedades o a contactarte.' },
+      { t: 'chk', text: 'Marca lo que falta: la información que el cliente tendría que preguntar por WhatsApp.' },
+      { t: 'chk', text: 'Muéstraselo a alguien fuera del rubro y pregúntale qué haría en esa pantalla.' },
+      { t: 'chk', text: 'Escribe una sola corrección concreta, la más importante, y hazla esta semana.' },
+      { t: 'space' },
+      { t: 'h2', text: 'Cómo se ve cuando está bien hecho' },
+      { t: 'p', text: 'Cuando este elemento está resuelto, el visitante no lo nota: avanza sin fricción. No tiene que buscar, ni adivinar, ni volver atrás. La sensación que queda no es "qué linda web", sino "esta corredora sabe lo que hace", y esa es la que lleva a escribirte.' },
+      { t: 'p', text: 'Lo contrario también es silencioso. Nadie te dice que tu web lo hizo dudar; solo desaparece del registro. Por eso conviene revisar con lista en mano en vez de esperar comentarios.' },
+      { t: 'space' },
+      { t: 'h2', text: 'Tu plan para este capítulo' },
+      { t: 'p', text: 'Escribe tres acciones concretas, con fecha. Una corrección hecha vale más que diez anotadas.' },
+      { t: 'line' }, { t: 'line' }, { t: 'line' },
+      { t: 'space' },
+      { t: 'h2', text: 'Preguntas para responder por escrito' },
+      { t: 'li', text: '¿Qué debería sentir el cliente en esta parte de mi web?' },
+      { t: 'li', text: '¿Qué está viendo hoy en realidad?' },
+      { t: 'li', text: '¿Cuál es la diferencia más barata de corregir entre esas dos cosas?' },
+      { t: 'note', text: 'Este es el capítulo ' + n + ' de 19. Cada uno suma una pieza a la misma web: la que muestra tus propiedades de forma atractiva y sencilla, para que consigas más ventas.' }
+    ];
+  }
+  chapterPdf(n) {
+    const ch = this.chapter(n), t = this.titles[n - 1];
+    const doc = this.pdfDocs[n];
+    const els = doc ? doc.els.slice() : this.fallbackEls(n, ch, t);
+    this.download(this.buildDoc({
+      kicker: 'Capítulo ' + n,
+      title: (doc ? doc.title : t),
+      sub: (doc ? doc.sub : 'Guía del capítulo ' + n + ' del curso Web que vende.')
+    }, els.concat(this.offerEls())), 'vortexia-cap' + String(n).padStart(2, '0') + '.pdf');
+  }
+  fullPdf() {
+    const els = [];
+    this.titles.forEach((t, i) => {
+      const n = i + 1, doc = this.pdfDocs[n], ch = this.chapter(n);
+      els.push({ t: 'h2', text: n + '. ' + t });
+      if (doc) doc.els.filter(e => e.t === 'p' || e.t === 'chk' || e.t === 'quote').slice(0, 6).forEach(e => els.push(e));
+      else ch.cards.forEach(c => els.push({ t: 'p', text: c }));
+      els.push({ t: 'space' });
+    });
+    this.download(this.buildDoc({
+      kicker: 'Curso completo',
+      title: 'Web que vende: los 19 capítulos',
+      sub: 'Todo el recorrido en un documento, capítulo por capítulo.'
+    }, els.concat(this.offerEls())), 'vortexia-curso-completo.pdf');
+  }
+
+  tone(freqs, dur, type) {
+    try {
+      if (this.props.sound === false) return;
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      this.ac = this.ac || new AC();
+      if (this.ac.state === 'suspended') this.ac.resume();
+      const t0 = this.ac.currentTime;
+      freqs.forEach((f, i) => {
+        const o = this.ac.createOscillator(), g = this.ac.createGain();
+        o.type = type; o.frequency.value = f;
+        const s = t0 + i * dur * 0.62;
+        g.gain.setValueAtTime(0, s);
+        g.gain.linearRampToValueAtTime(0.16, s + 0.012);
+        g.gain.exponentialRampToValueAtTime(0.0008, s + dur);
+        o.connect(g); g.connect(this.ac.destination);
+        o.start(s); o.stop(s + dur + 0.02);
+      });
+    } catch (e) {}
+  }
+  sfxRight() { this.tone([659.25, 987.77, 1318.5], 0.16, 'triangle'); }
+  sfxWrong() { this.tone([196, 155.6], 0.2, 'sine'); }
+
+  answer(v) {
+    const ch = this.chapter(this.state.ch);
+    const ok = v === ch.questions[this.state.q].a;
+    ok ? this.sfxRight() : this.sfxWrong();
+    this.setState(st => {
+      const streak = ok ? st.streak + 1 : 0;
+      return { picked: v, correct: st.correct + (ok ? 1 : 0), streak, best: Math.max(st.best, streak) };
+    });
+  }
+}
+</script>
+</body>
+</html>
