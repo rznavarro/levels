@@ -1,0 +1,16 @@
+{
+  "name": "Vortexia — Web inmobiliaria que vende",
+  "short_name": "Vortexia",
+  "description": "Curso interactivo de 19 capítulos sobre qué hace que una web inmobiliaria consiga más ventas.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#070A09",
+  "theme_color": "#070A09",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

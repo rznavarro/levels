@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#070A09">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Vortexia">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -409,6 +415,102 @@ a:hover{color:var(--ink)}
 </div>
 </div>
 </x-dc>
+
+<button id="vx-install-btn" type="button" style="display:none;position:fixed;right:16px;bottom:16px;z-index:9999;align-items:center;gap:8px;padding:12px 16px;border:1px solid rgba(0,209,143,.35);border-radius:99px;background:#151B19;color:#EAF1EE;font-family:'Inter Tight','Helvetica Neue',Helvetica,system-ui,sans-serif;font-size:13.5px;font-weight:700;cursor:pointer;box-shadow:0 14px 30px -14px rgba(0,0,0,.7);backdrop-filter:blur(6px)">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00D18F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+  <span id="vx-install-label">Descargar app</span>
+</button>
+
+<div id="vx-install-sheet" style="display:none;position:fixed;inset:0;z-index:10000;align-items:flex-end;justify-content:center;background:rgba(4,6,5,.6);padding:16px">
+  <div style="width:100%;max-width:380px;background:#151B19;border:1px solid rgba(255,255,255,.10);border-radius:22px;padding:22px 22px 24px;font-family:'Inter Tight','Helvetica Neue',Helvetica,system-ui,sans-serif;color:#EAF1EE;box-shadow:0 24px 60px -20px rgba(0,0,0,.8)">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+      <span style="font-weight:800;font-size:15px">Instalar Vortexia</span>
+      <button id="vx-install-close" type="button" aria-label="Cerrar" style="border:none;background:none;color:#7C8A85;font-size:18px;line-height:1;cursor:pointer;padding:4px">✕</button>
+    </div>
+    <div id="vx-install-steps" style="font-size:13.5px;line-height:1.6;color:#EAF1EE"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('vx-install-btn');
+  var label = document.getElementById('vx-install-label');
+  var sheet = document.getElementById('vx-install-sheet');
+  var steps = document.getElementById('vx-install-steps');
+  var closeBtn = document.getElementById('vx-install-close');
+  var deferredPrompt = null;
+
+  function isStandalone() {
+    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  }
+  var ua = window.navigator.userAgent || '';
+  var isIOS = /iPhone|iPad|iPod/.test(ua) || (ua.includes('Macintosh') && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/.test(ua);
+
+  function showSheet(html) {
+    steps.innerHTML = html;
+    sheet.style.display = 'flex';
+  }
+  function hideSheet() { sheet.style.display = 'none'; }
+  closeBtn.addEventListener('click', hideSheet);
+  sheet.addEventListener('click', function (e) { if (e.target === sheet) hideSheet(); });
+
+  if (!isStandalone()) {
+    btn.style.display = 'flex';
+  }
+
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    btn.style.display = 'flex';
+  });
+
+  btn.addEventListener('click', function () {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.finally(function () { deferredPrompt = null; });
+      return;
+    }
+    if (isIOS) {
+      showSheet(
+        '<div style="display:flex;flex-direction:column;gap:12px">' +
+        '<div>1. Toca el ícono <strong>Compartir</strong> (el cuadrado con la flecha hacia arriba) en la barra de Safari.</div>' +
+        '<div>2. Elige <strong>“Agregar a inicio”</strong>.</div>' +
+        '<div>3. Confirma con <strong>“Agregar”</strong> — el ícono de Vortexia quedará en tu pantalla de inicio.</div>' +
+        '</div>'
+      );
+      return;
+    }
+    if (isAndroid) {
+      showSheet(
+        '<div style="display:flex;flex-direction:column;gap:12px">' +
+        '<div>1. Toca el menú <strong>⋮</strong> de tu navegador (arriba a la derecha).</div>' +
+        '<div>2. Elige <strong>“Instalar app”</strong> o <strong>“Agregar a pantalla de inicio”</strong>.</div>' +
+        '</div>'
+      );
+      return;
+    }
+    showSheet(
+      '<div style="display:flex;flex-direction:column;gap:12px">' +
+      '<div>1. Busca el ícono de instalar <strong>⊕</strong> en la barra de direcciones de tu navegador.</div>' +
+      '<div>2. O abre el menú <strong>⋮</strong> → <strong>“Instalar Vortexia…”</strong>.</div>' +
+      '</div>'
+    );
+  });
+
+  window.addEventListener('appinstalled', function () {
+    deferredPrompt = null;
+    btn.style.display = 'none';
+  });
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('./sw.js').catch(function () {});
+    });
+  }
+})();
+</script>
+
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:430,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#00C2C7&quot;,&quot;options&quot;:[&quot;#00D18F&quot;,&quot;#37E0A0&quot;,&quot;#00C2C7&quot;,&quot;#8AF04A&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;},&quot;showPlaceholderBadges&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;},&quot;sound&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;}}">
 class Component extends DCLogic {
   KEY = 'vortexia_progress_v1';
