@@ -241,6 +241,22 @@ a:hover{color:var(--ink)}
 <sc-if value="{{ showNormalMockup }}" hint-placeholder-val="{{ true }}">
 <div style="{{ phoneFrameStyle }}">
 <div style="flex:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0A0E0D;position:relative">
+<sc-if value="{{ showBrokenForm }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:rgba(4,6,5,.75);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:8;padding:14px">
+<div style="width:100%;background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:9px 8px;display:flex;flex-direction:column;gap:4px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:6.5px;color:var(--bad);letter-spacing:.05em;margin-bottom:2px">FORMULARIO DE CONTACTO</div>
+<div style="height:9px;width:100%;border-radius:3px;background:rgba(255,255,255,.08)"></div>
+<div style="height:9px;width:92%;border-radius:3px;background:rgba(255,255,255,.08)"></div>
+<div style="height:9px;width:100%;border-radius:3px;background:rgba(255,255,255,.08)"></div>
+<div style="height:9px;width:80%;border-radius:3px;background:rgba(255,255,255,.08)"></div>
+<div style="height:9px;width:100%;border-radius:3px;background:rgba(255,255,255,.08)"></div>
+<div style="height:9px;width:65%;border-radius:3px;background:rgba(255,255,255,.08)"></div>
+<div style="height:9px;width:100%;border-radius:3px;background:rgba(255,255,255,.08)"></div>
+<div style="height:14px;width:45%;border-radius:4px;background:rgba(255,255,255,.1);margin-top:2px"></div>
+</div>
+<div style="margin-top:7px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.06em;color:var(--bad)">se siente como un trámite</div>
+</div>
+</sc-if>
 <div style="display:flex;align-items:center;gap:5px;padding:8px 10px;background:rgba(255,255,255,.04)">
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
@@ -306,6 +322,16 @@ a:hover{color:var(--ink)}
 </sc-if>
 <sc-if value="{{ noSocialFooter }}" hint-placeholder-val="{{ true }}">
 <div style="height:34px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25)">próximo capítulo</div>
+</sc-if>
+<sc-if value="{{ hasContactForm }}" hint-placeholder-val="{{ false }}">
+<div style="border-radius:9px;background:rgba(255,255,255,.04);padding:8px;display:flex;flex-direction:column;gap:4px;animation:vx-rise .55s ease both">
+<div style="height:9px;width:100%;border-radius:3px;background:rgba(255,255,255,.09)"></div>
+<div style="height:9px;width:100%;border-radius:3px;background:rgba(255,255,255,.09)"></div>
+<div style="height:14px;width:52%;border-radius:5px;background:var(--acc)"></div>
+</div>
+</sc-if>
+<sc-if value="{{ noContactForm }}" hint-placeholder-val="{{ true }}">
+<div style="height:40px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25)">próximo capítulo</div>
 </sc-if>
 </div>
 <sc-if value="{{ hasFloatingCta }}" hint-placeholder-val="{{ false }}">
@@ -398,6 +424,16 @@ a:hover{color:var(--ink)}
 </sc-if>
 <sc-if value="{{ noSocialFooter }}" hint-placeholder-val="{{ true }}">
 <div style="height:34px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25)">próximo capítulo</div>
+</sc-if>
+<sc-if value="{{ hasContactForm }}" hint-placeholder-val="{{ false }}">
+<div style="border-radius:9px;background:rgba(255,255,255,.04);padding:8px;display:flex;flex-direction:column;gap:4px;animation:vx-rise .55s ease both">
+<div style="height:9px;width:100%;border-radius:3px;background:rgba(255,255,255,.09)"></div>
+<div style="height:9px;width:100%;border-radius:3px;background:rgba(255,255,255,.09)"></div>
+<div style="height:14px;width:52%;border-radius:5px;background:var(--acc)"></div>
+</div>
+</sc-if>
+<sc-if value="{{ noContactForm }}" hint-placeholder-val="{{ true }}">
+<div style="height:40px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25)">próximo capítulo</div>
 </sc-if>
 </div>
 <sc-if value="{{ hasFloatingCta }}" hint-placeholder-val="{{ false }}">
@@ -503,6 +539,16 @@ a:hover{color:var(--ink)}
 </sc-if>
 <sc-if value="{{ noSocialFooter }}" hint-placeholder-val="{{ true }}">
 <div style="height:26px;border:1px dashed rgba(255,255,255,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(255,255,255,.25)">próximo capítulo</div>
+</sc-if>
+<sc-if value="{{ hasContactForm }}" hint-placeholder-val="{{ false }}">
+<div style="border-radius:8px;background:rgba(255,255,255,.04);padding:6px;display:flex;flex-direction:column;gap:3px;animation:vx-rise .55s ease both">
+<div style="height:7px;width:100%;border-radius:3px;background:rgba(255,255,255,.09)"></div>
+<div style="height:7px;width:100%;border-radius:3px;background:rgba(255,255,255,.09)"></div>
+<div style="height:11px;width:52%;border-radius:4px;background:var(--acc)"></div>
+</div>
+</sc-if>
+<sc-if value="{{ noContactForm }}" hint-placeholder-val="{{ true }}">
+<div style="height:30px;border:1px dashed rgba(255,255,255,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(255,255,255,.25)">próximo capítulo</div>
 </sc-if>
 </div>
 <sc-if value="{{ hasFloatingCta }}" hint-placeholder-val="{{ false }}">
@@ -935,6 +981,36 @@ class Component extends DCLogic {
         { t: 'p', text: 'Asumir que si al cliente le interesó, "ya va a encontrar" cómo contactarte. En la práctica, cada paso extra que tiene que dar es una oportunidad de que se distraiga, dude, o simplemente cierre la pestaña.' },
         { t: 'note', text: 'De nada sirve que el cliente confíe en ti si, en el momento en que decide escribirte, no encuentra cómo. Este es el punto donde toda la confianza construida se convierte en un mensaje real.' }
       ]
+    },
+    8: {
+      title: 'El formulario que se siente como un mensaje, no un trámite',
+      sub: 'Por qué cada campo de más en tu formulario te cuesta clientes reales.',
+      els: [
+        { t: 'h2', text: 'Lo que le pones enfrente' },
+        { t: 'p', text: 'El cliente ya tocó el botón. Ya decidió actuar. Ahora todo depende de qué le pongas enfrente: un trámite largo de llenar, o algo tan simple como mandar un mensaje.' },
+        { t: 'quote', text: '"Un formulario con 10 campos se siente como llenar un trámite. Uno con 3 campos claros se siente como mandar un mensaje."' },
+        { t: 'p', text: 'La diferencia no es solo estética. Es la diferencia entre que ese contacto llegue a completarse o se quede a mitad de camino.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Cada campo tiene un costo' },
+        { t: 'p', text: 'Cada campo adicional en un formulario es una oportunidad más de que el usuario lo abandone antes de terminar. No porque no le importe, sino porque cada campo extra es una micro-decisión más, una pausa más, una razón más para dejarlo para después — y "después" casi nunca llega.' },
+        { t: 'note', text: 'Un formulario largo no filtra mejores clientes. Filtra menos clientes, en general.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Lo esencial, y nada más' },
+        { t: 'p', text: 'Los campos deben pedir solo lo esencial para el primer contacto: nombre, cómo contactarlo, y qué busca. El resto — presupuesto exacto, plazos, preferencias detalladas — se conversa después, en el mensaje o la llamada, no se pide todo de una vez en un formulario.' },
+        { t: 'li', text: 'Nombre.' },
+        { t: 'li', text: 'Cómo contactarlo (teléfono o email, no ambos obligatorios).' },
+        { t: 'li', text: 'Qué está buscando, en una frase.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Checklist: revisa tu formulario hoy' },
+        { t: 'chk', text: 'Cuenta cuántos campos tiene tu formulario de contacto actual.' },
+        { t: 'chk', text: 'Si son más de 3-4, identifica cuáles son realmente imprescindibles para el primer contacto.' },
+        { t: 'chk', text: 'Verifica que ningún campo esencial (como el teléfono) sea opcional por error.' },
+        { t: 'chk', text: 'Pruébalo tú mismo: si sientes pereza al llenarlo, tu cliente también la va a sentir.' },
+        { t: 'space' },
+        { t: 'h2', text: 'El error más común' },
+        { t: 'p', text: 'Pedir todo de una vez "para no tener que preguntar después". El resultado es lo contrario a lo buscado: en vez de tener más información, terminas con menos formularios completados, porque muchos se van antes de llegar al botón de enviar.' },
+        { t: 'note', text: 'El último paso antes de que un cliente te escriba debería ser el más fácil de todos, no el más largo. Cuánto más simple sea contactarte, más clientes reales llegan a hacerlo.' }
+      ]
     }
   };
   COLS = [195, 288, 195, 102];
@@ -1102,6 +1178,29 @@ class Component extends DCLogic {
         { t: 'Repetir el CTA de forma natural (no invasiva) es una práctica recomendable.', a: true, e: 'Asegura que la acción esté a mano sin que el cliente tenga que volver a buscar cómo contactarte.' }
       ],
       mock: { kicker: 'Pieza agregada · CTA flotante', title: 'La acción, siempre a mano', note: 'Un botón de contacto flotante que acompaña al cliente por todo el recorrido, en vez de quedar arriba y perderse de vista.' }
+    },
+    8: {
+      intro: { title: 'Mira lo que le pones enfrente', note: 'El cliente ya tocó el botón. Esto es lo que se encuentra: un formulario largo que se siente como un trámite.' },
+      cards: [
+        'El cliente ya tocó el botón. Ya decidió actuar. Ahora todo depende de qué le pongas enfrente: un trámite, o un simple mensaje.',
+        'Un formulario con 10 campos se siente como llenar un trámite. Uno con 3 campos claros se siente como mandar un mensaje.',
+        'Cada campo adicional en un formulario es una oportunidad más de que el usuario abandone antes de terminar.',
+        'Los campos deben pedir solo lo esencial para el primer contacto — nombre, cómo contactarlo, y qué busca. El resto se conversa después, no se pide todo de una vez.',
+        'El último paso antes de que un cliente te escriba debería ser el más fácil de todos, no el más largo. Cuánto más simple sea contactarte, más clientes reales llegan a hacerlo.'
+      ],
+      questions: [
+        { t: 'Cada campo adicional en un formulario es una oportunidad de que el usuario lo abandone.', a: true, e: 'Cada campo adicional es una oportunidad más de que el usuario abandone antes de terminar.' },
+        { t: 'Mientras más campos tenga un formulario, más información útil se obtiene sin ningún costo.', a: false, e: 'Cada campo adicional es una oportunidad más de que el usuario abandone — el costo es perder al cliente.' },
+        { t: 'Un formulario corto y claro se siente menos como un trámite.', a: true, e: 'Uno con 3 campos claros se siente como mandar un mensaje, no como un trámite.' },
+        { t: 'Lo ideal es pedir solo la información esencial para el primer contacto.', a: true, e: 'Los campos deben pedir solo lo esencial: nombre, cómo contactarlo, y qué busca.' },
+        { t: 'Un formulario largo transmite que contactarte es fácil y rápido.', a: false, e: 'Un formulario con 10 campos se siente como llenar un trámite, no algo fácil y rápido.' },
+        { t: 'La fricción de un formulario puede afectar directamente cuántas personas lo completan.', a: true, e: 'Cada campo adicional es una oportunidad más de que el usuario abandone antes de terminar.' },
+        { t: 'Todos los datos posibles del cliente deben pedirse en el primer formulario.', a: false, e: 'El resto se conversa después, no se pide todo de una vez.' },
+        { t: 'Un formulario bien diseñado puede sentirse como mandar un mensaje, no como un trámite.', a: true, e: 'Uno con 3 campos claros se siente como mandar un mensaje.' },
+        { t: 'La cantidad de campos no tiene ninguna relación con la tasa de conversión del formulario.', a: false, e: 'Cada campo adicional es una oportunidad más de que el usuario abandone — sí hay relación.' },
+        { t: 'Es mejor pedir información adicional en una conversación posterior que saturar el formulario inicial.', a: true, e: 'El resto se conversa después, no se pide todo de una vez.' }
+      ],
+      mock: { kicker: 'Pieza corregida · formulario simple', title: 'Contactarte, en tres campos', note: 'El formulario largo se reemplazó por uno corto y claro — el último paso ahora es el más fácil, no el más largo.' }
     }
   };
 
@@ -1179,6 +1278,9 @@ class Component extends DCLogic {
       hasSocialFooter: p.completed[6] !== undefined || (s.ch === 6 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
       noSocialFooter: !(p.completed[6] !== undefined || (s.ch === 6 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
       hasFloatingCta: p.completed[7] !== undefined || (s.ch === 7 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
+      hasContactForm: p.completed[8] !== undefined || (s.ch === 8 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
+      noContactForm: !(p.completed[8] !== undefined || (s.ch === 8 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
+      showBrokenForm: s.ch === 8 && s.screen === 'intro',
       showBrokenMobile: s.ch === 4 && s.screen === 'intro',
       showNormalMockup: !(s.ch === 4 && s.screen === 'intro'),
       showPhoneFrame: p.completed[4] !== undefined || (s.ch === 4 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
