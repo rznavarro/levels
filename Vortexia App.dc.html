@@ -248,7 +248,21 @@ a:hover{color:var(--ink)}
 <div style="height:148px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--mute)">hero sin trabajar</div>
 </sc-if>
 <div style="display:flex;flex-direction:column;gap:7px;padding:12px">
+<sc-if value="{{ hasPropertiesGrid }}" hint-placeholder-val="{{ false }}">
+<div style="height:62px;display:flex;gap:6px">
+<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease both">
+<div style="flex:1;background:linear-gradient(135deg,#1A2B26,#0E1F1B)"></div>
+<div style="height:10px;margin:5px;border-radius:4px;background:rgba(255,255,255,.08)"></div>
+</div>
+<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease .1s both">
+<div style="flex:1;background:linear-gradient(135deg,#1A2B26,#0E1F1B)"></div>
+<div style="height:10px;margin:5px;border-radius:4px;background:rgba(255,255,255,.08)"></div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ noPropertiesGrid }}" hint-placeholder-val="{{ true }}">
 <div style="height:62px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25)">próximo capítulo</div>
+</sc-if>
 <div style="height:62px;border:1px dashed rgba(255,255,255,.12);border-radius:9px"></div>
 </div>
 </div>
@@ -292,7 +306,21 @@ a:hover{color:var(--ink)}
 <div style="height:148px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--mute)">hero sin trabajar</div>
 </sc-if>
 <div style="display:flex;flex-direction:column;gap:7px;padding:12px">
+<sc-if value="{{ hasPropertiesGrid }}" hint-placeholder-val="{{ false }}">
+<div style="height:62px;display:flex;gap:6px">
+<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease both">
+<div style="flex:1;background:linear-gradient(135deg,#1A2B26,#0E1F1B)"></div>
+<div style="height:10px;margin:5px;border-radius:4px;background:rgba(255,255,255,.08)"></div>
+</div>
+<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease .1s both">
+<div style="flex:1;background:linear-gradient(135deg,#1A2B26,#0E1F1B)"></div>
+<div style="height:10px;margin:5px;border-radius:4px;background:rgba(255,255,255,.08)"></div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ noPropertiesGrid }}" hint-placeholder-val="{{ true }}">
 <div style="height:62px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25)">próximo capítulo</div>
+</sc-if>
 <div style="height:62px;border:1px dashed rgba(255,255,255,.12);border-radius:9px"></div>
 </div>
 </div>
@@ -350,7 +378,21 @@ a:hover{color:var(--ink)}
 <div style="height:108px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--mute)">hero sin trabajar</div>
 </sc-if>
 <div style="display:flex;flex-direction:column;gap:7px;padding:12px">
+<sc-if value="{{ hasPropertiesGrid }}" hint-placeholder-val="{{ false }}">
+<div style="height:45px;display:flex;gap:6px">
+<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease both">
+<div style="flex:1;background:linear-gradient(135deg,#1A2B26,#0E1F1B)"></div>
+<div style="height:8px;margin:4px;border-radius:4px;background:rgba(255,255,255,.08)"></div>
+</div>
+<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease .1s both">
+<div style="flex:1;background:linear-gradient(135deg,#1A2B26,#0E1F1B)"></div>
+<div style="height:8px;margin:4px;border-radius:4px;background:rgba(255,255,255,.08)"></div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ noPropertiesGrid }}" hint-placeholder-val="{{ true }}">
 <div style="height:45px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25)">próximo capítulo</div>
+</sc-if>
 <div style="height:45px;border:1px dashed rgba(255,255,255,.12);border-radius:9px"></div>
 </div>
 </div>
@@ -619,12 +661,43 @@ class Component extends DCLogic {
         { t: 'p', text: 'Mejorar la carga es uno de los cambios de mayor impacto posible en una web, porque no mejora una sección: habilita todas.' },
         { t: 'note', text: 'De nada sirve un lugar hermoso para mostrar tus propiedades si nadie llega a verlo. Por eso cada web que construimos parte optimizada desde el primer día, no como un ajuste de último momento.' }
       ]
+    },
+    3: {
+      title: 'El scroll que invita a seguir mirando',
+      sub: 'Por qué la fluidez al bajar decide si el cliente llega a ver tus propiedades.',
+      els: [
+        { t: 'h2', text: 'Por qué el scroll importa' },
+        { t: 'p', text: 'Tu hero ya carga rápido y se ve bien. Lo que viene después es lo que pasa cuando el cliente sigue bajando — porque ahí, debajo del hero, es donde está el corazón real de tu oferta: el catálogo de propiedades.' },
+        { t: 'quote', text: '"El scroll es la primera interacción física real que tiene un visitante con tu web."' },
+        { t: 'p', text: 'Es la primera "sensación táctil" de tu marca, antes incluso de ver una propiedad. Antes de leer un solo titular, el cliente ya sintió si tu web es fluida o si es tosca.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Lo que el cerebro decide sin que se lo pidas' },
+        { t: 'p', text: 'Cuando una web se mueve suave al scrollear, el cerebro la registra como "cuidada" antes de leer una sola palabra. Cuando salta o se traba, registra "descuidada" — y esa etiqueta se le queda pegada al resto de la visita, aunque el contenido de ahí en adelante sea excelente.' },
+        { t: 'note', text: 'No es una opinión estética: es un juicio casi instantáneo, y ocurre antes de que el cliente procese qué le estás ofreciendo.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Sutil, no exagerado' },
+        { t: 'p', text: 'No hace falta que el scroll sea llamativo. Sutil y fluido transmite más calidad que algo brusco o sobrecargado de efectos. La meta es que se sienta natural — que el cliente ni siquiera note que hay una animación, solo que "se siente bien".' },
+        { t: 'li', text: 'Los elementos aparecen con una leve entrada, no de golpe.' },
+        { t: 'li', text: 'No hay saltos ni trabas al cambiar de sección.' },
+        { t: 'li', text: 'El movimiento acompaña la lectura, no compite con ella.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Checklist: revisa el scroll de tu web hoy' },
+        { t: 'chk', text: 'Baja por tu web en el celular de principio a fin, sin soltar el dedo.' },
+        { t: 'chk', text: 'Fíjate si algo aparece de golpe en vez de entrar suave.' },
+        { t: 'chk', text: 'Fíjate si hay algún punto donde el scroll se traba o tiembla.' },
+        { t: 'chk', text: 'Revisa que las secciones con tus propiedades se sientan cómodas de recorrer, no apuradas.' },
+        { t: 'chk', text: 'Pruébalo en un celular más antiguo o con poca señal, no solo en el tuyo.' },
+        { t: 'space' },
+        { t: 'h2', text: 'El error más común' },
+        { t: 'p', text: 'Tratar el scroll como algo que "ya viene así" por defecto y no revisarlo nunca. La plantilla base rara vez está pensada para tu catálogo específico de propiedades, y un scroll descuidado hace dudar de la seriedad del negocio antes de que el cliente llegue a ver una sola ficha.' },
+        { t: 'note', text: 'Cada propiedad que subes merece que el cliente llegue a verla sintiéndose cómodo, no peleando con la página. Es parte de armar un lugar donde tus propiedades realmente se muestren bien.' }
+      ]
     }
   };
   COLS = [195, 288, 195, 102];
   ROW = 168; TOP0 = 34;
 
-  titles = ['Animación del hero','Velocidad de carga','Llamado a la acción','Fotografía de propiedades','Testimonios','Animaciones y transiciones','Mobile primero','Formularios de contacto','Buscador de propiedades','Fichas de propiedad','Confianza y credenciales','Copywriting','WhatsApp y respuesta rápida','SEO local','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
+  titles = ['Animación del hero','Velocidad de carga','Animaciones de scroll','Fotografía de propiedades','Testimonios','Animaciones y transiciones','Mobile primero','Formularios de contacto','Buscador de propiedades','Fichas de propiedad','Confianza y credenciales','Copywriting','WhatsApp y respuesta rápida','SEO local','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
 
   /* ── CONTENIDO POR CAPÍTULO ─────────────────────────────
      Cada capítulo es una unidad independiente: { cards: [...], questions: [{t,a,e}] }.
@@ -675,6 +748,28 @@ class Component extends DCLogic {
         { t: 'Mejorar la velocidad de carga es uno de los cambios con mayor impacto posible en una web.', a: true, e: 'Sin ella, ninguna otra mejora alcanza al cliente.' }
       ],
       mock: { kicker: 'Pieza optimizada · carga instantánea', title: 'Ahora tu hero se ve de inmediato', note: 'Misma maqueta, sin espera. El spinner ya no está: el cliente entra y ve tu propiedad al instante.' }
+    },
+    3: {
+      cards: [
+        'Tu hero ya carga rápido y se ve bien. Ahora viene lo que pasa cuando el cliente sigue bajando — porque ahí es donde están tus propiedades.',
+        'Cuando una web se mueve suave al scrollear, el cerebro la registra como "cuidada" antes de leer una sola palabra. Cuando salta o se traba, registra "descuidada".',
+        'El scroll es la primera interacción física real que tiene un visitante con tu web — es la primera "sensación táctil" de tu marca, antes incluso de ver una propiedad.',
+        'No hace falta que sea exagerado. Sutil y fluido transmite más calidad que algo llamativo y brusco — la meta es que se sienta natural, no que se note.',
+        'Cada propiedad que subes merece que el cliente llegue a verla sintiéndose cómodo, no peleando con la página. Eso es parte de armar un lugar donde tus propiedades realmente se muestren bien.'
+      ],
+      questions: [
+        { t: 'Una animación de scroll torpe o con saltos hace que la web se perciba como menos profesional.', a: true, e: 'Cuando el scroll salta o se traba, el cerebro lo registra como "descuidada".' },
+        { t: 'El scroll es la primera interacción física que tiene un visitante con tu web.', a: true, e: 'Es la primera "sensación táctil" de tu marca, antes incluso de ver una propiedad.' },
+        { t: 'Mientras más exagerada sea la animación, mejor se percibe la web.', a: false, e: 'Sutil y fluido transmite más calidad que algo llamativo y brusco.' },
+        { t: 'Las animaciones de scroll son solo decoración y no afectan la percepción de calidad.', a: false, e: 'El cerebro registra la web como "cuidada" o "descuidada" según cómo se mueve, antes de leer nada.' },
+        { t: 'El juicio sobre si una web "se ve cuidada" ocurre casi instantáneamente.', a: true, e: 'El cerebro la registra como cuidada o descuidada antes de leer una sola palabra.' },
+        { t: 'Una web sin ninguna animación de scroll siempre se ve peor que una con.', a: false, e: 'La meta es que el scroll se sienta natural, no que la animación se note — no es obligatorio que sea vistosa.' },
+        { t: 'La fluidez del scroll puede afectar la primera impresión antes de leer el contenido.', a: true, e: 'El registro de "cuidada" o "descuidada" ocurre antes de leer una sola palabra.' },
+        { t: 'Las animaciones de scroll solo importan en desktop, no en mobile.', a: false, e: 'Es la primera interacción física del visitante con tu web, en cualquier dispositivo.' },
+        { t: 'Un scroll con saltos o trabas puede hacer dudar de la seriedad del negocio.', a: true, e: 'Un scroll tosco se registra como "descuidada", lo que hace dudar de la seriedad.' },
+        { t: 'Cuidar el scroll es un detalle menor que no vale la pena priorizar.', a: false, e: 'Es la primera sensación táctil de tu marca — vale la pena cuidarlo.' }
+      ],
+      mock: { kicker: 'Pieza agregada · scroll suave', title: 'Tus propiedades, apareciendo bien', note: 'Al bajar, la grilla de propiedades aparece con un scroll suave y fluido, en vez de golpe o con saltos.' }
     }
   };
 
@@ -745,6 +840,8 @@ class Component extends DCLogic {
       toLesson: () => this.setState({ screen: 'lesson' }),
       heroOn: p.completed[1] !== undefined || (s.ch === 1 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
       heroOff: !(p.completed[1] !== undefined || (s.ch === 1 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
+      hasPropertiesGrid: s.ch >= 3,
+      noPropertiesGrid: s.ch < 3,
       toTrivia: () => this.setState({ screen: 'trivia' }),
       doneCount: done + (s.screen === 'summary' && p.completed[s.ch] === undefined ? 1 : 0), pct: Math.round((done / 19) * 100), allDone: done >= 19,
       isPlaceholder: (this.props.showPlaceholderBadges ?? true) && ch.placeholder,
