@@ -221,6 +221,12 @@ a:hover{color:var(--ink)}
 <div style="flex:1;display:flex;flex-direction:column;padding:34px 24px 26px;gap:18px;min-height:0;overflow-y:auto;animation:vx-in .4s ease both">
 <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--mute);text-transform:uppercase;letter-spacing:.1em">Capítulo {{ chNum }} · antes de empezar</div>
 <h2 style="margin:0;font-size:25px;line-height:1.15;font-weight:800;letter-spacing:-.02em">{{ introTitle }}</h2>
+<sc-if value="{{ showDesktopBadge }}" hint-placeholder-val="{{ false }}">
+<div style="align-self:flex-start;display:flex;align-items:center;gap:5px;padding:3px 9px;border:1px dashed var(--acc);border-radius:6px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--acc);letter-spacing:.06em;margin-bottom:-8px">
+<svg width="9" height="9" viewBox="0 0 24 24" fill="var(--acc)"><path d="M2 2l7.5 18.5 2.4-7.6 7.6-2.4z"/></svg>
+VISTA DESKTOP
+</div>
+</sc-if>
 <sc-if value="{{ showBrokenMobile }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;flex-direction:column;align-items:center;padding:8px 0 4px">
 <div style="width:120px;border:3px solid rgba(255,255,255,.18);border-radius:20px;padding:8px 7px;background:#0A0E0D;position:relative">
@@ -281,6 +287,12 @@ a:hover{color:var(--ink)}
 <div style="margin-top:7px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.06em;color:var(--bad)">silencio total</div>
 </div>
 </sc-if>
+<sc-if value="{{ showBrokenHover }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;top:8px;right:8px;display:flex;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:7px;color:var(--bad);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:3px 6px;z-index:6;white-space:nowrap">
+<svg width="9" height="9" viewBox="0 0 24 24" fill="var(--bad)"><path d="M2 2l7.5 18.5 2.4-7.6 7.6-2.4z"/></svg>
+pasa el mouse… nada cambia
+</div>
+</sc-if>
 <div style="display:flex;align-items:center;gap:5px;padding:8px 10px;background:rgba(255,255,255,.04)">
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
@@ -310,11 +322,11 @@ a:hover{color:var(--ink)}
 <div style="display:flex;flex-direction:column;gap:7px;padding:12px">
 <sc-if value="{{ hasPropertiesGrid }}" hint-placeholder-val="{{ false }}">
 <div style="height:62px;display:flex;gap:6px">
-<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease both">
+<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease both;transition:transform .18s ease,box-shadow .18s ease" style-hover="{{ hoverLift }}">
 <div style="flex:1;background:linear-gradient(135deg,#1A2B26,#0E1F1B)"></div>
 <div style="height:10px;margin:5px;border-radius:4px;background:rgba(255,255,255,.08)"></div>
 </div>
-<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease .1s both">
+<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease .1s both;transition:transform .18s ease,box-shadow .18s ease" style-hover="{{ hoverLift }}">
 <div style="flex:1;background:linear-gradient(135deg,#1A2B26,#0E1F1B)"></div>
 <div style="height:10px;margin:5px;border-radius:4px;background:rgba(255,255,255,.08)"></div>
 </div>
@@ -348,7 +360,7 @@ a:hover{color:var(--ink)}
 <div style="height:14px;width:100%;border-radius:3px;border:1.5px solid var(--bad);background:rgba(255,115,97,.08)"></div>
 <div style="font-size:6px;color:var(--bad);font-family:'IBM Plex Mono',monospace">revisa tu email</div>
 </sc-if>
-<div style="height:14px;width:52%;border-radius:5px;background:var(--acc)"></div>
+<div style="height:14px;width:52%;border-radius:5px;background:var(--acc);transition:filter .15s ease,transform .15s ease" style-hover="{{ hoverBright }}"></div>
 </div>
 </sc-if>
 <sc-if value="{{ hasSearchEmptyState }}" hint-placeholder-val="{{ false }}">
@@ -390,6 +402,12 @@ a:hover{color:var(--ink)}
 <div style="flex:1;display:flex;flex-direction:column;padding:34px 24px 26px;gap:18px;min-height:0;overflow-y:auto;animation:vx-in .4s ease both">
 <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--acc);text-transform:uppercase;letter-spacing:.1em">{{ mockKicker }}</div>
 <h2 style="margin:0;font-size:25px;line-height:1.15;font-weight:800;letter-spacing:-.02em">{{ mockTitle }}</h2>
+<sc-if value="{{ showDesktopBadge }}" hint-placeholder-val="{{ false }}">
+<div style="align-self:flex-start;display:flex;align-items:center;gap:5px;padding:3px 9px;border:1px dashed var(--acc);border-radius:6px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--acc);letter-spacing:.06em">
+<svg width="9" height="9" viewBox="0 0 24 24" fill="var(--acc)"><path d="M2 2l7.5 18.5 2.4-7.6 7.6-2.4z"/></svg>
+VISTA DESKTOP
+</div>
+</sc-if>
 <div style="{{ phoneFrameStyle }}">
 <div style="flex:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0A0E0D;position:relative">
 <div style="display:flex;align-items:center;gap:5px;padding:8px 10px;background:rgba(255,255,255,.04)">
@@ -421,11 +439,11 @@ a:hover{color:var(--ink)}
 <div style="display:flex;flex-direction:column;gap:7px;padding:12px">
 <sc-if value="{{ hasPropertiesGrid }}" hint-placeholder-val="{{ false }}">
 <div style="height:62px;display:flex;gap:6px">
-<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease both">
+<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease both;transition:transform .18s ease,box-shadow .18s ease" style-hover="{{ hoverLift }}">
 <div style="flex:1;background:linear-gradient(135deg,#1A2B26,#0E1F1B)"></div>
 <div style="height:10px;margin:5px;border-radius:4px;background:rgba(255,255,255,.08)"></div>
 </div>
-<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease .1s both">
+<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease .1s both;transition:transform .18s ease,box-shadow .18s ease" style-hover="{{ hoverLift }}">
 <div style="flex:1;background:linear-gradient(135deg,#1A2B26,#0E1F1B)"></div>
 <div style="height:10px;margin:5px;border-radius:4px;background:rgba(255,255,255,.08)"></div>
 </div>
@@ -459,7 +477,7 @@ a:hover{color:var(--ink)}
 <div style="height:14px;width:100%;border-radius:3px;border:1.5px solid var(--bad);background:rgba(255,115,97,.08)"></div>
 <div style="font-size:6px;color:var(--bad);font-family:'IBM Plex Mono',monospace">revisa tu email</div>
 </sc-if>
-<div style="height:14px;width:52%;border-radius:5px;background:var(--acc)"></div>
+<div style="height:14px;width:52%;border-radius:5px;background:var(--acc);transition:filter .15s ease,transform .15s ease" style-hover="{{ hoverBright }}"></div>
 </div>
 </sc-if>
 <sc-if value="{{ hasSearchEmptyState }}" hint-placeholder-val="{{ false }}">
@@ -514,6 +532,12 @@ a:hover{color:var(--ink)}
 <div style="font-size:20px;font-weight:800">{{ doneCount }}/19</div>
 </div>
 </div>
+<sc-if value="{{ showDesktopBadge }}" hint-placeholder-val="{{ false }}">
+<div style="align-self:flex-start;display:flex;align-items:center;gap:5px;padding:3px 9px;border:1px dashed var(--acc);border-radius:6px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--acc);letter-spacing:.06em">
+<svg width="9" height="9" viewBox="0 0 24 24" fill="var(--acc)"><path d="M2 2l7.5 18.5 2.4-7.6 7.6-2.4z"/></svg>
+VISTA DESKTOP
+</div>
+</sc-if>
 <div style="{{ phoneFrameStyle }}">
 <div style="flex:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0A0E0D;position:relative">
 <div style="display:flex;align-items:center;gap:5px;padding:8px 10px;background:rgba(255,255,255,.04)">
@@ -545,11 +569,11 @@ a:hover{color:var(--ink)}
 <div style="display:flex;flex-direction:column;gap:7px;padding:12px">
 <sc-if value="{{ hasPropertiesGrid }}" hint-placeholder-val="{{ false }}">
 <div style="height:45px;display:flex;gap:6px">
-<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease both">
+<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease both;transition:transform .18s ease,box-shadow .18s ease" style-hover="{{ hoverLift }}">
 <div style="flex:1;background:linear-gradient(135deg,#1A2B26,#0E1F1B)"></div>
 <div style="height:8px;margin:4px;border-radius:4px;background:rgba(255,255,255,.08)"></div>
 </div>
-<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease .1s both">
+<div style="flex:1;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.04);display:flex;flex-direction:column;animation:vx-rise .5s ease .1s both;transition:transform .18s ease,box-shadow .18s ease" style-hover="{{ hoverLift }}">
 <div style="flex:1;background:linear-gradient(135deg,#1A2B26,#0E1F1B)"></div>
 <div style="height:8px;margin:4px;border-radius:4px;background:rgba(255,255,255,.08)"></div>
 </div>
@@ -583,7 +607,7 @@ a:hover{color:var(--ink)}
 <div style="height:11px;width:100%;border-radius:3px;border:1.5px solid var(--bad);background:rgba(255,115,97,.08)"></div>
 <div style="font-size:5.5px;color:var(--bad);font-family:'IBM Plex Mono',monospace">revisa tu email</div>
 </sc-if>
-<div style="height:11px;width:52%;border-radius:4px;background:var(--acc)"></div>
+<div style="height:11px;width:52%;border-radius:4px;background:var(--acc);transition:filter .15s ease,transform .15s ease" style-hover="{{ hoverBright }}"></div>
 </div>
 </sc-if>
 <sc-if value="{{ hasSearchEmptyState }}" hint-placeholder-val="{{ false }}">
@@ -1147,12 +1171,42 @@ class Component extends DCLogic {
         { t: 'p', text: 'Asumir que si el botón "funciona" (lleva a donde debe), ya está resuelto. Funcionar y sentirse bien al usar son cosas distintas — la microinteracción es la que se encarga de la segunda.' },
         { t: 'note', text: 'Un cliente que siente que la web le responde en cada toque, confía más en dar el siguiente paso. Son detalles chicos, pero se notan — aunque nadie sepa explicar por qué.' }
       ]
+    },
+    12: {
+      title: 'Hover: la señal que dice "esto se puede tocar"',
+      sub: 'Por qué en desktop, antes del clic, ya se está formando una opinión de tu web.',
+      els: [
+        { t: 'h2', text: 'Un paso antes del clic' },
+        { t: 'p', text: 'Ya viste qué pasa al tocar un botón. Ahora, en desktop, hay algo que pasa antes de tocar: el hover, el cambio que ocurre cuando el mouse pasa sobre un elemento sin hacer clic todavía.' },
+        { t: 'quote', text: '"El hover es la forma en que una web te dice \'esto se puede tocar\' antes de que lo toques."' },
+        { t: 'p', text: 'Sin esa señal, el usuario tiene que adivinar qué es clickeable y qué no — y en desktop, donde no hay el equivalente táctil de "tocar para probar", esa incertidumbre frena la navegación.' },
+        { t: 'space' },
+        { t: 'h2', text: 'La única señal antes del clic' },
+        { t: 'p', text: 'En desktop, el hover es la única señal visual de qué elementos son interactivos antes del clic. Reduce la fricción de navegación, porque el usuario sabe dónde puede actuar sin tener que probar por ensayo y error, pasando el mouse por toda la pantalla.' },
+        { t: 'note', text: 'Este es el único capítulo del curso enfocado en desktop — el hover no existe en mobile, donde lo que importa es el toque, no el paso del mouse.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Se siente "muerto" sin él' },
+        { t: 'p', text: 'Un botón o link sin cambio al pasar el mouse se siente "muerto", aunque funcione perfectamente al hacer clic. La señal visual importa tanto como la función misma — es lo que le confirma al usuario, antes de actuar, que ahí hay algo vivo.' },
+        { t: 'li', text: 'Botones: cambio de color o leve elevación.' },
+        { t: 'li', text: 'Tarjetas de propiedad: leve elevación o sombra al pasar el mouse.' },
+        { t: 'li', text: 'Links de texto: cambio de color o subrayado.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Checklist: revisa tu web en el computador' },
+        { t: 'chk', text: 'Pasa el mouse por tu botón principal de contacto sin hacer clic.' },
+        { t: 'chk', text: 'Pasa el mouse por una tarjeta de propiedad.' },
+        { t: 'chk', text: 'Revisa los links de texto: menú, footer, enlaces dentro del contenido.' },
+        { t: 'chk', text: 'Confirma que el cambio sea sutil, no exagerado ni brusco.' },
+        { t: 'space' },
+        { t: 'h2', text: 'El error más común' },
+        { t: 'p', text: 'Revisar la web solo en el celular y asumir que "así se ve en todos lados". Muchas corredoras revisan su propia web desde el computador antes de mandarla a un cliente — si ahí se siente muerta, esa primera impresión ya está dañada antes de que el cliente la vea.' },
+        { t: 'note', text: 'Muchas corredoras revisan su propia web desde el computador antes de mandarla a un cliente. Que se sienta viva ahí también genera confianza, incluso antes de que un cliente la vea.' }
+      ]
     }
   };
   COLS = [195, 288, 195, 102];
   ROW = 168; TOP0 = 34;
 
-  titles = ['Animación del hero','Velocidad de carga','Animaciones de scroll','Diseño responsive','Testimonios','Botones de RRSS','CTA repetido','Formularios de contacto','Validación de formularios','Estados vacíos','Microinteracciones','Copywriting','WhatsApp y respuesta rápida','SEO local','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
+  titles = ['Animación del hero','Velocidad de carga','Animaciones de scroll','Diseño responsive','Testimonios','Botones de RRSS','CTA repetido','Formularios de contacto','Validación de formularios','Estados vacíos','Microinteracciones','Estados hover','WhatsApp y respuesta rápida','SEO local','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
 
   /* ── CONTENIDO POR CAPÍTULO ─────────────────────────────
      Cada capítulo es una unidad independiente: { cards: [...], questions: [{t,a,e}] }.
@@ -1406,6 +1460,29 @@ class Component extends DCLogic {
         { t: 'Las microinteracciones ayudan a que la web se sienta "viva".', a: true, e: 'Un cliente que siente que la web le responde en cada toque, confía más en dar el siguiente paso.' }
       ],
       mock: { kicker: 'Pieza pulida · microinteracción', title: 'Ahora sí te responde', note: 'El mismo botón de contacto, pero ahora reacciona al toque — un pequeño cambio que se siente grande.' }
+    },
+    12: {
+      intro: { title: 'Mira qué pasa sin pasar el mouse', note: 'Vista desktop de tu web. Pasa el mouse por los botones y las tarjetas — nada cambia.' },
+      cards: [
+        'Ya viste qué pasa al tocar un botón. Ahora, en desktop, hay algo que pasa antes de tocar: el hover.',
+        'El hover es la forma en que una web te dice "esto se puede tocar" antes de que lo toques. Sin él, el usuario tiene que adivinar qué es clickeable.',
+        'En desktop, el hover es la única señal visual de qué elementos son interactivos antes del clic — reduce la fricción de navegación, porque el usuario sabe dónde puede actuar sin tener que probar por ensayo y error.',
+        'Un botón o link sin cambio al pasar el mouse se siente "muerto", aunque funcione perfectamente. La señal visual importa tanto como la función misma.',
+        'Muchas corredoras revisan su propia web desde el computador antes de mandarla a un cliente. Que se sienta viva ahí también genera confianza, incluso antes de que un cliente la vea.'
+      ],
+      questions: [
+        { t: 'El hover le indica al usuario, antes de hacer clic, qué elementos son interactivos.', a: true, e: 'El hover es la forma en que una web te dice "esto se puede tocar" antes de que lo toques.' },
+        { t: 'El hover solo es relevante en dispositivos móviles.', a: false, e: 'El hover es un comportamiento exclusivo de desktop — en mobile no aplica, ahí lo que importa es el toque.' },
+        { t: 'Sin estados hover, el usuario puede tener que adivinar qué es clickeable.', a: true, e: 'Sin él, el usuario tiene que adivinar qué es clickeable.' },
+        { t: 'Un botón sin cambio de hover funciona igual de bien que uno con hover, en términos de percepción.', a: false, e: 'Un botón o link sin cambio al pasar el mouse se siente "muerto", aunque funcione perfectamente.' },
+        { t: 'El hover reduce la fricción de navegación en desktop.', a: true, e: 'Reduce la fricción de navegación, porque el usuario sabe dónde puede actuar sin ensayo y error.' },
+        { t: 'Los estados hover son solo un detalle estético sin función práctica.', a: false, e: 'Es la única señal visual de qué elementos son interactivos antes del clic — sí tiene función práctica.' },
+        { t: 'El hover ayuda a que la web se sienta más receptiva.', a: true, e: 'Que se sienta viva también genera confianza, incluso antes de que un cliente la vea.' },
+        { t: 'Todos los elementos de una web deberían tener el mismo efecto de hover, sin importar su función.', a: false, e: 'La señal visual importa, pero se aplica según qué elementos son interactivos — no todo lo es.' },
+        { t: 'Un link sin ningún cambio visual al pasar el mouse puede sentirse "muerto" para el usuario.', a: true, e: 'Un botón o link sin cambio al pasar el mouse se siente "muerto", aunque funcione perfectamente.' },
+        { t: 'El hover es exclusivo de botones, nunca se usa en imágenes o tarjetas.', a: false, e: 'Los botones y las tarjetas de propiedades también pueden reaccionar sutilmente al pasar el mouse.' }
+      ],
+      mock: { kicker: 'Pieza pulida · hover desktop', title: 'Ahora se siente viva en tu computador', note: 'Los botones y tarjetas ahora reaccionan al pasar el mouse — solo visible en desktop, no en mobile.' }
     }
   };
 
@@ -1495,6 +1572,10 @@ class Component extends DCLogic {
       hasMicroFeedback: p.completed[11] !== undefined || (s.ch === 11 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
       ctaExtraAnim: (p.completed[11] !== undefined || (s.ch === 11 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)) ? ',vx-tap 2.4s ease-in-out .6s infinite' : '',
       showBrokenMicro: s.ch === 11 && s.screen === 'intro',
+      hoverLift: (p.completed[12] !== undefined || (s.ch === 12 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)) ? 'transform:translateY(-3px);box-shadow:0 8px 16px -8px rgba(0,0,0,.5)' : '',
+      hoverBright: (p.completed[12] !== undefined || (s.ch === 12 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)) ? 'filter:brightness(1.15);transform:scale(1.03)' : '',
+      showDesktopBadge: s.ch === 12,
+      showBrokenHover: s.ch === 12 && s.screen === 'intro',
       showComingSoon: (!(p.completed[3] !== undefined || (s.ch === 3 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)))
         || (!(p.completed[5] !== undefined || (s.ch === 5 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)))
         || (!(p.completed[6] !== undefined || (s.ch === 6 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)))
