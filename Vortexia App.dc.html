@@ -257,6 +257,18 @@ a:hover{color:var(--ink)}
 <div style="margin-top:7px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.06em;color:var(--bad)">se siente como un trámite</div>
 </div>
 </sc-if>
+<sc-if value="{{ showBrokenValidation }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:rgba(4,6,5,.75);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:8;padding:14px">
+<div style="width:100%;background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:9px 8px;display:flex;flex-direction:column;gap:4px">
+<div style="height:9px;width:100%;border-radius:3px;background:rgba(255,255,255,.09)"></div>
+<div style="height:16px;width:100%;border-radius:4px;border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;padding:0 5px;background:rgba(255,255,255,.03)">
+<span style="font-size:6.5px;color:var(--mute);font-family:'IBM Plex Mono',monospace">juan@correo</span>
+</div>
+<div style="height:14px;width:45%;border-radius:4px;background:var(--acc);margin-top:2px"></div>
+</div>
+<div style="margin-top:7px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.06em;color:var(--bad)">envió… y no pasó nada</div>
+</div>
+</sc-if>
 <div style="display:flex;align-items:center;gap:5px;padding:8px 10px;background:rgba(255,255,255,.04)">
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
@@ -326,7 +338,13 @@ a:hover{color:var(--ink)}
 <sc-if value="{{ hasContactForm }}" hint-placeholder-val="{{ false }}">
 <div style="border-radius:9px;background:rgba(255,255,255,.04);padding:8px;display:flex;flex-direction:column;gap:4px;animation:vx-rise .55s ease both">
 <div style="height:9px;width:100%;border-radius:3px;background:rgba(255,255,255,.09)"></div>
+<sc-if value="{{ formNotValidated }}" hint-placeholder-val="{{ true }}">
 <div style="height:9px;width:100%;border-radius:3px;background:rgba(255,255,255,.09)"></div>
+</sc-if>
+<sc-if value="{{ formValidated }}" hint-placeholder-val="{{ false }}">
+<div style="height:14px;width:100%;border-radius:3px;border:1.5px solid var(--bad);background:rgba(255,115,97,.08)"></div>
+<div style="font-size:6px;color:var(--bad);font-family:'IBM Plex Mono',monospace">revisa tu email</div>
+</sc-if>
 <div style="height:14px;width:52%;border-radius:5px;background:var(--acc)"></div>
 </div>
 </sc-if>
@@ -428,7 +446,13 @@ a:hover{color:var(--ink)}
 <sc-if value="{{ hasContactForm }}" hint-placeholder-val="{{ false }}">
 <div style="border-radius:9px;background:rgba(255,255,255,.04);padding:8px;display:flex;flex-direction:column;gap:4px;animation:vx-rise .55s ease both">
 <div style="height:9px;width:100%;border-radius:3px;background:rgba(255,255,255,.09)"></div>
+<sc-if value="{{ formNotValidated }}" hint-placeholder-val="{{ true }}">
 <div style="height:9px;width:100%;border-radius:3px;background:rgba(255,255,255,.09)"></div>
+</sc-if>
+<sc-if value="{{ formValidated }}" hint-placeholder-val="{{ false }}">
+<div style="height:14px;width:100%;border-radius:3px;border:1.5px solid var(--bad);background:rgba(255,115,97,.08)"></div>
+<div style="font-size:6px;color:var(--bad);font-family:'IBM Plex Mono',monospace">revisa tu email</div>
+</sc-if>
 <div style="height:14px;width:52%;border-radius:5px;background:var(--acc)"></div>
 </div>
 </sc-if>
@@ -543,7 +567,13 @@ a:hover{color:var(--ink)}
 <sc-if value="{{ hasContactForm }}" hint-placeholder-val="{{ false }}">
 <div style="border-radius:8px;background:rgba(255,255,255,.04);padding:6px;display:flex;flex-direction:column;gap:3px;animation:vx-rise .55s ease both">
 <div style="height:7px;width:100%;border-radius:3px;background:rgba(255,255,255,.09)"></div>
+<sc-if value="{{ formNotValidated }}" hint-placeholder-val="{{ true }}">
 <div style="height:7px;width:100%;border-radius:3px;background:rgba(255,255,255,.09)"></div>
+</sc-if>
+<sc-if value="{{ formValidated }}" hint-placeholder-val="{{ false }}">
+<div style="height:11px;width:100%;border-radius:3px;border:1.5px solid var(--bad);background:rgba(255,115,97,.08)"></div>
+<div style="font-size:5.5px;color:var(--bad);font-family:'IBM Plex Mono',monospace">revisa tu email</div>
+</sc-if>
 <div style="height:11px;width:52%;border-radius:4px;background:var(--acc)"></div>
 </div>
 </sc-if>
@@ -1011,12 +1041,42 @@ class Component extends DCLogic {
         { t: 'p', text: 'Pedir todo de una vez "para no tener que preguntar después". El resultado es lo contrario a lo buscado: en vez de tener más información, terminas con menos formularios completados, porque muchos se van antes de llegar al botón de enviar.' },
         { t: 'note', text: 'El último paso antes de que un cliente te escriba debería ser el más fácil de todos, no el más largo. Cuánto más simple sea contactarte, más clientes reales llegan a hacerlo.' }
       ]
+    },
+    9: {
+      title: 'Validación: el error silencioso que te cuesta clientes',
+      sub: 'Por qué un formulario corto no sirve de nada si nadie avisa cuando algo salió mal.',
+      els: [
+        { t: 'h2', text: 'El problema que nadie ve' },
+        { t: 'p', text: 'Ya tienes un formulario corto y claro. Pero hay algo que puede arruinarlo todo sin que nadie se dé cuenta: un error simple al escribir, que ni el cliente ni tú llegan a notar.' },
+        { t: 'quote', text: '"Si alguien llena mal su email y el formulario no le avisa, cree que envió su mensaje — pero nunca te va a llegar."' },
+        { t: 'p', text: 'Es el peor tipo de error posible: silencioso. El cliente se va convencido de que hizo su parte. Tú nunca sabes que existió. Y esa venta, esa consulta, simplemente desaparece.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Lo que hace la validación' },
+        { t: 'p', text: 'Sin validación, errores simples — un email mal escrito, un campo obligatorio vacío — pueden perder un lead silenciosamente, sin que ninguno de los dos se entere. La validación corta ese silencio: avisa de inmediato, antes de que el formulario se envíe (o falle en enviarse).' },
+        { t: 'note', text: 'El usuario necesita saber de inmediato si algo está mal, no descubrirlo después — o peor, nunca.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Previene frustración, no solo errores' },
+        { t: 'p', text: 'Una buena validación no es solo un chequeo técnico. Es una forma de respeto: le dice al cliente exactamente qué corregir, en el momento, en vez de dejarlo adivinar por qué "no pasó nada" después de tocar enviar.' },
+        { t: 'li', text: 'Mensaje claro y específico: "revisa tu email", no un genérico "error".' },
+        { t: 'li', text: 'Aparece junto al campo que falló, no en un lugar separado.' },
+        { t: 'li', text: 'Se muestra apenas se detecta el problema, no solo al intentar enviar.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Checklist: prueba tu formulario hoy' },
+        { t: 'chk', text: 'Escribe un email mal formado a propósito y trata de enviar el formulario.' },
+        { t: 'chk', text: 'Verifica que aparezca un aviso claro, no que simplemente "no pase nada".' },
+        { t: 'chk', text: 'Deja un campo obligatorio vacío y confirma que también se detecta.' },
+        { t: 'chk', text: 'Revisa que el mensaje de error diga qué corregir, no solo que "hay un error".' },
+        { t: 'space' },
+        { t: 'h2', text: 'El error más común' },
+        { t: 'p', text: 'Asumir que si el formulario es corto, ya está resuelto. Un formulario de tres campos sin validación puede fallar igual de silenciosamente que uno de diez — el problema no es la cantidad de campos, es que nadie avisa cuando algo sale mal.' },
+        { t: 'note', text: 'De nada sirve un formulario simple si un error silencioso hace que ese cliente se pierda para siempre. Este es el tipo de detalle que separa una web bonita de una que realmente convierte.' }
+      ]
     }
   };
   COLS = [195, 288, 195, 102];
   ROW = 168; TOP0 = 34;
 
-  titles = ['Animación del hero','Velocidad de carga','Animaciones de scroll','Diseño responsive','Testimonios','Botones de RRSS','CTA repetido','Formularios de contacto','Buscador de propiedades','Fichas de propiedad','Confianza y credenciales','Copywriting','WhatsApp y respuesta rápida','SEO local','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
+  titles = ['Animación del hero','Velocidad de carga','Animaciones de scroll','Diseño responsive','Testimonios','Botones de RRSS','CTA repetido','Formularios de contacto','Validación de formularios','Fichas de propiedad','Confianza y credenciales','Copywriting','WhatsApp y respuesta rápida','SEO local','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
 
   /* ── CONTENIDO POR CAPÍTULO ─────────────────────────────
      Cada capítulo es una unidad independiente: { cards: [...], questions: [{t,a,e}] }.
@@ -1201,6 +1261,29 @@ class Component extends DCLogic {
         { t: 'Es mejor pedir información adicional en una conversación posterior que saturar el formulario inicial.', a: true, e: 'El resto se conversa después, no se pide todo de una vez.' }
       ],
       mock: { kicker: 'Pieza corregida · formulario simple', title: 'Contactarte, en tres campos', note: 'El formulario largo se reemplazó por uno corto y claro — el último paso ahora es el más fácil, no el más largo.' }
+    },
+    9: {
+      intro: { title: 'Mira qué pasa si algo sale mal', note: 'Este es tu formulario corto, pero con un email mal escrito. El botón se presiona… y no pasa nada visible.' },
+      cards: [
+        'Ya tienes un formulario corto y claro. Pero hay algo que puede arruinarlo todo sin que nadie se dé cuenta: un error simple al escribir.',
+        'Si alguien llena mal su email y el formulario no le avisa, cree que envió su mensaje — pero nunca te va a llegar.',
+        'Sin validación, errores simples (email mal escrito, campo vacío) pueden perder un lead silenciosamente, sin que ninguno de los dos se entere.',
+        'El usuario necesita saber de inmediato si algo está mal, no descubrirlo después — o peor, nunca. Una buena validación previene frustración, no solo detecta errores.',
+        'De nada sirve un formulario simple si un error silencioso hace que ese cliente se pierda para siempre. Este es el tipo de detalle que separa una web bonita de una que realmente convierte.'
+      ],
+      questions: [
+        { t: 'Sin validación, un error simple en el formulario puede perder un lead sin que nadie se entere.', a: true, e: 'Errores simples pueden perder un lead silenciosamente, sin que ninguno de los dos se entere.' },
+        { t: 'La validación es solo un detalle técnico sin impacto real en el negocio.', a: false, e: 'Un error silencioso hace que ese cliente se pierda para siempre — sí tiene impacto real.' },
+        { t: 'El usuario debería saber de inmediato si algo está mal en el formulario.', a: true, e: 'El usuario necesita saber de inmediato si algo está mal, no descubrirlo después.' },
+        { t: 'Un email mal escrito sin validación puede hacer que el mensaje nunca llegue.', a: true, e: 'Si alguien llena mal su email y el formulario no le avisa, cree que envió su mensaje — pero nunca te va a llegar.' },
+        { t: 'La validación solo sirve para prevenir errores técnicos, no para evitar frustración.', a: false, e: 'Una buena validación previene frustración, no solo detecta errores.' },
+        { t: 'Descubrir un error después de enviar (o nunca) es peor que ser avisado al momento.', a: true, e: 'El usuario necesita saber de inmediato, no descubrirlo después — o peor, nunca.' },
+        { t: 'La validación de formularios no tiene relación con la cantidad de leads reales que se reciben.', a: false, e: 'Un error silencioso hace que ese cliente se pierda para siempre — sí afecta los leads reales.' },
+        { t: 'Un campo obligatorio vacío debería ser detectado antes de que el usuario intente enviar.', a: true, e: 'El usuario necesita saber de inmediato si algo está mal, no descubrirlo después.' },
+        { t: 'La validación mejora tanto la experiencia del usuario como los resultados reales del negocio.', a: true, e: 'Previene frustración, y evita que un cliente se pierda para siempre por un error silencioso.' },
+        { t: 'Implementar validación es opcional porque los usuarios rara vez cometen errores.', a: false, e: 'Sin validación, errores simples pueden perder un lead silenciosamente — no es algo que se pueda dejar al azar.' }
+      ],
+      mock: { kicker: 'Pieza corregida · validación', title: 'Ahora sí te avisa', note: 'El mismo formulario corto, pero ahora marca el error y no deja pasar un email mal escrito en silencio.' }
     }
   };
 
@@ -1281,6 +1364,9 @@ class Component extends DCLogic {
       hasContactForm: p.completed[8] !== undefined || (s.ch === 8 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
       noContactForm: !(p.completed[8] !== undefined || (s.ch === 8 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
       showBrokenForm: s.ch === 8 && s.screen === 'intro',
+      formValidated: p.completed[9] !== undefined || (s.ch === 9 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
+      formNotValidated: !(p.completed[9] !== undefined || (s.ch === 9 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
+      showBrokenValidation: s.ch === 9 && s.screen === 'intro',
       showBrokenMobile: s.ch === 4 && s.screen === 'intro',
       showNormalMockup: !(s.ch === 4 && s.screen === 'intro'),
       showPhoneFrame: p.completed[4] !== undefined || (s.ch === 4 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
