@@ -85,6 +85,7 @@ a:hover{color:var(--ink)}
 <div style="height:7px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden">
 <div style="height:100%;background:var(--acc);border-radius:99px;transition:width .5s ease;width:{{ pct }}%"></div>
 </div>
+<div style="margin-top:11px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:{{ dailyNoteColor }}">{{ dailyNote }}</div>
 </div>
 </div>
 
@@ -652,7 +653,8 @@ class Component extends DCLogic {
     }
   };
 
-  state = { screen: 'welcome', ch: 1, card: 0, q: 0, picked: null, correct: 0, streak: 0, best: 0, progress: { completed: {}, unlocked: 1, best: 0 } };
+  DAILY_LIMIT = 2;
+  state = { screen: 'welcome', ch: 1, card: 0, q: 0, picked: null, correct: 0, streak: 0, best: 0, progress: { completed: {}, unlocked: 1, best: 0, dailyDate: new Date().toDateString(), dailyCount: 0 } };
 
   componentDidMount() {
     if (this.props.accent) document.documentElement.style.setProperty('--acc', this.props.accent);
@@ -660,7 +662,12 @@ class Component extends DCLogic {
       const raw = localStorage.getItem(this.KEY);
       if (raw) {
         const p = JSON.parse(raw);
-        if (p && p.completed) this.setState({ progress: p, screen: 'map' });
+        if (p && p.completed) {
+          const today = new Date().toDateString();
+          if (p.dailyDate !== today) { p.dailyDate = today; p.dailyCount = 0; }
+          this.setState({ progress: p, screen: 'map' });
+          try { localStorage.setItem(this.KEY, JSON.stringify(p)); } catch (e2) {}
+        }
       }
     } catch (e) {}
   }
@@ -690,6 +697,9 @@ class Component extends DCLogic {
     const lastCard = s.card >= ch.cards.length - 1;
     const lastQ = s.q >= qs.length - 1;
     const nextUnlocked = Math.min(19, s.ch + 1);
+    const dailyCount = p.dailyCount || 0;
+    const dailyLimitReached = dailyCount >= this.DAILY_LIMIT;
+    const dailyLeft = Math.max(0, this.DAILY_LIMIT - dailyCount);
 
     return {
       showWelcome: s.screen === 'welcome', showMap: s.screen === 'map', showLesson: s.screen === 'lesson',
@@ -728,13 +738,20 @@ class Component extends DCLogic {
       currentLabel: p.unlocked + '. ' + this.titles[p.unlocked - 1],
       canvasH: this.TOP0 + this.titles.length * this.ROW,
 
+      dailyLeft, dailyLimitReached,
+      dailyNote: dailyLimitReached
+        ? 'Ya usaste tus ' + this.DAILY_LIMIT + ' capítulos gratis de hoy · vuelve mañana por más'
+        : dailyLeft + (dailyLeft === this.DAILY_LIMIT ? ' capítulos disponibles hoy' : ' capítulo más disponible hoy'),
+      dailyNoteColor: dailyLimitReached ? 'var(--mute)' : 'var(--acc)',
+
       nodes: this.titles.map((title, i) => {
-        const num = i + 1, isDone = p.completed[num] !== undefined;
+        const num = i + 1, isDone = p.completed[num] !== undefined, reachable = num <= p.unlocked;
+        const canEnter = isDone || (reachable && !dailyLimitReached);
         const cx = this.COLS[i % this.COLS.length];
         return {
-          num, title, isDone, isOpen: !isDone && num <= p.unlocked, isLocked: num > p.unlocked,
+          num, title, isDone, isOpen: !isDone && reachable && !dailyLimitReached, isLocked: !isDone && (!reachable || dailyLimitReached),
           score: p.completed[num], left: cx - 56, top: this.TOP0 + i * this.ROW,
-          go: () => num <= p.unlocked && this.setState({ screen: (this.content[num] || {}).intro ? 'intro' : 'lesson', ch: num, card: 0, q: 0, picked: null, correct: 0, streak: 0, best: 0 })
+          go: () => canEnter && this.setState({ screen: (this.content[num] || {}).intro ? 'intro' : 'lesson', ch: num, card: 0, q: 0, picked: null, correct: 0, streak: 0, best: 0 })
         };
       }),
 
@@ -769,13 +786,17 @@ class Component extends DCLogic {
       goFinal: () => this.setState({ screen: 'final' }),
       backToMap: () => {
         if (s.screen === 'summary') {
+          const wasNew = p.completed[s.ch] === undefined;
           const completed = Object.assign({}, p.completed);
           completed[s.ch] = Math.max(p.completed[s.ch] ?? 0, s.correct);
-          this.save({ completed, unlocked: Math.max(p.unlocked, nextUnlocked), best: Math.max(p.best || 0, s.best) });
+          this.save({
+            completed, unlocked: Math.max(p.unlocked, nextUnlocked), best: Math.max(p.best || 0, s.best),
+            dailyDate: p.dailyDate, dailyCount: wasNew ? dailyCount + 1 : dailyCount
+          });
           this.setState({ screen: 'reward' });
         } else this.setState({ screen: 'map' });
       },
-      reset: () => { this.save({ completed: {}, unlocked: 1, best: 0 }); this.setState({ screen: 'welcome' }); }
+      reset: () => { this.save({ completed: {}, unlocked: 1, best: 0, dailyDate: p.dailyDate, dailyCount: p.dailyCount }); this.setState({ screen: 'welcome' }); }
     };
   }
 
