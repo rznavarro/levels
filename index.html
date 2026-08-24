@@ -240,7 +240,7 @@ a:hover{color:var(--ink)}
 </sc-if>
 <sc-if value="{{ showNormalMockup }}" hint-placeholder-val="{{ true }}">
 <div style="{{ phoneFrameStyle }}">
-<div style="flex:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0A0E0D">
+<div style="flex:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0A0E0D;position:relative">
 <div style="display:flex;align-items:center;gap:5px;padding:8px 10px;background:rgba(255,255,255,.04)">
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
@@ -308,6 +308,11 @@ a:hover{color:var(--ink)}
 <div style="height:34px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25)">próximo capítulo</div>
 </sc-if>
 </div>
+<sc-if value="{{ hasFloatingCta }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;right:9px;bottom:9px;width:28px;height:28px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;box-shadow:0 5px 12px -3px rgba(0,0,0,.6);animation:vx-pop .35s ease both;z-index:5">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--on-acc)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</div>
+</sc-if>
 </div>
 <sc-if value="{{ showPhoneFrame }}" hint-placeholder-val="{{ false }}">
 <div style="width:34px;height:4px;border-radius:99px;background:rgba(255,255,255,.25);margin:8px auto 0"></div>
@@ -327,7 +332,7 @@ a:hover{color:var(--ink)}
 <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--acc);text-transform:uppercase;letter-spacing:.1em">{{ mockKicker }}</div>
 <h2 style="margin:0;font-size:25px;line-height:1.15;font-weight:800;letter-spacing:-.02em">{{ mockTitle }}</h2>
 <div style="{{ phoneFrameStyle }}">
-<div style="flex:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0A0E0D">
+<div style="flex:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0A0E0D;position:relative">
 <div style="display:flex;align-items:center;gap:5px;padding:8px 10px;background:rgba(255,255,255,.04)">
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
@@ -395,6 +400,11 @@ a:hover{color:var(--ink)}
 <div style="height:34px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25)">próximo capítulo</div>
 </sc-if>
 </div>
+<sc-if value="{{ hasFloatingCta }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;right:9px;bottom:9px;width:28px;height:28px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;box-shadow:0 5px 12px -3px rgba(0,0,0,.6);animation:vx-pop .35s ease both;z-index:5">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--on-acc)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</div>
+</sc-if>
 </div>
 <sc-if value="{{ showPhoneFrame }}" hint-placeholder-val="{{ false }}">
 <div style="width:34px;height:4px;border-radius:99px;background:rgba(255,255,255,.25);margin:8px auto 0"></div>
@@ -427,7 +437,7 @@ a:hover{color:var(--ink)}
 </div>
 </div>
 <div style="{{ phoneFrameStyle }}">
-<div style="flex:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0A0E0D">
+<div style="flex:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0A0E0D;position:relative">
 <div style="display:flex;align-items:center;gap:5px;padding:8px 10px;background:rgba(255,255,255,.04)">
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
@@ -495,6 +505,11 @@ a:hover{color:var(--ink)}
 <div style="height:26px;border:1px dashed rgba(255,255,255,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(255,255,255,.25)">próximo capítulo</div>
 </sc-if>
 </div>
+<sc-if value="{{ hasFloatingCta }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;right:7px;bottom:7px;width:22px;height:22px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px -3px rgba(0,0,0,.6);animation:vx-pop .35s ease both;z-index:5">
+<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--on-acc)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</div>
+</sc-if>
 </div>
 <sc-if value="{{ showPhoneFrame }}" hint-placeholder-val="{{ false }}">
 <div style="width:34px;height:4px;border-radius:99px;background:rgba(255,255,255,.25);margin:8px auto 0"></div>
@@ -890,12 +905,42 @@ class Component extends DCLogic {
         { t: 'p', text: 'Tratar las redes sociales como algo separado de la web, en vez de como parte del mismo recorrido del cliente. La web capta el interés inicial; las redes sociales lo sostienen en el tiempo, hasta que la persona esté lista para escribirte.' },
         { t: 'note', text: 'Un lugar donde mostrar tus propiedades no debería terminar en una sola visita. Cada detalle como este ayuda a que el cliente se quede cerca, hasta que esté listo para escribirte.' }
       ]
+    },
+    7: {
+      title: 'El CTA repetido: la acción, siempre a mano',
+      sub: 'Por qué un solo botón arriba de la página deja a la mayoría de tus clientes sin forma de actuar.',
+      els: [
+        { t: 'h2', text: 'El momento clave' },
+        { t: 'p', text: 'Ya construimos algo que se ve bien y que genera confianza. Ahora viene el momento que realmente importa para el negocio: cuando el cliente por fin decide actuar y escribirte.' },
+        { t: 'quote', text: '"No todos los clientes están listos para contactarte apenas entran."' },
+        { t: 'p', text: 'Algunos deciden después de ver tres propiedades. Otros, después de leer sobre ti, o de ver un testimonio. El momento de decisión no es el mismo para todos — y tu web tiene que estar lista para cualquiera de esos momentos.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Lo que se pierde con un solo CTA' },
+        { t: 'p', text: 'Si el botón de contacto solo aparece una vez, arriba de todo, pierdes a todos los que decidieron más tarde — que suelen ser la mayoría. Esa persona ya está lista para escribirte, pero tiene que volver a subir, buscar el botón, y en ese camino, muchas veces se rinde y se va.' },
+        { t: 'note', text: 'No es un problema de interés. Es un problema de fricción en el momento exacto en que menos fricción debería haber.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Repetir con propósito, no por repetir' },
+        { t: 'p', text: 'La idea no es llenar la página de botones. Es asegurar que la acción esté a mano justo cuando la decisión ya está tomada, sin que el cliente tenga que buscar cómo contactarte. Un CTA discreto y persistente logra esto sin sentirse invasivo.' },
+        { t: 'li', text: 'Un botón flotante que acompaña el recorrido, no solo el encabezado.' },
+        { t: 'li', text: 'Presente después de la sección de propiedades, de testimonios, y al cierre.' },
+        { t: 'li', text: 'Siempre el mismo destino claro: escribir por WhatsApp, llamar, o dejar el contacto.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Checklist: revisa tu CTA hoy' },
+        { t: 'chk', text: 'Cuenta cuántas veces aparece un botón de contacto al recorrer toda tu web.' },
+        { t: 'chk', text: 'Si es solo una vez, arriba, marca esto como prioridad para corregir.' },
+        { t: 'chk', text: 'Verifica que el botón sea visible sin tapar contenido importante.' },
+        { t: 'chk', text: 'Confirma que todos los CTA llevan al mismo lugar, sin confundir al cliente.' },
+        { t: 'space' },
+        { t: 'h2', text: 'El error más común' },
+        { t: 'p', text: 'Asumir que si al cliente le interesó, "ya va a encontrar" cómo contactarte. En la práctica, cada paso extra que tiene que dar es una oportunidad de que se distraiga, dude, o simplemente cierre la pestaña.' },
+        { t: 'note', text: 'De nada sirve que el cliente confíe en ti si, en el momento en que decide escribirte, no encuentra cómo. Este es el punto donde toda la confianza construida se convierte en un mensaje real.' }
+      ]
     }
   };
   COLS = [195, 288, 195, 102];
   ROW = 168; TOP0 = 34;
 
-  titles = ['Animación del hero','Velocidad de carga','Animaciones de scroll','Diseño responsive','Testimonios','Botones de RRSS','Mobile primero','Formularios de contacto','Buscador de propiedades','Fichas de propiedad','Confianza y credenciales','Copywriting','WhatsApp y respuesta rápida','SEO local','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
+  titles = ['Animación del hero','Velocidad de carga','Animaciones de scroll','Diseño responsive','Testimonios','Botones de RRSS','CTA repetido','Formularios de contacto','Buscador de propiedades','Fichas de propiedad','Confianza y credenciales','Copywriting','WhatsApp y respuesta rápida','SEO local','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
 
   /* ── CONTENIDO POR CAPÍTULO ─────────────────────────────
      Cada capítulo es una unidad independiente: { cards: [...], questions: [{t,a,e}] }.
@@ -1035,6 +1080,28 @@ class Component extends DCLogic {
         { t: 'Agregar botones de RRSS no aporta ningún valor real al negocio.', a: false, e: 'Conectan el interés puntual con una relación de más largo plazo — sí aportan valor.' }
       ],
       mock: { kicker: 'Pieza agregada · redes sociales', title: 'El puente después de la visita', note: 'Un footer discreto con tus redes sociales, para que el cliente pueda seguir la relación más allá de esta visita.' }
+    },
+    7: {
+      cards: [
+        'Ya construimos algo que se ve bien y que genera confianza. Ahora viene el momento clave: cuando el cliente por fin decide actuar.',
+        'No todos los clientes están listos para contactarte apenas entran. Algunos deciden después de ver 3 propiedades, otros después de leer sobre ti.',
+        'Si el CTA solo aparece una vez arriba, pierdes a todos los que decidieron más tarde — que suelen ser la mayoría.',
+        'No es repetir por repetir: es asegurar que la acción esté a mano justo cuando la decisión ya está tomada, sin que el cliente tenga que volver a buscar cómo contactarte.',
+        'De nada sirve que el cliente confíe en ti si, en el momento en que decide escribirte, no encuentra cómo. Este es el punto donde toda la confianza construida se convierte en un mensaje real.'
+      ],
+      questions: [
+        { t: 'Todos los usuarios deciden contactar en el mismo momento de su visita.', a: false, e: 'No todos están listos para contactarte apenas entran — algunos deciden después de ver varias propiedades, otros después de leer sobre ti.' },
+        { t: 'Repetir el CTA a lo largo de la página asegura que esté disponible cuando el usuario decide actuar.', a: true, e: 'Asegura que la acción esté a mano justo cuando la decisión ya está tomada.' },
+        { t: 'Un CTA que solo aparece una vez arriba puede perder a usuarios que deciden más tarde.', a: true, e: 'Si el CTA solo aparece una vez arriba, pierdes a todos los que decidieron más tarde — que suelen ser la mayoría.' },
+        { t: 'Repetir el CTA es una mala práctica que satura al usuario.', a: false, e: 'No es repetir por repetir: es asegurar que la acción esté a mano justo cuando la decisión ya está tomada.' },
+        { t: 'El objetivo del CTA repetido es reducir la fricción de tener que volver arriba a contactar.', a: true, e: 'Sin esto, el cliente tendría que volver a buscar cómo contactarte.' },
+        { t: 'Distintos usuarios pueden estar listos para actuar en distintos puntos del recorrido.', a: true, e: 'Algunos deciden después de ver 3 propiedades, otros después de leer sobre ti.' },
+        { t: 'El CTA solo debería aparecer al final de la página.', a: false, e: 'Debe repetirse a lo largo de la página, no aparecer una sola vez en un único lugar.' },
+        { t: 'Tener el CTA a mano en el momento de decisión aumenta la probabilidad de que se use.', a: true, e: 'Asegura que la acción esté a mano justo cuando la decisión ya está tomada.' },
+        { t: 'El CTA repetido no tiene relación con la tasa de conversión.', a: false, e: 'Este es el punto donde toda la confianza construida se convierte en un mensaje real — si el CTA no está, esa conversión no ocurre.' },
+        { t: 'Repetir el CTA de forma natural (no invasiva) es una práctica recomendable.', a: true, e: 'Asegura que la acción esté a mano sin que el cliente tenga que volver a buscar cómo contactarte.' }
+      ],
+      mock: { kicker: 'Pieza agregada · CTA flotante', title: 'La acción, siempre a mano', note: 'Un botón de contacto flotante que acompaña al cliente por todo el recorrido, en vez de quedar arriba y perderse de vista.' }
     }
   };
 
@@ -1111,6 +1178,7 @@ class Component extends DCLogic {
       noTestimonial: !(p.completed[5] !== undefined || (s.ch === 5 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
       hasSocialFooter: p.completed[6] !== undefined || (s.ch === 6 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
       noSocialFooter: !(p.completed[6] !== undefined || (s.ch === 6 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
+      hasFloatingCta: p.completed[7] !== undefined || (s.ch === 7 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
       showBrokenMobile: s.ch === 4 && s.screen === 'intro',
       showNormalMockup: !(s.ch === 4 && s.screen === 'intro'),
       showPhoneFrame: p.completed[4] !== undefined || (s.ch === 4 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
