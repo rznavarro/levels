@@ -220,6 +220,26 @@ a:hover{color:var(--ink)}
 <div style="flex:1;display:flex;flex-direction:column;padding:34px 24px 26px;gap:18px;min-height:0;overflow-y:auto;animation:vx-in .4s ease both">
 <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--mute);text-transform:uppercase;letter-spacing:.1em">Capítulo {{ chNum }} · antes de empezar</div>
 <h2 style="margin:0;font-size:25px;line-height:1.15;font-weight:800;letter-spacing:-.02em">{{ introTitle }}</h2>
+<sc-if value="{{ showBrokenMobile }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;align-items:center;padding:8px 0 4px">
+<div style="width:120px;border:3px solid rgba(255,255,255,.18);border-radius:20px;padding:8px 7px;background:#0A0E0D;position:relative">
+<div style="position:absolute;top:-2px;left:50%;transform:translateX(-50%);width:26px;height:4px;border-radius:99px;background:rgba(255,255,255,.18)"></div>
+<div style="height:46px;border-radius:8px;overflow:hidden;position:relative;margin-bottom:6px">
+<div style="position:absolute;inset:0;background:url('./uploads/dviga-hero-example.jpg') center/cover no-repeat"></div>
+<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(7,10,9,.9),transparent 60%)"></div>
+<div style="position:absolute;left:6px;right:-20px;bottom:4px;white-space:nowrap;overflow:hidden;font-size:7px;font-weight:800;color:#fff">Departamentos con vista al parqu...</div>
+</div>
+<div style="width:20px;height:9px;border-radius:3px;background:var(--acc);margin-bottom:7px"></div>
+<div style="display:flex;gap:3px">
+<div style="width:60%;height:28px;border-radius:6px;background:rgba(255,255,255,.06)"></div>
+<div style="width:50%;height:20px;border-radius:6px;background:rgba(255,255,255,.06);margin-top:8px"></div>
+</div>
+</div>
+<div style="margin-top:7px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.06em;color:var(--bad)">sin ajustar a mobile</div>
+</div>
+</sc-if>
+<sc-if value="{{ showNormalMockup }}" hint-placeholder-val="{{ true }}">
+<div style="{{ phoneFrameStyle }}">
 <div style="flex:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0A0E0D">
 <div style="display:flex;align-items:center;gap:5px;padding:8px 10px;background:rgba(255,255,255,.04)">
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
@@ -266,6 +286,11 @@ a:hover{color:var(--ink)}
 <div style="height:62px;border:1px dashed rgba(255,255,255,.12);border-radius:9px"></div>
 </div>
 </div>
+<sc-if value="{{ showPhoneFrame }}" hint-placeholder-val="{{ false }}">
+<div style="width:34px;height:4px;border-radius:99px;background:rgba(255,255,255,.25);margin:8px auto 0"></div>
+</sc-if>
+</div>
+</sc-if>
 <div style="display:flex;gap:11px;padding:15px;background:var(--card);border:1px solid var(--line);border-radius:18px">
 <div style="width:30px;height:30px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex:none">JN</div>
 <p style="margin:0;font-size:13.5px;line-height:1.5">{{ introNote }}</p>
@@ -278,6 +303,7 @@ a:hover{color:var(--ink)}
 <div style="flex:1;display:flex;flex-direction:column;padding:34px 24px 26px;gap:18px;min-height:0;overflow-y:auto;animation:vx-in .4s ease both">
 <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--acc);text-transform:uppercase;letter-spacing:.1em">{{ mockKicker }}</div>
 <h2 style="margin:0;font-size:25px;line-height:1.15;font-weight:800;letter-spacing:-.02em">{{ mockTitle }}</h2>
+<div style="{{ phoneFrameStyle }}">
 <div style="flex:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0A0E0D">
 <div style="display:flex;align-items:center;gap:5px;padding:8px 10px;background:rgba(255,255,255,.04)">
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
@@ -323,6 +349,10 @@ a:hover{color:var(--ink)}
 </sc-if>
 <div style="height:62px;border:1px dashed rgba(255,255,255,.12);border-radius:9px"></div>
 </div>
+</div>
+<sc-if value="{{ showPhoneFrame }}" hint-placeholder-val="{{ false }}">
+<div style="width:34px;height:4px;border-radius:99px;background:rgba(255,255,255,.25);margin:8px auto 0"></div>
+</sc-if>
 </div>
 <div style="display:flex;gap:11px;padding:15px;background:var(--card);border:1px solid var(--line);border-radius:18px">
 <div style="width:30px;height:30px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex:none">JN</div>
@@ -350,6 +380,7 @@ a:hover{color:var(--ink)}
 <div style="font-size:20px;font-weight:800">{{ doneCount }}/19</div>
 </div>
 </div>
+<div style="{{ phoneFrameStyle }}">
 <div style="flex:none;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0A0E0D">
 <div style="display:flex;align-items:center;gap:5px;padding:8px 10px;background:rgba(255,255,255,.04)">
 <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)"></div>
@@ -395,6 +426,10 @@ a:hover{color:var(--ink)}
 </sc-if>
 <div style="height:45px;border:1px dashed rgba(255,255,255,.12);border-radius:9px"></div>
 </div>
+</div>
+<sc-if value="{{ showPhoneFrame }}" hint-placeholder-val="{{ false }}">
+<div style="width:34px;height:4px;border-radius:99px;background:rgba(255,255,255,.25);margin:8px auto 0"></div>
+</sc-if>
 </div>
 <div style="display:flex;gap:11px;padding:16px;background:var(--card);border:1px solid var(--line);border-radius:18px">
 <div style="width:32px;height:32px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11.5px;flex:none">JN</div>
@@ -692,12 +727,43 @@ class Component extends DCLogic {
         { t: 'p', text: 'Tratar el scroll como algo que "ya viene así" por defecto y no revisarlo nunca. La plantilla base rara vez está pensada para tu catálogo específico de propiedades, y un scroll descuidado hace dudar de la seriedad del negocio antes de que el cliente llegue a ver una sola ficha.' },
         { t: 'note', text: 'Cada propiedad que subes merece que el cliente llegue a verla sintiéndose cómodo, no peleando con la página. Es parte de armar un lugar donde tus propiedades realmente se muestren bien.' }
       ]
+    },
+    4: {
+      title: 'Que tu web funcione de verdad en el celular',
+      sub: 'Por qué el mobile no es una versión reducida de tu web — es donde vive la mayoría de tus clientes.',
+      els: [
+        { t: 'h2', text: 'La pregunta que importa' },
+        { t: 'p', text: 'Armaste un hero animado, rápido, con propiedades que se revelan suave al bajar. Todo eso no sirve de nada si no se ve bien en el dispositivo donde la mayoría de tus clientes realmente te va a visitar: el celular.' },
+        { t: 'quote', text: '"Si tu web no se adapta, no pierdes \'algunos\' visitantes — pierdes a la mayoría."' },
+        { t: 'p', text: 'La mayoría de tus clientes te va a visitar desde el celular, no desde un computador. Es el escenario por defecto, no la excepción.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Lo que pasa cuando no está resuelto' },
+        { t: 'p', text: 'Una web no responsiva obliga al usuario a hacer zoom, scrollear horizontal, o pelear con botones muy chicos. Cada uno de esos momentos es una oportunidad más de que se vaya, exactamente igual que un scroll tosco o una carga lenta.' },
+        { t: 'li', text: 'Texto que se corta o se ve microscópico sin hacer zoom.' },
+        { t: 'li', text: 'Botones tan chicos que hay que apuntar dos veces con el dedo.' },
+        { t: 'li', text: 'Secciones que se desordenan o se montan una sobre otra.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Responsive no es solo "que se vea"' },
+        { t: 'p', text: 'Es que se use cómodamente con el pulgar, en una mano, mientras camina o espera algo. Ese es el contexto real en el que la mayoría de tus clientes va a abrir tu web — no sentados con calma frente a un monitor.' },
+        { t: 'note', text: 'Diseñar para esa mano, ese pulgar, esa distracción de fondo, es diseñar para cómo realmente te visitan, no para cómo te imaginas que te visitan.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Checklist: prueba tu web como cliente real' },
+        { t: 'chk', text: 'Ábrela en tu celular, con una sola mano, sin hacer zoom en ningún momento.' },
+        { t: 'chk', text: 'Verifica que ningún texto se corte o se salga de la pantalla.' },
+        { t: 'chk', text: 'Toca cada botón con el pulgar — si dudas si le vas a acertar, es muy chico.' },
+        { t: 'chk', text: 'Revisa que ninguna sección tape o se monte sobre otra.' },
+        { t: 'chk', text: 'Prueba en un celular más antiguo o de pantalla chica, no solo en el tuyo.' },
+        { t: 'space' },
+        { t: 'h2', text: 'El error más común' },
+        { t: 'p', text: 'Diseñar y revisar todo en el computador, y solo mirar el celular al final, por encima. El resultado casi siempre es una web que "funciona" en mobile en el sentido técnico, pero que nadie disfruta usar ahí — justo donde te visita la mayoría.' },
+        { t: 'note', text: 'Un lugar atractivo para mostrar tus propiedades solo sirve si tus clientes de verdad pueden usarlo desde donde están — y hoy, eso es casi siempre el celular.' }
+      ]
     }
   };
   COLS = [195, 288, 195, 102];
   ROW = 168; TOP0 = 34;
 
-  titles = ['Animación del hero','Velocidad de carga','Animaciones de scroll','Fotografía de propiedades','Testimonios','Animaciones y transiciones','Mobile primero','Formularios de contacto','Buscador de propiedades','Fichas de propiedad','Confianza y credenciales','Copywriting','WhatsApp y respuesta rápida','SEO local','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
+  titles = ['Animación del hero','Velocidad de carga','Animaciones de scroll','Diseño responsive','Testimonios','Animaciones y transiciones','Mobile primero','Formularios de contacto','Buscador de propiedades','Fichas de propiedad','Confianza y credenciales','Copywriting','WhatsApp y respuesta rápida','SEO local','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
 
   /* ── CONTENIDO POR CAPÍTULO ─────────────────────────────
      Cada capítulo es una unidad independiente: { cards: [...], questions: [{t,a,e}] }.
@@ -770,6 +836,29 @@ class Component extends DCLogic {
         { t: 'Cuidar el scroll es un detalle menor que no vale la pena priorizar.', a: false, e: 'Es la primera sensación táctil de tu marca — vale la pena cuidarlo.' }
       ],
       mock: { kicker: 'Pieza agregada · scroll suave', title: 'Tus propiedades, apareciendo bien', note: 'Al bajar, la grilla de propiedades aparece con un scroll suave y fluido, en vez de golpe o con saltos.' }
+    },
+    4: {
+      intro: { title: 'Mira cómo se ve en el celular', note: 'Este es el mismo mockup de siempre, pero ahora dentro de un celular real. Todavía no se ve bien.' },
+      cards: [
+        'Armaste un hero animado, rápido, con propiedades que se revelan suave al bajar. Ahora la pregunta importante: ¿se ve así en el celular?',
+        'La mayoría de tus clientes te va a visitar desde el celular, no desde un computador. Si tu web no se adapta, no pierdes "algunos" visitantes — pierdes a la mayoría.',
+        'Una web no responsiva obliga al usuario a hacer zoom, scrollear horizontal, o pelear con botones muy chicos. Cada uno de esos momentos es una oportunidad de que se vaya.',
+        'Responsive no es solo "que se vea" — es que se use cómodamente con el pulgar, en una mano, mientras camina o espera algo.',
+        'Un lugar atractivo para mostrar tus propiedades solo sirve si tus clientes de verdad pueden usarlo desde donde están — y hoy, eso es casi siempre el celular.'
+      ],
+      questions: [
+        { t: 'La mayoría del tráfico de un realtor probablemente viene del celular, no del computador.', a: true, e: 'La mayoría de tus clientes te va a visitar desde el celular, no desde un computador.' },
+        { t: 'Una web no responsiva puede obligar al usuario a hacer zoom o scrollear horizontal.', a: true, e: 'Obliga a hacer zoom, scrollear horizontal, o pelear con botones muy chicos.' },
+        { t: 'El mobile responsiveness es un detalle secundario que se puede dejar para después.', a: false, e: 'Si tu web no se adapta, no pierdes "algunos" visitantes — pierdes a la mayoría.' },
+        { t: 'Responsive significa solo que se vea bien, sin importar si es cómodo de usar.', a: false, e: 'Es que se use cómodamente con el pulgar, en una mano, mientras camina o espera algo.' },
+        { t: 'Botones muy chicos en mobile pueden hacer que un usuario abandone la web.', a: true, e: 'Cada momento de pelear con botones muy chicos es una oportunidad de que se vaya.' },
+        { t: 'Para muchos realtors, el celular es el dispositivo principal de sus visitantes, no una excepción.', a: true, e: 'La mayoría de tus clientes te visita desde el celular, no desde un computador.' },
+        { t: 'Una web puede ser responsiva y aun así ser incómoda de usar con el pulgar.', a: true, e: 'Responsive no es solo "que se vea" — es que se use cómodamente con el pulgar.' },
+        { t: 'El diseño responsive solo afecta la estética, no la tasa de abandono.', a: false, e: 'Cada dificultad de uso en mobile es una oportunidad de que el visitante se vaya.' },
+        { t: 'Cada dificultad de uso en mobile es una oportunidad de que el visitante se vaya.', a: true, e: 'Zoom, scroll horizontal o botones chicos: cada uno es una oportunidad de que se vaya.' },
+        { t: 'Si una web se ve bien en desktop, automáticamente se ve bien en mobile.', a: false, e: 'La pregunta importante es si se ve así en el celular — no se puede asumir.' }
+      ],
+      mock: { kicker: 'Pieza corregida · mobile responsive', title: 'Tu web, ajustada al celular', note: 'El mismo mockup de siempre — hero y propiedades — ahora bien ordenado dentro de una pantalla chica.' }
     }
   };
 
@@ -840,8 +929,14 @@ class Component extends DCLogic {
       toLesson: () => this.setState({ screen: 'lesson' }),
       heroOn: p.completed[1] !== undefined || (s.ch === 1 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
       heroOff: !(p.completed[1] !== undefined || (s.ch === 1 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
-      hasPropertiesGrid: s.ch >= 3,
-      noPropertiesGrid: s.ch < 3,
+      hasPropertiesGrid: p.completed[3] !== undefined || (s.ch === 3 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
+      noPropertiesGrid: !(p.completed[3] !== undefined || (s.ch === 3 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
+      showBrokenMobile: s.ch === 4 && s.screen === 'intro',
+      showNormalMockup: !(s.ch === 4 && s.screen === 'intro'),
+      showPhoneFrame: p.completed[4] !== undefined || (s.ch === 4 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
+      phoneFrameStyle: (p.completed[4] !== undefined || (s.ch === 4 && ['mockup','trivia','summary'].indexOf(s.screen) > -1))
+        ? 'padding:10px 8px 14px;border:2px solid rgba(255,255,255,.14);border-radius:24px;background:rgba(255,255,255,.015);position:relative'
+        : 'padding:0;position:relative',
       toTrivia: () => this.setState({ screen: 'trivia' }),
       doneCount: done + (s.screen === 'summary' && p.completed[s.ch] === undefined ? 1 : 0), pct: Math.round((done / 19) * 100), allDone: done >= 19,
       isPlaceholder: (this.props.showPlaceholderBadges ?? true) && ch.placeholder,
