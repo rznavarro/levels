@@ -39,14 +39,6 @@ a:hover{color:var(--ink)}
 <div class="vx-shell">
 <div class="vx-frame">
 
-<sc-if value="{{ showChrome }}" hint-placeholder-val="{{ false }}">
-<button onClick="{{ goOffer }}" style="flex:none;display:flex;align-items:center;gap:8px;width:100%;padding:9px 18px;border:none;border-bottom:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-align:left;cursor:pointer;transition:background .15s ease" style-hover="background:rgba(255,255,255,.06)">
-<span style="width:6px;height:6px;border-radius:50%;background:var(--acc);flex:none"></span>
-<span style="flex:1">{{ slotsLine }}</span>
-<span style="color:var(--mute)">ver →</span>
-</button>
-</sc-if>
-
 <sc-if value="{{ showWelcome }}" hint-placeholder-val="{{ true }}">
 <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:64px 28px 36px;animation:vx-in .45s ease both">
 <div style="display:flex;flex-direction:column;gap:26px">
