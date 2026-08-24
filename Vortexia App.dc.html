@@ -296,6 +296,17 @@ a:hover{color:var(--ink)}
 <sc-if value="{{ noTestimonial }}" hint-placeholder-val="{{ true }}">
 <div style="height:62px;border:1px dashed rgba(255,255,255,.12);border-radius:9px"></div>
 </sc-if>
+<sc-if value="{{ hasSocialFooter }}" hint-placeholder-val="{{ false }}">
+<div style="height:34px;border-radius:9px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;gap:10px;animation:vx-rise .55s ease both">
+<div style="width:16px;height:16px;border-radius:5px;background:rgba(255,255,255,.16)"></div>
+<div style="width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,.16)"></div>
+<div style="width:16px;height:16px;border-radius:4px;background:rgba(255,255,255,.16)"></div>
+<div style="width:16px;height:16px;border-radius:4px 4px 4px 0;background:rgba(255,255,255,.16)"></div>
+</div>
+</sc-if>
+<sc-if value="{{ noSocialFooter }}" hint-placeholder-val="{{ true }}">
+<div style="height:34px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25)">próximo capítulo</div>
+</sc-if>
 </div>
 </div>
 <sc-if value="{{ showPhoneFrame }}" hint-placeholder-val="{{ false }}">
@@ -371,6 +382,17 @@ a:hover{color:var(--ink)}
 </sc-if>
 <sc-if value="{{ noTestimonial }}" hint-placeholder-val="{{ true }}">
 <div style="height:62px;border:1px dashed rgba(255,255,255,.12);border-radius:9px"></div>
+</sc-if>
+<sc-if value="{{ hasSocialFooter }}" hint-placeholder-val="{{ false }}">
+<div style="height:34px;border-radius:9px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;gap:10px;animation:vx-rise .55s ease both">
+<div style="width:16px;height:16px;border-radius:5px;background:rgba(255,255,255,.16)"></div>
+<div style="width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,.16)"></div>
+<div style="width:16px;height:16px;border-radius:4px;background:rgba(255,255,255,.16)"></div>
+<div style="width:16px;height:16px;border-radius:4px 4px 4px 0;background:rgba(255,255,255,.16)"></div>
+</div>
+</sc-if>
+<sc-if value="{{ noSocialFooter }}" hint-placeholder-val="{{ true }}">
+<div style="height:34px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25)">próximo capítulo</div>
 </sc-if>
 </div>
 </div>
@@ -460,6 +482,17 @@ a:hover{color:var(--ink)}
 </sc-if>
 <sc-if value="{{ noTestimonial }}" hint-placeholder-val="{{ true }}">
 <div style="height:45px;border:1px dashed rgba(255,255,255,.12);border-radius:9px"></div>
+</sc-if>
+<sc-if value="{{ hasSocialFooter }}" hint-placeholder-val="{{ false }}">
+<div style="height:26px;border-radius:8px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;gap:8px;animation:vx-rise .55s ease both">
+<div style="width:12px;height:12px;border-radius:4px;background:rgba(255,255,255,.16)"></div>
+<div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.16)"></div>
+<div style="width:12px;height:12px;border-radius:3px;background:rgba(255,255,255,.16)"></div>
+<div style="width:12px;height:12px;border-radius:3px 3px 3px 0;background:rgba(255,255,255,.16)"></div>
+</div>
+</sc-if>
+<sc-if value="{{ noSocialFooter }}" hint-placeholder-val="{{ true }}">
+<div style="height:26px;border:1px dashed rgba(255,255,255,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(255,255,255,.25)">próximo capítulo</div>
 </sc-if>
 </div>
 </div>
@@ -827,12 +860,42 @@ class Component extends DCLogic {
         { t: 'p', text: 'Esperar a tener "muchos" testimonios antes de mostrar el primero. Un solo testimonio real y específico, bien puesto debajo de tus propiedades, ya empieza a hacer el trabajo — no hace falta una colección completa para empezar.' },
         { t: 'note', text: 'Cuando alguien ve que otra corredora vendió más gracias a su web, deja de dudar si esto funciona. Es una pieza más de armar un lugar donde tus propiedades no solo se vean bien, se vendan de verdad.' }
       ]
+    },
+    6: {
+      title: 'El puente después de la visita: redes sociales',
+      sub: 'Qué hacer para que el interés de un cliente no se pierda cuando cierra la pestaña.',
+      els: [
+        { t: 'h2', text: 'Qué pasa después de la visita' },
+        { t: 'p', text: 'Un testimonio genera confianza en el momento de la visita. Pero, ¿qué pasa después de que esa persona cierra tu web? Si le gustó lo que vio y no encuentra cómo seguirte, esa conexión se pierde ahí mismo — en esa sola visita.' },
+        { t: 'quote', text: '"Los botones de RRSS son el puente entre \'me gustó esta web\' y \'quiero seguir viendo qué hace esta persona\'."' },
+        { t: 'p', text: 'Conectan el interés puntual de una visita con una relación de más largo plazo. Sin ese puente, cada visitante interesado es una oportunidad que se cierra sola, sin que tú te enteres.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Visibles, no invasivos' },
+        { t: 'p', text: 'Los botones de RRSS deben ser visibles pero no invasivos — un detalle de confianza, no el foco principal de la página. Su trabajo no es gritar "sígueme", es estar disponibles para quien ya decidió que le interesa.' },
+        { t: 'li', text: 'Un footer discreto, no un banner que interrumpe la lectura.' },
+        { t: 'li', text: 'Íconos reconocibles, sin texto extra que compita con el resto de la página.' },
+        { t: 'li', text: 'Presentes en todas las páginas, no escondidos en un solo lugar.' },
+        { t: 'space' },
+        { t: 'h2', text: 'La señal que mandan sin decir nada' },
+        { t: 'p', text: 'Una web sin ningún enlace a redes sociales puede sentirse como un sitio abandonado, aunque el negocio esté perfectamente activo. Los botones refuerzan algo importante: que detrás de la web hay una persona o marca activa, no una página que nadie actualiza.' },
+        { t: 'note', text: 'No hace falta que publiques todos los días. Basta con que la conexión exista, para que quien quiera seguir de cerca pueda hacerlo cuando quiera.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Checklist: revisa tu puente hoy' },
+        { t: 'chk', text: 'Tus redes sociales están enlazadas en tu web, no solo mencionadas de palabra.' },
+        { t: 'chk', text: 'Los íconos son visibles sin tener que buscarlos, pero no compiten con tu contenido principal.' },
+        { t: 'chk', text: 'Cada enlace lleva a la cuenta correcta y activa — no a una cuenta vieja o abandonada.' },
+        { t: 'chk', text: 'Aparecen en todas las páginas importantes, no solo en el inicio.' },
+        { t: 'space' },
+        { t: 'h2', text: 'El error más común' },
+        { t: 'p', text: 'Tratar las redes sociales como algo separado de la web, en vez de como parte del mismo recorrido del cliente. La web capta el interés inicial; las redes sociales lo sostienen en el tiempo, hasta que la persona esté lista para escribirte.' },
+        { t: 'note', text: 'Un lugar donde mostrar tus propiedades no debería terminar en una sola visita. Cada detalle como este ayuda a que el cliente se quede cerca, hasta que esté listo para escribirte.' }
+      ]
     }
   };
   COLS = [195, 288, 195, 102];
   ROW = 168; TOP0 = 34;
 
-  titles = ['Animación del hero','Velocidad de carga','Animaciones de scroll','Diseño responsive','Testimonios','Animaciones y transiciones','Mobile primero','Formularios de contacto','Buscador de propiedades','Fichas de propiedad','Confianza y credenciales','Copywriting','WhatsApp y respuesta rápida','SEO local','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
+  titles = ['Animación del hero','Velocidad de carga','Animaciones de scroll','Diseño responsive','Testimonios','Botones de RRSS','Mobile primero','Formularios de contacto','Buscador de propiedades','Fichas de propiedad','Confianza y credenciales','Copywriting','WhatsApp y respuesta rápida','SEO local','Contenido y blog','Analítica','Redes sociales','Mantenimiento','Tu web trabajando 24/7'];
 
   /* ── CONTENIDO POR CAPÍTULO ─────────────────────────────
      Cada capítulo es una unidad independiente: { cards: [...], questions: [{t,a,e}] }.
@@ -950,6 +1013,28 @@ class Component extends DCLogic {
         { t: 'Los testimonios solo son útiles para negocios grandes, no para realtors individuales.', a: false, e: 'Cuando alguien ve que otra corredora vendió más gracias a su web, deja de dudar si esto funciona.' }
       ],
       mock: { kicker: 'Pieza agregada · testimonio real', title: 'La confianza, sumada a tu web', note: 'Debajo de tus propiedades, un testimonio real construye la confianza que te falta para que el cliente dé el siguiente paso.' }
+    },
+    6: {
+      cards: [
+        'Ya viste cómo un testimonio genera confianza en el momento. Ahora, ¿qué pasa después de esa visita? Ahí entran las redes sociales.',
+        'Si a alguien le gustó lo que vio en tu web y no encuentra cómo seguirte, esa conexión se pierde ahí mismo — en esa sola visita.',
+        'Los botones de RRSS son el puente entre "me gustó esta web" y "quiero seguir viendo qué hace esta persona". Conectan el interés puntual con una relación de más largo plazo.',
+        'Deben ser visibles pero no invasivos — un detalle de confianza, no el foco principal de la página. Y refuerzan algo importante: que detrás de la web hay una persona o marca activa, no un sitio abandonado.',
+        'Un lugar donde mostrar tus propiedades no debería terminar en una sola visita. Cada detalle como este ayuda a que el cliente se quede cerca, hasta que esté listo para escribirte.'
+      ],
+      questions: [
+        { t: 'Los botones de RRSS conectan el interés puntual del usuario con una relación de más largo plazo.', a: true, e: 'Conectan el interés puntual con una relación de más largo plazo.' },
+        { t: 'Sin botones de RRSS, un usuario interesado puede no encontrar cómo seguir a la marca.', a: true, e: 'Si no encuentra cómo seguirte, esa conexión se pierde ahí mismo, en esa sola visita.' },
+        { t: 'Los botones de RRSS deberían ser el elemento más grande y llamativo de toda la web.', a: false, e: 'Deben ser visibles pero no invasivos — un detalle de confianza, no el foco principal.' },
+        { t: 'Tener redes sociales visibles refuerza que hay una marca activa detrás de la web.', a: true, e: 'Refuerzan que detrás de la web hay una persona o marca activa, no un sitio abandonado.' },
+        { t: 'Los botones de RRSS no tienen relación con la construcción de confianza.', a: false, e: 'Son un detalle de confianza: refuerzan que hay una marca activa, no un sitio abandonado.' },
+        { t: 'Es mejor que los botones de RRSS sean visibles pero no invasivos.', a: true, e: 'Deben ser visibles pero no invasivos — un detalle, no el foco principal de la página.' },
+        { t: 'Una web sin ningún enlace a redes sociales puede sentirse como un sitio abandonado.', a: true, e: 'Refuerzan que hay una marca activa detrás — sin ellos, falta esa señal.' },
+        { t: 'Los botones de RRSS solo importan para negocios de e-commerce, no para inmobiliarias.', a: false, e: 'Un lugar donde mostrar tus propiedades no debería terminar en una sola visita, sin importar el rubro.' },
+        { t: 'El propósito de los botones de RRSS es extender la relación más allá de una sola visita.', a: true, e: 'Ayudan a que el cliente se quede cerca, hasta que esté listo para escribirte.' },
+        { t: 'Agregar botones de RRSS no aporta ningún valor real al negocio.', a: false, e: 'Conectan el interés puntual con una relación de más largo plazo — sí aportan valor.' }
+      ],
+      mock: { kicker: 'Pieza agregada · redes sociales', title: 'El puente después de la visita', note: 'Un footer discreto con tus redes sociales, para que el cliente pueda seguir la relación más allá de esta visita.' }
     }
   };
 
@@ -1024,6 +1109,8 @@ class Component extends DCLogic {
       noPropertiesGrid: !(p.completed[3] !== undefined || (s.ch === 3 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
       hasTestimonial: p.completed[5] !== undefined || (s.ch === 5 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
       noTestimonial: !(p.completed[5] !== undefined || (s.ch === 5 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
+      hasSocialFooter: p.completed[6] !== undefined || (s.ch === 6 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
+      noSocialFooter: !(p.completed[6] !== undefined || (s.ch === 6 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
       showBrokenMobile: s.ch === 4 && s.screen === 'intro',
       showNormalMockup: !(s.ch === 4 && s.screen === 'intro'),
       showPhoneFrame: p.completed[4] !== undefined || (s.ch === 4 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
