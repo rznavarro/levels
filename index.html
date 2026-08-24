@@ -283,7 +283,19 @@ a:hover{color:var(--ink)}
 <sc-if value="{{ noPropertiesGrid }}" hint-placeholder-val="{{ true }}">
 <div style="height:62px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25)">próximo capítulo</div>
 </sc-if>
+<sc-if value="{{ hasTestimonial }}" hint-placeholder-val="{{ false }}">
+<div style="height:62px;border-radius:9px;background:rgba(255,255,255,.04);display:flex;align-items:center;gap:8px;padding:8px 10px;position:relative;animation:vx-rise .55s ease both">
+<div style="position:absolute;top:5px;right:7px;font-family:'IBM Plex Mono',monospace;font-size:6.5px;letter-spacing:.04em;color:var(--acc);opacity:.85">CLIENTE EJEMPLO</div>
+<div style="width:26px;height:26px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10px;flex:none">MC</div>
+<div style="flex:1;min-width:0;padding-right:34px">
+<div style="font-size:9px;font-weight:700;color:var(--ink)">María C.</div>
+<div style="font-size:8px;color:var(--mute);line-height:1.3;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">"Vendí mi propiedad en dos semanas gracias a la web nueva."</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ noTestimonial }}" hint-placeholder-val="{{ true }}">
 <div style="height:62px;border:1px dashed rgba(255,255,255,.12);border-radius:9px"></div>
+</sc-if>
 </div>
 </div>
 <sc-if value="{{ showPhoneFrame }}" hint-placeholder-val="{{ false }}">
@@ -347,7 +359,19 @@ a:hover{color:var(--ink)}
 <sc-if value="{{ noPropertiesGrid }}" hint-placeholder-val="{{ true }}">
 <div style="height:62px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25)">próximo capítulo</div>
 </sc-if>
+<sc-if value="{{ hasTestimonial }}" hint-placeholder-val="{{ false }}">
+<div style="height:62px;border-radius:9px;background:rgba(255,255,255,.04);display:flex;align-items:center;gap:8px;padding:8px 10px;position:relative;animation:vx-rise .55s ease both">
+<div style="position:absolute;top:5px;right:7px;font-family:'IBM Plex Mono',monospace;font-size:6.5px;letter-spacing:.04em;color:var(--acc);opacity:.85">CLIENTE EJEMPLO</div>
+<div style="width:26px;height:26px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10px;flex:none">MC</div>
+<div style="flex:1;min-width:0;padding-right:34px">
+<div style="font-size:9px;font-weight:700;color:var(--ink)">María C.</div>
+<div style="font-size:8px;color:var(--mute);line-height:1.3;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">"Vendí mi propiedad en dos semanas gracias a la web nueva."</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ noTestimonial }}" hint-placeholder-val="{{ true }}">
 <div style="height:62px;border:1px dashed rgba(255,255,255,.12);border-radius:9px"></div>
+</sc-if>
 </div>
 </div>
 <sc-if value="{{ showPhoneFrame }}" hint-placeholder-val="{{ false }}">
@@ -424,7 +448,19 @@ a:hover{color:var(--ink)}
 <sc-if value="{{ noPropertiesGrid }}" hint-placeholder-val="{{ true }}">
 <div style="height:45px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25)">próximo capítulo</div>
 </sc-if>
+<sc-if value="{{ hasTestimonial }}" hint-placeholder-val="{{ false }}">
+<div style="height:45px;border-radius:9px;background:rgba(255,255,255,.04);display:flex;align-items:center;gap:7px;padding:6px 8px;position:relative;animation:vx-rise .55s ease both">
+<div style="position:absolute;top:3px;right:6px;font-family:'IBM Plex Mono',monospace;font-size:6px;letter-spacing:.04em;color:var(--acc);opacity:.85">EJEMPLO</div>
+<div style="width:20px;height:20px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:8.5px;flex:none">MC</div>
+<div style="flex:1;min-width:0;padding-right:26px">
+<div style="font-size:8px;font-weight:700;color:var(--ink)">María C.</div>
+<div style="font-size:7px;color:var(--mute);line-height:1.25;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">"Vendí mi propiedad en dos semanas."</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ noTestimonial }}" hint-placeholder-val="{{ true }}">
 <div style="height:45px;border:1px dashed rgba(255,255,255,.12);border-radius:9px"></div>
+</sc-if>
 </div>
 </div>
 <sc-if value="{{ showPhoneFrame }}" hint-placeholder-val="{{ false }}">
@@ -758,6 +794,39 @@ class Component extends DCLogic {
         { t: 'p', text: 'Diseñar y revisar todo en el computador, y solo mirar el celular al final, por encima. El resultado casi siempre es una web que "funciona" en mobile en el sentido técnico, pero que nadie disfruta usar ahí — justo donde te visita la mayoría.' },
         { t: 'note', text: 'Un lugar atractivo para mostrar tus propiedades solo sirve si tus clientes de verdad pueden usarlo desde donde están — y hoy, eso es casi siempre el celular.' }
       ]
+    },
+    5: {
+      title: 'Testimonios: la confianza que tú no puedes generar solo',
+      sub: 'Por qué lo que dicen tus clientes pesa más que lo que dices tú.',
+      els: [
+        { t: 'h2', text: 'De "ver" a "confiar"' },
+        { t: 'p', text: 'Ya tienes una web que se ve bien, carga rápido y funciona en cualquier pantalla. Eso resuelve que el cliente pueda ver tu oferta con comodidad. Lo que viene ahora es distinto: que confíe en lo que ve.' },
+        { t: 'quote', text: '"Nadie te cree cuando dices que eres bueno en lo tuyo. Todos te creen cuando otra persona lo dice por ti."' },
+        { t: 'p', text: 'Es la razón por la que los testimonios pesan tanto: la confianza de un tercero vale más que cualquier afirmación que hagas sobre ti mismo, sin importar cuán bien escrita esté.' },
+        { t: 'space' },
+        { t: 'h2', text: 'No venden — habilitan' },
+        { t: 'p', text: 'Un testimonio no cierra la venta por sí solo. Genera la confianza necesaria para que el cliente se anime a dar el siguiente paso: escribirte, agendar una visita, dejar sus datos. Sin esa confianza, la mayoría simplemente se va sin avisar.' },
+        { t: 'space' },
+        { t: 'h2', text: 'La regla que no se negocia: reales' },
+        { t: 'p', text: 'Un testimonio inventado, si se descubre, destruye más confianza de la que un testimonio real construye. No es un riesgo menor: es el tipo de error que convierte a un cliente escéptico en uno que ya no te cree nada.' },
+        { t: 'note', text: 'Si todavía no tienes testimonios reales, es preferible no mostrar ninguno a arriesgarte a que uno inventado se note o se descubra.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Específico gana a genérico' },
+        { t: 'li', text: 'Genérico: "Excelente servicio, muy recomendable."' },
+        { t: 'li', text: 'Específico: "Vendí mi departamento en dos semanas, con dos ofertas sobre el precio pedido."' },
+        { t: 'p', text: 'El segundo convence más porque describe algo verificable: un resultado concreto, no una opinión vaga que cualquiera podría escribir sobre cualquier cosa.' },
+        { t: 'space' },
+        { t: 'h2', text: 'Checklist: reúne tus primeros testimonios' },
+        { t: 'chk', text: 'Escríbele a tus últimos 3-5 clientes satisfechos y pídeles una frase corta y específica.' },
+        { t: 'chk', text: 'Pide un resultado concreto, no solo una opinión ("vendí en X tiempo", "recibí X ofertas").' },
+        { t: 'chk', text: 'Usa nombre real (o inicial + apellido) — nunca inventes uno.' },
+        { t: 'chk', text: 'Si tienes una foto o captura de la conversación real, mejor: suma más credibilidad.' },
+        { t: 'chk', text: 'Actualiza los testimonios a medida que consigues nuevos — no dejes los mismos tres por años.' },
+        { t: 'space' },
+        { t: 'h2', text: 'El error más común' },
+        { t: 'p', text: 'Esperar a tener "muchos" testimonios antes de mostrar el primero. Un solo testimonio real y específico, bien puesto debajo de tus propiedades, ya empieza a hacer el trabajo — no hace falta una colección completa para empezar.' },
+        { t: 'note', text: 'Cuando alguien ve que otra corredora vendió más gracias a su web, deja de dudar si esto funciona. Es una pieza más de armar un lugar donde tus propiedades no solo se vean bien, se vendan de verdad.' }
+      ]
     }
   };
   COLS = [195, 288, 195, 102];
@@ -859,6 +928,28 @@ class Component extends DCLogic {
         { t: 'Si una web se ve bien en desktop, automáticamente se ve bien en mobile.', a: false, e: 'La pregunta importante es si se ve así en el celular — no se puede asumir.' }
       ],
       mock: { kicker: 'Pieza corregida · mobile responsive', title: 'Tu web, ajustada al celular', note: 'El mismo mockup de siempre — hero y propiedades — ahora bien ordenado dentro de una pantalla chica.' }
+    },
+    5: {
+      cards: [
+        'Ya tienes una web que se ve bien, carga rápido y funciona en cualquier pantalla. Ahora viene algo distinto: que el cliente confíe en lo que ve.',
+        'Nadie te cree cuando dices que eres bueno en lo tuyo. Todos te creen cuando otra persona lo dice por ti.',
+        'La confianza de un tercero pesa más que cualquier afirmación que hagas sobre ti mismo — por eso los testimonios no venden, generan la confianza necesaria para que el cliente se anime a dar el siguiente paso.',
+        'Deben ser siempre reales. Un testimonio inventado, si se descubre, destruye más confianza de la que un testimonio real construye. Y funcionan mejor cuando son específicos (qué pasó, qué resultado tuvo) que genéricos.',
+        'Cuando alguien ve que otra corredora vendió más gracias a su web, deja de dudar si esto funciona. Es una pieza más de armar un lugar donde tus propiedades no solo se vean bien, se vendan de verdad.'
+      ],
+      questions: [
+        { t: 'La confianza de un tercero (testimonio) pesa más que una afirmación propia sobre uno mismo.', a: true, e: 'Nadie te cree cuando dices que eres bueno en lo tuyo. Todos te creen cuando otra persona lo dice por ti.' },
+        { t: 'Un testimonio inventado, si se descubre, puede dañar más la confianza de la que un testimonio real construye.', a: true, e: 'Un testimonio inventado, si se descubre, destruye más confianza de la que un testimonio real construye.' },
+        { t: 'Los testimonios genéricos funcionan igual de bien que los específicos.', a: false, e: 'Funcionan mejor cuando son específicos (qué pasó, qué resultado tuvo) que genéricos.' },
+        { t: 'Los testimonios son un elemento decorativo sin impacto real en la decisión del cliente.', a: false, e: 'Generan la confianza necesaria para que el cliente se anime a dar el siguiente paso.' },
+        { t: 'Un testimonio específico (qué pasó, qué resultado) suele ser más efectivo que uno genérico.', a: true, e: 'Funcionan mejor cuando son específicos que genéricos.' },
+        { t: 'Los testimonios deben ser siempre reales, nunca inventados.', a: true, e: 'Un testimonio inventado, si se descubre, destruye más confianza de la que uno real construye.' },
+        { t: 'Los testimonios ayudan a que el cliente se anime a dar el siguiente paso.', a: true, e: 'Generan la confianza necesaria para que el cliente se anime a dar ese paso.' },
+        { t: 'La cantidad de testimonios importa más que si son reales o no.', a: false, e: 'Deben ser siempre reales — un testimonio inventado destruye más de lo que construye uno real.' },
+        { t: 'Un testimonio real y específico construye más confianza que diez genéricos y vagos.', a: true, e: 'Funcionan mejor cuando son específicos (qué pasó, qué resultado tuvo) que genéricos.' },
+        { t: 'Los testimonios solo son útiles para negocios grandes, no para realtors individuales.', a: false, e: 'Cuando alguien ve que otra corredora vendió más gracias a su web, deja de dudar si esto funciona.' }
+      ],
+      mock: { kicker: 'Pieza agregada · testimonio real', title: 'La confianza, sumada a tu web', note: 'Debajo de tus propiedades, un testimonio real construye la confianza que te falta para que el cliente dé el siguiente paso.' }
     }
   };
 
@@ -931,6 +1022,8 @@ class Component extends DCLogic {
       heroOff: !(p.completed[1] !== undefined || (s.ch === 1 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
       hasPropertiesGrid: p.completed[3] !== undefined || (s.ch === 3 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
       noPropertiesGrid: !(p.completed[3] !== undefined || (s.ch === 3 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
+      hasTestimonial: p.completed[5] !== undefined || (s.ch === 5 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
+      noTestimonial: !(p.completed[5] !== undefined || (s.ch === 5 && ['mockup','trivia','summary'].indexOf(s.screen) > -1)),
       showBrokenMobile: s.ch === 4 && s.screen === 'intro',
       showNormalMockup: !(s.ch === 4 && s.screen === 'intro'),
       showPhoneFrame: p.completed[4] !== undefined || (s.ch === 4 && ['mockup','trivia','summary'].indexOf(s.screen) > -1),
